@@ -34,11 +34,6 @@ export default class App extends Component {
             <Image source={require('./Airport.png')} style={{ width: 155, height: 135 }} />
           </TouchableOpacity>
         </View>
-        <View style={{
-          height: 30, width: 400,
-          backgroundColor: '#996600'
-        }}>
-        </View>
       </View>
 
     );
