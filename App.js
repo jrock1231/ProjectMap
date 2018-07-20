@@ -48,7 +48,7 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     alignSelf: 'center',
-    backgroundColor: '#FFFF99',
+    backgroundColor: '#B0E0E6',
 
   },
   instructions: {
