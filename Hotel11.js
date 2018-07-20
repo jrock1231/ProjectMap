@@ -4,7 +4,7 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Dialog } from 'react-native-simple-dialogs'
-import ho1 from './Hotel8.json'
+import ho1 from './Hotel11.json'
 
 const { width, height } = Dimensions.get("window");
 const instructions = Platform.select({

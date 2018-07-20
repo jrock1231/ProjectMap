@@ -64,13 +64,13 @@ export default class App extends Component {
 
         <View style={{
           height: 295, width: 320, alignSelf: 'center',
-          backgroundColor: '#FFFF99'
+          backgroundColor: '#ADD8E6'
         }}>
           <ScrollView>
             <FlatList
               data={ho}
               renderItem={({ item }) =>
-                <TouchableOpacity style={{ height: 42, width: 320, alignSelf: 'center', margin: 2.5, backgroundColor: '#996600', borderRadius: 5 }} onPress={() => this.props.navigation.navigate(item.Hotel)} >
+                <TouchableOpacity style={{ height: 42, width: 320, alignSelf: 'center', margin: 2.5, backgroundColor: '#48D1CC', borderRadius: 5 }} onPress={() => this.props.navigation.navigate(item.Hotel)} >
 
                   <View style={{ flexDirection: "row", margin: 0 }}>
 
@@ -80,7 +80,7 @@ export default class App extends Component {
                     </View>
 
                     <View style={{ flexDirection: 'column', justifyContent: 'center', height: 42, flex: 0.2 }}>
-                      <Icon name="chevron-right" color="black" size={30} margin='15' />
+                      <Icon name="chevron-right" color="#E0FFFF" size={22} margin='15' />
                     </View>
                   </View>
 
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignSelf: 'center',
-    backgroundColor: '#FFFF99',
+    backgroundColor: '#ADD8E6',
   },
   welcome: {
     height: 80,

@@ -4,7 +4,7 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Dialog } from 'react-native-simple-dialogs'
-import ho3 from './Hotel3.json'
+import ho1 from './Hotel3.json'
 
 const { width, height } = Dimensions.get("window");
 const instructions = Platform.select({
@@ -77,10 +77,10 @@ export default class App extends Component {
           </View>
         </View>
 
-        <View style={{ height: 295, width: 360, alignSelf: 'center', backgroundColor: '#FFFF99' }}>
+        <View style={{ height: 295, width: 360, alignSelf: 'center', backgroundColor: '#ADD8E6' }}>
           <ScrollView>
             <FlatList
-              data={ho3}
+              data={ho1}
               renderItem={({ item }) =>
                 <TouchableOpacity style={styles.welcome}
                   onPress={() => this.setState({
@@ -131,7 +131,7 @@ export default class App extends Component {
                       </View>
                     </View>
                     <View style={{ flexDirection: 'column', justifyContent: 'center', height: 80, width: 16 }}>
-                      <Icon name="chevron-right" color="black" size={23} />
+                      <Icon name="chevron-right" color="#AFEEEE" size={23} />
                     </View>
                   </View>
                 </TouchableOpacity>
@@ -144,7 +144,7 @@ export default class App extends Component {
             onRequestClose={() => this.setState({ showmodal: false })}
             animationType={'fade'}
           >
-            <View style={{ position: 'absolute', backgroundColor: '#f8f3ed', height: 570, width: 375, alignSelf: 'center' }}>
+            <View style={{ position: 'absolute', backgroundColor: '#B0E0E6', height: 570, width: 375, alignSelf: 'center' }}>
               <View style={{ marginBottom: 10, margin: 30, alignSelf: 'center' }}>
                 <Text style={{ color: '#000033', fontSize: 20 }}>
                   {this.state.name}</Text>
@@ -632,14 +632,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignSelf: 'center',
-    backgroundColor: '#FFFF99',
+    backgroundColor: '#ADD8E6',
   },
   welcome: {
     height: 80,
     width: 356,
     alignSelf: 'center',
     margin: 2.5,
-    backgroundColor: '#996600',
+    backgroundColor: '#AFEEEE',
     borderRadius: 1
   },
   instructions: {
@@ -650,7 +650,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     flexWrap: "wrap",
     alignSelf: 'center',
-    backgroundColor: '#CCFF99',
+    backgroundColor: '#E0FFFF',
     borderRadius: 5
 
   },
