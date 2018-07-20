@@ -55,7 +55,7 @@ export default class App extends Component {
           </View>
         </View>
 
-        <View style={{ height: 295, width: 320, alignSelf: 'center', backgroundColor: '#FFFF99' }}>
+        <View style={{ height: 295, width: 320, alignSelf: 'center', backgroundColor: 'ADD8E6' }}>
           <ScrollView>
             <FlatList
               data={hp}
@@ -85,7 +85,7 @@ export default class App extends Component {
                     <Text style={{ flexDirection: "row", justifyContent: 'space-between', fontSize: 18, color: 'black' }}>
                       {item.name}</Text>
 
-                    <Icon name="chevron-right" color="black" size={30} margin='15' />
+                    <Icon name="chevron-right" color="#F8F8FF" size={22} margin='25' />
                   </View>
 
                 </TouchableOpacity>
@@ -102,7 +102,7 @@ export default class App extends Component {
               <View></View>
             </TouchableHighlight>
 
-            <View style={{ position: 'absolute', backgroundColor: '#f8f3ed', height: 570, width: 375, alignSelf: 'center' }}>
+            <View style={{ position: 'absolute', backgroundColor: '#E0FFFF', height: 570, width: 375, alignSelf: 'center' }}>
 
               <View style={{ height: 190, width: 375 }}>
                 <View>
@@ -217,14 +217,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignSelf: 'center',
-    backgroundColor: '#FFFF99',
+    backgroundColor: '#ADD8E6',
   },
   welcome: {
     height: 42,
     width: 320,
     alignSelf: 'center',
     margin: 2.5,
-    backgroundColor: '#996600',
+    backgroundColor: '#48D1CC',
     borderRadius: 5
   },
   instructions: {
@@ -235,7 +235,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     flexWrap: "wrap",
     alignSelf: 'center',
-    backgroundColor: '#009999',
+    backgroundColor: '#AFEEEE',
     borderRadius: 10
 
   },

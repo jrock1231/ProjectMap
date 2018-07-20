@@ -20,6 +20,8 @@ import Ho8Screen from './Hotel8'
 import Ho9Screen from './Hotel9'
 import Ho10Screen from './Hotel10'
 import Ho11Screen from './Hotel11'
+import Ho12Screen from './Hotel12'
+import Ho13Screen from './Hotel13'
 import jj11Screen from './JJ11'
 
 export default createStackNavigator({
@@ -116,6 +118,18 @@ export default createStackNavigator({
     },
     Ho11: {
         screen: Ho11Screen,
+        navigationOptions: {
+            headerStyle: { height: 0 }
+        }
+    },
+    Ho12: {
+        screen: Ho12Screen,
+        navigationOptions: {
+            headerStyle: { height: 0 }
+        }
+    },
+    Ho13: {
+        screen: Ho13Screen,
         navigationOptions: {
             headerStyle: { height: 0 }
         }

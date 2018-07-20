@@ -22,7 +22,7 @@ export default class App extends Component {
             <Image source={require('./A1.png')}
               style={{ position: 'absolute', alignSelf: 'center', width, height: 120, resizeMode: 'contain', margin: 100 }} />
             <Image source={require('./Airport1.png')}
-              style={{ alignSelf: 'center', width, height: 150, resizeMode: 'contain', margin: 15 }} />
+              style={{ alignSelf: 'center', width, height: 160, resizeMode: 'contain', margin: 12 }} />
             <Text style={{ alignSelf: 'center', resizeMode: 'contain', margin: -34, color: 'black', fontSize: 18 }}>
               สนามบินสุราษฎร์ธานี</Text>
             <TouchableOpacity style={{ position: 'absolute', margin: 10 }} onPress={() => this.props.navigation.goBack()}>
@@ -36,7 +36,7 @@ export default class App extends Component {
           <View style={{ alignSelf: 'center', height: 170, width: 320 }}>
             <View style={{ flexDirection: "row", resizeMode: 'contain', margin: 5 }}>
               <Icon name="home" color="black" size={25} />
-              <Text style={{ color: '#000033', fontSize: 17, marginBottom: 15 }}> 73 ตำบลมะลวน อำเภอพุนพิน จังหวัดสุราษฎร์ธานี 84130</Text>
+              <Text style={{ color: '#000033', fontSize: 17, marginBottom: 15 }}> 73 ต.มะลวน อ.พุนพิน จ.สุราษฎร์ธานี 84130</Text>
             </View>
 
             <View style={{ flexDirection: "row", resizeMode: 'contain', margin: 6 }}>
@@ -125,7 +125,7 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     alignSelf: 'center',
-    backgroundColor: '#FFFF99',
+    backgroundColor: '#E0FFFF',
   },
   welcome: {
     flex: 1,
@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     flexWrap: "wrap",
     alignSelf: 'center',
-    backgroundColor: '#996600',
+    backgroundColor: '#AFEEEE',
     borderRadius: 5
   },
 });
