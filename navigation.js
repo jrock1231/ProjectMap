@@ -25,6 +25,7 @@ export default createStackNavigator({
     App: {
         screen: AppScreen,
         navigationOptions: {
+            
             headerStyle: { height: 0 }
         }
     },

@@ -4,6 +4,7 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import p from './Place.json'
+import Place1 from './Place1.js'
 const { width, height } = Dimensions.get("window");
 const instructions = Platform.select({
 
@@ -26,35 +27,39 @@ export default class App extends Component {
         return (
             <View style={styles.container}>
 
-                <View style={{
-                    height: 220, width: 375
-                }}>
-                    <View style={{}}>
-                        <Image source={require('./A1.png')}
-                            style={{ position: 'absolute', alignSelf: 'center', width, height: 130, resizeMode: 'contain', margin: 115 }} />
-                        <Image source={require('./ท่องเที่ยว.png')}
-                            style={{ alignSelf: 'center', width, height: 145, resizeMode: 'contain', margin: 20 }} />
-                        <Text style={{ alignSelf: 'center', resizeMode: 'contain', margin: -22, color: 'black', fontSize: 25 }}>
-                            สถานที่ท่องเที่ยว</Text>
-                        <TouchableOpacity style={{ position: 'absolute', margin: 10 }} onPress={() => this.props.navigation.goBack()}>
-                            <Icon name="angle-left" color="black" size={40} />
-                        </TouchableOpacity>
-                    </View>
+                <View style={{ height: 75, width: 375, backgroundColor: '#F8F8FF' }}>
+                    <Text style={{ alignSelf: 'center', resizeMode: 'contain', margin: 19, color: 'black', fontSize: 25 }}>
+                        สถานที่ท่องเที่ยว</Text>
+                    <TouchableOpacity style={{ position: 'absolute', margin: 17 }} onPress={() => this.props.navigation.goBack()}>
+                        <Icon name="angle-left" color="black" size={40} />
+                    </TouchableOpacity>
+                    <TouchableOpacity style={{ position: 'absolute', alignSelf: 'flex-end' }} onPress={() => this.props.navigation.goBack()}>
+                        <Image source={require('./ภาษา.png')} style={{ width: 35, height: 35, margin: 20 }} />
+                    </TouchableOpacity>
                 </View>
-
+                <View style={{ height: 160, width: 375 }}>
+                    <Image source={require('./ท่องเที่ยว.png')}
+                        style={{ alignSelf: 'center', width, height: 145, resizeMode: 'contain', margin: 10 }} />
+                </View>
                 <View style={{ height: 50 }}>
-
                     <TextInput style={{ height: 40, width: 305, borderRadius: 15, alignSelf: 'center', borderColor: 'gray', borderWidth: 2 }}
                         onChangeText={(text) => this.setState({ text })}
                         value={this.state.text}
                         placeholder='ค้นหา'
-
                     />
-
                     <View style={{ position: 'absolute', margin: 8, alignSelf: 'flex-end', width: 62 }}>
                         <Icon name="search" color="black" size={20} />
                     </View>
                 </View>
+                <View style={{ height: 280, width: 355, alignSelf: 'center', backgroundColor: 'red' }}>
+                    {Place1}
+                </View>
+
+
+
+
+
+
 
                 <View style={{
                     height: 295, width: 355, alignSelf: 'center',
