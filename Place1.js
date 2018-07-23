@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { StyleSheet, Text, View, Platform, TouchableOpacity, TouchableHighlight, Image, Dimensions, ScrollView, TextInput, FlatList, Modal, Linking, Alert } from 'react-native';
-import { createBottomTabNavigator } from 'react-navigation';
+import { TabNavigator } from 'react-navigation';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import p1 from './Place1.json'
 import p2 from './Place2.json'
@@ -680,41 +680,36 @@ const styles = StyleSheet.create({
 
     },
 });
-export default createBottomTabNavigator({
+export default TabNavigator({
     ที่เที่ยว: {
         screen: Home,
         navigationOptions: {
-            showIcon: true,
             tabBarLabe: 'Home',
-            tabBarIcon: ({ tintColor }) => {
-                <Icon name="chevron-right" color={tintColor} size={20} />
-            }
-        }
+            tabBarIcon: ({ tintColor }) => <Icon name="chevron-right" color={tintColor} size={20} />
+        },
     },
     ที่กิน: {
         screen: SettingsScreen,
         navigationOptions: {
             tabBarLabe: 'SettingsScreen',
-            tabBarIcon: ({ tintColor }) => {
-                <Icon name="chevron-right" color={tintColor} size={20} />
-            }
-        }
+            tabBarIcon: ({ tintColor }) => <Icon name="chevron-right" color={tintColor} size={20} />
+        },
     },
     ที่ช้อปปิ้ง: {
         screen: SettingsScreen1,
         navigationOptions: {
             tabBarLabe: 'SettingsScreen1',
-            tabBarIcon: ({ tintColor }) => {
-                <Icon name="chevron-right" color={tintColor} size={20} />
-            }
-        }
+            tabBarIcon: ({ tintColor }) => <Icon name="shopping-cart" color={tintColor} size={20} />
+        },
     },
 }, {
+        tabBarPosition: 'bottom',
         tabBarOptions: {
             activeTintColor: 'black',
             inactiveTintColor: 'blue',
             style: {
                 backgroundColor: '#DCDCDC',
+                height: 60
             },
             indicatorStyle: {
                 height: 0

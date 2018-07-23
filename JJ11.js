@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { StyleSheet, Text, View, Platform, TouchableOpacity, TouchableHighlight, Image, Dimensions, ScrollView, TextInput, FlatList, Modal, Linking, Alert } from 'react-native';
-import { createMaterialTopTabNavigator } from 'react-navigation';
+import { createBottomTabNavigator } from 'react-navigation';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import p from './Place1.json'
 const { width, height } = Dimensions.get("window");
@@ -270,7 +270,7 @@ const styles = StyleSheet.create({
 
     },
 });
-export default createMaterialTopTabNavigator({
+export default createBottomTabNavigator({
     ที่เที่ยว: {
         screen: Home,
         navigationOptions: {

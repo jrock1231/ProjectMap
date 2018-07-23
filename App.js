@@ -34,6 +34,9 @@ export default class App extends Component {
             <Image source={require('./Airport.png')} style={{ width: 155, height: 135 }} />
           </TouchableOpacity>
         </View>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('JJ11')}>
+            <Image source={require('./Airport.png')} style={{ width: 155, height: 135 }} />
+          </TouchableOpacity>
       </View>
 
     );
