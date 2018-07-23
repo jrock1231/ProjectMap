@@ -114,6 +114,9 @@ export default class App extends Component {
                         name: item.name, form1: item.form1, form2: item.form2, form3: item.form3, form4: item.form4, form5: item.form5, form6: item.form6, form7: item.form7, form8: item.form8, form9: item.form9, form10: item.form10,
                       })}>
                         <Image source={item.form} style={{ alignSelf: 'center', width: 110, height: 73.5, resizeMode: 'contain', margin: 3 }} />
+                        <View style={{ flexDirection: 'column', justifyContent: 'center', height: 42, flex: 0.2 }}>
+                          <Icon name="md-photos" color="#E0FFFF" size={20} margin='20' />
+                        </View>
                       </TouchableOpacity>
                     </View>
 
