@@ -15,20 +15,19 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
 
-        <View style={{
-          height: 210, width: 375
-        }}>
-          <View style={{}}>
-            <Image source={require('./A1.png')}
-              style={{ position: 'absolute', alignSelf: 'center', width, height: 120, resizeMode: 'contain', margin: 100 }} />
-            <Image source={require('./Airport1.png')}
-              style={{ alignSelf: 'center', width, height: 160, resizeMode: 'contain', margin: 12 }} />
-            <Text style={{ alignSelf: 'center', resizeMode: 'contain', margin: -34, color: 'black', fontSize: 18 }}>
-              สนามบินสุราษฎร์ธานี</Text>
-            <TouchableOpacity style={{ position: 'absolute', margin: 10 }} onPress={() => this.props.navigation.goBack()}>
-              <Icon name="angle-left" color="black" size={40} />
-            </TouchableOpacity>
-          </View>
+        <View style={{ height: 70, width: 375, backgroundColor: '#F8F8FF' }}>
+          <Text style={{ alignSelf: 'center', resizeMode: 'contain', margin: 19, color: 'black', fontSize: 25 }}>
+            สนามบินสุราษฎร์ธานี</Text>
+          <TouchableOpacity style={{ position: 'absolute', margin: 17 }} onPress={() => this.props.navigation.goBack()}>
+            <Icon name="angle-left" color="black" size={40} />
+          </TouchableOpacity>
+          <TouchableOpacity style={{ position: 'absolute', alignSelf: 'flex-end' }} onPress={() => this.props.navigation.goBack()}>
+            <Image source={require('./ภาษา.png')} style={{ width: 35, height: 35, margin: 20 }} />
+          </TouchableOpacity>
+        </View>
+        <View style={{ height: 160, width: 375 }}>
+          <Image source={require('./Airport1.png')}
+            style={{ alignSelf: 'center', width, height: 160, resizeMode: 'contain', margin: 0 }} />
         </View>
 
         <ScrollView style={{ alignSelf: 'center', width: 360 }}>

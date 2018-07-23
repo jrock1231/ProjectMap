@@ -3,7 +3,6 @@ import {
     StyleSheet, Text, View, Platform, TouchableOpacity, TouchableHighlight, Image, Dimensions, ScrollView, TextInput, FlatList, Modal, Linking, Alert
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import p from './Place.json'
 import Place1 from './Place1.js'
 const { width, height } = Dimensions.get("window");
 const instructions = Platform.select({
@@ -52,8 +51,8 @@ export default class App extends Component {
                     </View>
                 </View>
 
-                <View style={{ height: 305, width: 355, alignSelf: 'center', backgroundColor: 'red' }}>
-                    <Place1/>
+                <View style={{ height: 305, width: 355, alignSelf: 'center' }}>
+                    <Place1 />
                 </View>
             </View>
         );
