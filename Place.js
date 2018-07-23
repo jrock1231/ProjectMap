@@ -65,25 +65,4 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         backgroundColor: '#FFFF99',
     },
-    welcome: {
-        height: 101,
-        width: 355,
-        alignSelf: 'center',
-        margin: 2.5,
-        backgroundColor: '#996600',
-        borderRadius: 2
-    },
-    instructions: {
-        height: 65,
-        width: 315,
-        flexDirection: "row",
-        justifyContent: "space-around",
-        alignItems: 'flex-start',
-        flexWrap: "wrap",
-        alignSelf: 'center',
-        backgroundColor: '#CCFF99',
-        borderRadius: 5,
-        margin: 10
-
-    },
 });
