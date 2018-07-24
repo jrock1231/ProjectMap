@@ -15,7 +15,7 @@ export default class App extends Component {
     super();
     this.state = {
       showmodal: false, showmodal1: false,
-      text: '', name1: '', location: '', number: '', number1: '', Web: '', Web1: '', form: '', Map: '', Map1: '', Taxi: '', Bus: '', Tuk: '', Van: '', Train: '', Icon1: '', Icon2: ''
+      text: '', name: '', name1: '', location: '', number: '', number1: '', Web: '', Web1: '', form: '', Map: '', Map1: '', Taxi: '', Bus: '', Tuk: '', Van: '', Train: '', Icon1: '', Icon2: ''
     };
   }
   state = {}
@@ -60,6 +60,7 @@ export default class App extends Component {
               renderItem={({ item }) =>
                 <TouchableOpacity style={styles.welcome} onPress={() => this.setState({
                   showmodal: true,
+                  name: item.name,
                   name1: item.name1,
                   location: item.location,
                   number: item.number,
@@ -102,24 +103,20 @@ export default class App extends Component {
 
             <View style={{ position: 'absolute', backgroundColor: '#E0FFFF', height: 570, width: 375, alignSelf: 'center' }}>
 
-              <View style={{ height: 190, width: 375 }}>
-                <View>
-                  <Image source={require('./A1.png')}
-                    style={{ position: 'absolute', alignSelf: 'center', width, height: 130, resizeMode: 'contain', margin: 68 }} />
-                  <Text style={{ position: 'absolute', alignSelf: 'center', resizeMode: 'contain', margin: 110, color: 'black', fontSize: 18 }}>
-                    โรงพยาบาล </Text>
-                  <Image source={this.state.form}
-                    style={{ alignSelf: 'center', width, height: 105, resizeMode: 'contain', margin: 15 }} />
-                  <Text style={{ alignSelf: 'center', resizeMode: 'contain', margin: -5, color: 'black', fontSize: 18 }}>
-                    {this.state.name1} </Text>
-                </View>
-
+              <View style={{ height: 70, width: 375, backgroundColor: '#F8F8FF' }}>
+                <Text style={{ alignSelf: 'center', resizeMode: 'contain', margin: 24, color: 'black', fontSize: 21 }}>
+                  {this.state.name}</Text>
+                <TouchableOpacity style={{ position: 'absolute', margin: 17 }} onPress={() => this.setState({ showmodal: false })}>
+                  <Icon name="angle-left" color="black" size={40} />
+                </TouchableOpacity>
+                <TouchableOpacity style={{ position: 'absolute', alignSelf: 'flex-end' }} onPress={() => this.props.navigation.goBack()}>
+                  <Image source={require('./ภาษา.png')} style={{ width: 35, height: 35, margin: 20 }} />
+                </TouchableOpacity>
               </View>
-              <TouchableOpacity onPress={() => this.setState({ showmodal: false })}
-                style={{ position: 'absolute', margin: 10 }}>
-                <Icon name="angle-left" color="black" size={40} />
-              </TouchableOpacity>
-
+              <View style={{ height: 150, width: 375 }}>
+                <Image source={this.state.form}
+                  style={{ alignSelf: 'center', width, height: 135, resizeMode: 'contain', margin: 10 }} />
+              </View>
 
               <ScrollView style={{ alignSelf: 'center', width: 360 }}>
                 <View style={{ alignSelf: 'center', height: 170, width: 350 }}>

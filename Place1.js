@@ -28,7 +28,7 @@ class Home extends React.Component {
         return (
             <View style={styles.container}>
                 <View style={{
-                    height: 255, width: 360, alignSelf: 'center',
+                    height: 247, width: 360, alignSelf: 'center',
                     backgroundColor: '#FFFF99'
                 }}>
                     <ScrollView>
@@ -231,7 +231,7 @@ class SettingsScreen extends React.Component {
         this.state = {
             showmodal: false, showmodal1: false,
             text: '', text1: '', text2: '', text3: '', text4: '', text5: '', text6: '', text7: '', text8: '', text9: '', text10: '', text11: '', text12: '', text13: '', text14: '',
-            text15: '', text16: '', text17: '', text18: '', text19: '', text20: '', text21: '', text22: ''
+            text15: '', text16: '', text17: '', text18: '', text19: '', text20: '', text21: '', text22: '', text23: '', text24: '', text25: '', text26: '', text27: '', text28: '', text29: '', text30: '',
         };
     }
 
@@ -242,7 +242,7 @@ class SettingsScreen extends React.Component {
         return (
             <View style={styles.container}>
                 <View style={{
-                    height: 255, width: 360, alignSelf: 'center',
+                    height: 247, width: 360, alignSelf: 'center',
                     backgroundColor: '#FFFF99'
                 }}>
                     <ScrollView>
@@ -282,6 +282,15 @@ class SettingsScreen extends React.Component {
                                                 text19: item.form5,
                                                 text20: item.form6,
                                                 text21: item.form7,
+                                                text22: item.form8,
+                                                text23: item.form9,
+                                                text24: item.form10,
+                                                text25: item.form11,
+                                                text26: item.form12,
+                                                text27: item.form13,
+                                                text28: item.form14,
+                                                text29: item.form15,
+                                                text30: item.form16,
                                             })}>
                                                 <Image source={item.form} style={{ alignSelf: 'center', width: 110, height: 95, resizeMode: 'contain', margin: 3 }} />
                                             </TouchableOpacity>
@@ -326,7 +335,7 @@ class SettingsScreen extends React.Component {
 
                         <ScrollView style={{ height: 290, width: 320, alignSelf: 'center', margin: 20 }}>
 
-                            <View style={{ alignSelf: 'center', height: 100, width: 300 }}>
+                            <View style={{ alignSelf: 'center', height: 100, width: 350 }}>
                                 <View style={{ flexDirection: 'column', resizeMode: 'contain', margin: 5 }}>
                                     <Icon name="home" color="black" size={30} style={{ alignSelf: 'center' }} />
                                     <Text style={{ alignSelf: 'center', color: '#000033', fontSize: 17, marginBottom: 0 }}> {this.state.text2}</Text>
@@ -426,6 +435,15 @@ class SettingsScreen extends React.Component {
                             <Image source={this.state.text19} style={{ alignSelf: 'center', margin: 15, height: 180, width: 310, borderRadius: 5 }} />
                             <Image source={this.state.text20} style={{ alignSelf: 'center', margin: 15, height: 180, width: 310, borderRadius: 5 }} />
                             <Image source={this.state.text21} style={{ alignSelf: 'center', margin: 15, height: 180, width: 310, borderRadius: 5 }} />
+                            <Image source={this.state.text22} style={{ alignSelf: 'center', margin: 15, height: 180, width: 310, borderRadius: 5 }} />
+                            <Image source={this.state.text23} style={{ alignSelf: 'center', margin: 15, height: 180, width: 310, borderRadius: 5 }} />
+                            <Image source={this.state.text24} style={{ alignSelf: 'center', margin: 15, height: 180, width: 310, borderRadius: 5 }} />
+                            <Image source={this.state.text25} style={{ alignSelf: 'center', margin: 15, height: 180, width: 310, borderRadius: 5 }} />
+                            <Image source={this.state.text26} style={{ alignSelf: 'center', margin: 15, height: 180, width: 310, borderRadius: 5 }} />
+                            <Image source={this.state.text27} style={{ alignSelf: 'center', margin: 15, height: 180, width: 310, borderRadius: 5 }} />
+                            <Image source={this.state.text28} style={{ alignSelf: 'center', margin: 15, height: 180, width: 310, borderRadius: 5 }} />
+                            <Image source={this.state.text29} style={{ alignSelf: 'center', margin: 15, height: 180, width: 310, borderRadius: 5 }} />
+                            <Image source={this.state.text30} style={{ alignSelf: 'center', margin: 15, height: 180, width: 310, borderRadius: 5 }} />
                         </ScrollView>
 
                         <TouchableOpacity onPress={() => this.setState({ showmodal1: false })}
@@ -456,7 +474,7 @@ class SettingsScreen1 extends React.Component {
         return (
             <View style={styles.container}>
                 <View style={{
-                    height: 255, width: 360, alignSelf: 'center',
+                    height: 247, width: 360, alignSelf: 'center',
                     backgroundColor: '#FFFF99'
                 }}>
                     <ScrollView>
@@ -685,21 +703,21 @@ export default TabNavigator({
         screen: Home,
         navigationOptions: {
             tabBarLabe: 'Home',
-            tabBarIcon: ({ tintColor }) => <Icon name="chevron-right" color={tintColor} size={20} />
+            tabBarIcon: ({ tintColor }) => <Image style={{ width:32, height: 32 }} source={require('./1.png')} />
         },
     },
     ที่กิน: {
         screen: SettingsScreen,
         navigationOptions: {
             tabBarLabe: 'SettingsScreen',
-            tabBarIcon: ({ tintColor }) => <Icon name="chevron-right" color={tintColor} size={20} />
+            tabBarIcon: ({ tintColor }) => <Image style={{ width:32, height: 32 }} source={require('./2.png')} />
         },
     },
     ที่ช้อปปิ้ง: {
         screen: SettingsScreen1,
         navigationOptions: {
             tabBarLabe: 'SettingsScreen1',
-            tabBarIcon: ({ tintColor }) => <Icon name="shopping-cart" color={tintColor} size={20} />
+            tabBarIcon: ({ tintColor }) => <Image style={{ width:32, height: 32 }} source={require('./3.png')} />
         },
     },
 }, {
@@ -709,7 +727,7 @@ export default TabNavigator({
             inactiveTintColor: 'blue',
             style: {
                 backgroundColor: '#DCDCDC',
-                height: 60
+                height: 57
             },
             indicatorStyle: {
                 height: 0
