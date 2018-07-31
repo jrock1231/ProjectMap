@@ -110,7 +110,7 @@ class Home extends React.Component {
                                 {this.state.text1}</Text>
                         </View>
 
-                        <ScrollView style={{ height: 290, width: 320, alignSelf: 'center', margin: 20 }}>
+                        <ScrollView style={{ height: 290, width: 330, alignSelf: 'center', margin: 20 }}>
 
                             <View style={{ alignSelf: 'center', height: 100, width: 300 }}>
                                 <View style={{ flexDirection: 'column', resizeMode: 'contain', margin: 5 }}>
@@ -231,7 +231,7 @@ class SettingsScreen extends React.Component {
         this.state = {
             showmodal: false, showmodal1: false,
             text: '', text1: '', text2: '', text3: '', text4: '', text5: '', text6: '', text7: '', text8: '', text9: '', text10: '', text11: '', text12: '', text13: '', text14: '',
-            text15: '', text16: '', text17: '', text18: '', text19: '', text20: '', text21: '', text22: '', text23: '', text24: '', text25: '', text26: '', text27: '', text28: '', text29: '', text30: '',
+            text15: '', text16: '', text17: '', text18: '', text19: '', text20: '', text21: '', text22: '', text23: '', text24: '', text25: '', text26: '', text27: '', text28: '', text29: '', text30: '', text31: '',
         };
     }
 
@@ -291,6 +291,7 @@ class SettingsScreen extends React.Component {
                                                 text28: item.form14,
                                                 text29: item.form15,
                                                 text30: item.form16,
+                                                text31: item.form17,
                                             })}>
                                                 <Image source={item.form} style={{ alignSelf: 'center', width: 110, height: 95, resizeMode: 'contain', margin: 3 }} />
                                             </TouchableOpacity>
@@ -333,7 +334,7 @@ class SettingsScreen extends React.Component {
                                 {this.state.text1}</Text>
                         </View>
 
-                        <ScrollView style={{ height: 290, width: 320, alignSelf: 'center', margin: 20 }}>
+                        <ScrollView style={{ height: 290, width: 330, alignSelf: 'center', margin: 20 }}>
 
                             <View style={{ alignSelf: 'center', height: 100, width: 350 }}>
                                 <View style={{ flexDirection: 'column', resizeMode: 'contain', margin: 5 }}>
@@ -444,6 +445,7 @@ class SettingsScreen extends React.Component {
                             <Image source={this.state.text28} style={{ alignSelf: 'center', margin: 15, height: 180, width: 310, borderRadius: 5 }} />
                             <Image source={this.state.text29} style={{ alignSelf: 'center', margin: 15, height: 180, width: 310, borderRadius: 5 }} />
                             <Image source={this.state.text30} style={{ alignSelf: 'center', margin: 15, height: 180, width: 310, borderRadius: 5 }} />
+                            <Image source={this.state.text31} style={{ alignSelf: 'center', margin: 15, height: 180, width: 310, borderRadius: 5 }} />
                         </ScrollView>
 
                         <TouchableOpacity onPress={() => this.setState({ showmodal1: false })}
