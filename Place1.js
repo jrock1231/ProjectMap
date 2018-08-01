@@ -484,7 +484,9 @@ class SettingsScreen1 extends React.Component {
                             data={p3}
                             renderItem={({ item }) =>
 
-                                <TouchableOpacity style={styles.welcome}
+                                <TouchableOpacity style={{
+                                    height: 45, width: 355, alignSelf: 'center', margin: 4, backgroundColor: '#FFFFFF', borderRadius: 2
+                                }}
                                     onPress={() => this.setState({
                                         showmodal: true,
                                         text1: item.name1,
@@ -503,32 +505,20 @@ class SettingsScreen1 extends React.Component {
                                         text14: item.Mapform,
                                     })}>
 
-                                    <View style={{ flexDirection: "row", margin: 0 }}>
+                                    <View style={{ flexDirection: "row" }}>
 
-                                        <View style={{ height: 100, width: 117, margin: 0, alignSelf: 'center' }}>
-                                            <TouchableOpacity style={{ alignSelf: 'center' }} onPress={() => this.setState({
-                                                showmodal1: true,
-                                                text1: item.name1,
-                                                text15: item.form1,
-                                                text16: item.form2,
-                                                text17: item.form3,
-                                                text18: item.form4,
-                                                text19: item.form5,
-                                                text20: item.form6,
-                                                text21: item.form7,
-                                            })}>
-                                                <Image source={item.form} style={{ alignSelf: 'center', width: 110, height: 95, resizeMode: 'contain', margin: 3 }} />
-                                            </TouchableOpacity>
+                                        <View style={{ height: 45, width: 93, alignSelf: 'center' }}>
+                                            <Image source={item.form} style={{ alignSelf: 'center', width: 88, height: 45, resizeMode: 'contain' }} />
                                         </View>
 
-                                        <View style={{ height: 100, width: 220, alignSelf: 'center' }}>
-                                            <Text style={{ flexDirection: "row", justifyContent: 'space-between', fontSize: 13, color: 'black', margin: 2 }}>
+                                        <View style={{ height: 35, width: 2, alignSelf: 'center', backgroundColor: 'black' }}></View>
+
+                                        <View style={{ height: 45, width: 240, alignSelf: 'center' }}>
+                                            <Text style={{ flexDirection: "row", fontSize: 15, color: 'black', margin: 11 }}>
                                                 {item.name}</Text>
-                                            <Text style={{ flexDirection: "row", justifyContent: 'space-between', fontSize: 10, alignSelf: 'center' }}>
-                                                {item.name2}</Text>
                                         </View>
 
-                                        <View style={{ flexDirection: 'column', justifyContent: 'center', height: 101, width: 18 }}>
+                                        <View style={{ flexDirection: 'column', justifyContent: 'center', height: 45, width: 18 }}>
                                             <Icon name="chevron-right" color="black" size={25} />
                                         </View>
                                     </View>
@@ -705,21 +695,21 @@ export default TabNavigator({
         screen: Home,
         navigationOptions: {
             tabBarLabe: 'Home',
-            tabBarIcon: ({ tintColor }) => <Image style={{ width:32, height: 32 }} source={require('./1.png')} />
+            tabBarIcon: ({ tintColor }) => <Image style={{ width: 32, height: 32 }} source={require('./1.png')} />
         },
     },
     ที่กิน: {
         screen: SettingsScreen,
         navigationOptions: {
             tabBarLabe: 'SettingsScreen',
-            tabBarIcon: ({ tintColor }) => <Image style={{ width:32, height: 32 }} source={require('./2.png')} />
+            tabBarIcon: ({ tintColor }) => <Image style={{ width: 32, height: 32 }} source={require('./2.png')} />
         },
     },
     ที่ช้อปปิ้ง: {
         screen: SettingsScreen1,
         navigationOptions: {
             tabBarLabe: 'SettingsScreen1',
-            tabBarIcon: ({ tintColor }) => <Image style={{ width:32, height: 32 }} source={require('./3.png')} />
+            tabBarIcon: ({ tintColor }) => <Image style={{ width: 32, height: 32 }} source={require('./3.png')} />
         },
     },
 }, {
