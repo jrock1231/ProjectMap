@@ -34,6 +34,8 @@ class Home extends React.Component {
                     <ScrollView>
                         <FlatList
                             data={p1}
+
+                            keyExtractor ={( item,index ) => index.toString()}
                             renderItem={({ item }) =>
 
                                 <TouchableOpacity style={styles.welcome}
@@ -485,7 +487,7 @@ class SettingsScreen1 extends React.Component {
                             renderItem={({ item }) =>
 
                                 <TouchableOpacity style={{
-                                    height: 45, width: 355, alignSelf: 'center', margin: 4, backgroundColor: '#FFFFFF', borderRadius: 2
+                                    height: 45, width: 355, alignSelf: 'center', margin: 4, backgroundColor: '#996600', borderRadius: 2
                                 }}
                                     onPress={() => this.setState({
                                         showmodal: true,
@@ -550,13 +552,18 @@ class SettingsScreen1 extends React.Component {
 
                         <ScrollView style={{ height: 290, width: 320, alignSelf: 'center', margin: 20 }}>
 
-                            <View style={{ alignSelf: 'center', height: 100, width: 300 }}>
-                                <View style={{ flexDirection: 'column', resizeMode: 'contain', margin: 5 }}>
-                                    <Icon name="home" color="black" size={30} style={{ alignSelf: 'center' }} />
-                                    <Text style={{ alignSelf: 'center', color: '#000033', fontSize: 17, marginBottom: 0 }}> {this.state.text2}</Text>
-                                    <Text style={{ alignSelf: 'center', color: '#000033', fontSize: 17, marginBottom: 0 }}> {this.state.text3}</Text>
+                            <View style={{ alignSelf: 'center', width: 310 }}>
+
+                                <View style={{ flexDirection: "row", resizeMode: 'contain', margin: 5 }}>
+                                    <Icon name="home" color="black" size={23} />
+                                    <Text style={{ color: '#000033', fontSize: 15, marginBottom: 15, margin: 1 }}>{this.state.text2}</Text>
+                                </View>
+                                 <View style={{ flexDirection: "row", resizeMode: 'contain', margin: 5 }}>
+                                    <Icon name="clock-o" color="black" size={23} />
+                                    <Text style={{ color: '#000033', fontSize: 15, marginBottom: 15, margin: 1 }}>{this.state.text3}</Text>
                                 </View>
                             </View>
+
                             <View style={styles.instructions}>
                                 <TouchableOpacity onPress={() => this.setState(
                                     Alert.alert(
@@ -610,49 +617,13 @@ class SettingsScreen1 extends React.Component {
                                 height: 200, width: 310, alignSelf: 'center',
                                 marginBottom: 25
                             }}>
-                                <TouchableOpacity style={{}} onPress={() => Linking.openURL(this.state.text7)} >
+                                <TouchableOpacity style={{}} onPress={() => Linking.openURL(this.state.text6)} >
                                     <Image source={this.state.text14} style={{ alignSelf: 'center', margin: 15, height: 180, width: 310, borderRadius: 5 }} />
                                 </TouchableOpacity>
                             </View>
                         </ScrollView>
 
                         <TouchableOpacity onPress={() => this.setState({ showmodal: false })}
-                            style={{ height: 50, width: 60, alignSelf: 'center' }}>
-                            <Text style={{ fontSize: 18, color: 'red', margin: 10 }}>OK</Text>
-                        </TouchableOpacity>
-                    </View>
-                </Modal>
-
-                <Modal
-                    visible={this.state.showmodal1}
-                    transparent={true}
-                    onRequestClose={() => this.setState({ showmodal1: true })}
-                    animationType={'fade'}
-                >
-                    <TouchableHighlight
-                        onPress={() => this.setState({ showmodal1: true })}
-                        style={{ backgroundColor: '#000000', opacity: 0.5, flex: 1 }}>
-                        <View></View>
-                    </TouchableHighlight>
-
-                    <View style={{ position: 'absolute', width: width - 30, height: 450, backgroundColor: '#FFFFCC', marginTop: height * 0.1, margin: 15, borderRadius: 10 }}>
-
-                        <View style={{ marginBottom: 10, margin: 30, alignSelf: 'center' }}>
-                            <Text style={{ color: '#000033', fontSize: 19 }}>
-                                {this.state.text1}</Text>
-                        </View>
-
-                        <ScrollView style={{ height: 290, width: 320, alignSelf: 'center' }}>
-                            <Image source={this.state.text15} style={{ alignSelf: 'center', margin: 15, height: 180, width: 310, borderRadius: 5 }} />
-                            <Image source={this.state.text16} style={{ alignSelf: 'center', margin: 15, height: 180, width: 310, borderRadius: 5 }} />
-                            <Image source={this.state.text17} style={{ alignSelf: 'center', margin: 15, height: 180, width: 310, borderRadius: 5 }} />
-                            <Image source={this.state.text18} style={{ alignSelf: 'center', margin: 15, height: 180, width: 310, borderRadius: 5 }} />
-                            <Image source={this.state.text19} style={{ alignSelf: 'center', margin: 15, height: 180, width: 310, borderRadius: 5 }} />
-                            <Image source={this.state.text20} style={{ alignSelf: 'center', margin: 15, height: 180, width: 310, borderRadius: 5 }} />
-                            <Image source={this.state.text21} style={{ alignSelf: 'center', margin: 15, height: 180, width: 310, borderRadius: 5 }} />
-                        </ScrollView>
-
-                        <TouchableOpacity onPress={() => this.setState({ showmodal1: false })}
                             style={{ height: 50, width: 60, alignSelf: 'center' }}>
                             <Text style={{ fontSize: 18, color: 'red', margin: 10 }}>OK</Text>
                         </TouchableOpacity>

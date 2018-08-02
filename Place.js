@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-    StyleSheet, Text, View, Platform, TouchableOpacity, TouchableHighlight, Image, Dimensions, ScrollView, TextInput, FlatList, Modal, Linking, Alert
+    StyleSheet, Text, View, Platform, TouchableOpacity, TouchableHighlight, Image, Dimensions, ScrollView, TextInput, FlatList, Modal, Linking, Alert, AsyncStorage, StatusBar
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Place1 from './Place1.js'
@@ -8,6 +8,7 @@ const { width, height } = Dimensions.get("window");
 const instructions = Platform.select({
 
 });
+
 
 export default class App extends Component {
     constructor() {
@@ -17,6 +18,25 @@ export default class App extends Component {
             text: '', text1: '', text2: '', text3: '', text4: '', text5: '', text6: '', text7: '', text8: '', text9: '', text10: '', text11: '', text12: '', text13: '', text14: '',
             text15: '', text16: '', text17: '', text18: '', text19: '', text20: '', text21: '', text22: ''
         };
+    }
+
+    componentDidMount() {
+        // if(global.lang == 'th'){
+        //     Place1 = Place1_th
+        // }
+        // else {
+        //     Place1 = Place1_en
+        // }
+    }
+
+    lang(l) {
+
+        // AsyncStorage.setItem('lang', l, () => alert('finish'))
+        AsyncStorage.getItem('lang').then((l) => {
+            global.lang = l
+            alert(l)
+        })
+        // AsyncStorage.removeItem('lang', () => alert('finish delete'))
     }
 
     openDialog(show) {
@@ -32,7 +52,7 @@ export default class App extends Component {
                     <TouchableOpacity style={{ position: 'absolute', margin: 17 }} onPress={() => this.props.navigation.goBack()}>
                         <Icon name="angle-left" color="black" size={40} />
                     </TouchableOpacity>
-                    <TouchableOpacity style={{ position: 'absolute', alignSelf: 'flex-end' }} onPress={() => this.props.navigation.goBack()}>
+                    <TouchableOpacity style={{ position: 'absolute', alignSelf: 'flex-end' }} onPress={() => this.lang('th')}>
                         <Image source={require('./ภาษา.png')} style={{ width: 35, height: 35, margin: 20 }} />
                     </TouchableOpacity>
                 </View>
