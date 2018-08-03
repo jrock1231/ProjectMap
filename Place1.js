@@ -174,7 +174,7 @@ class Home extends React.Component {
                                 height: 200, width: 310, alignSelf: 'center',
                                 marginBottom: 25
                             }}>
-                                <TouchableOpacity style={{}} onPress={() => Linking.openURL(this.state.text7)} >
+                                <TouchableOpacity style={{}} onPress={() => Linking.openURL(this.state.text6)} >
                                     <Image source={this.state.text14} style={{ alignSelf: 'center', margin: 15, height: 180, width: 310, borderRadius: 5 }} />
                                 </TouchableOpacity>
                             </View>
@@ -398,7 +398,7 @@ class SettingsScreen extends React.Component {
                                 height: 200, width: 310, alignSelf: 'center',
                                 marginBottom: 25
                             }}>
-                                <TouchableOpacity style={{}} onPress={() => Linking.openURL(this.state.text7)} >
+                                <TouchableOpacity style={{}} onPress={() => Linking.openURL(this.state.text6)} >
                                     <Image source={this.state.text14} style={{ alignSelf: 'center', margin: 15, height: 180, width: 310, borderRadius: 5 }} />
                                 </TouchableOpacity>
                             </View>

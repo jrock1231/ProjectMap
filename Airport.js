@@ -21,9 +21,6 @@ export default class App extends Component {
           <TouchableOpacity style={{ position: 'absolute', margin: 17 }} onPress={() => this.props.navigation.goBack()}>
             <Icon name="angle-left" color="black" size={40} />
           </TouchableOpacity>
-          <TouchableOpacity style={{ position: 'absolute', alignSelf: 'flex-end' }} onPress={() => this.props.navigation.goBack()}>
-            <Image source={require('./ภาษา.png')} style={{ width: 35, height: 35, margin: 20 }} />
-          </TouchableOpacity>
         </View>
         <View style={{ height: 160, width: 375 }}>
           <Image source={require('./Airport1.png')}

@@ -6,6 +6,7 @@ import {
 import { createStackNavigator } from 'react-navigation';
 import HospitalScreen from './Hospital'
 import AppScreen from './App'
+import App_enScreen from './App_en'
 import PlaceScreen from './Place'
 import HotelScreen from './Hotel'
 import AirportScreen from './Airport'
@@ -27,6 +28,13 @@ import jj11Screen from './JJ11'
 export default createStackNavigator({
     App: {
         screen: AppScreen,
+        navigationOptions: {
+            
+            headerStyle: { height: 0 }
+        }
+    },
+    App_en: {
+        screen: App_enScreen,
         navigationOptions: {
             
             headerStyle: { height: 0 }
