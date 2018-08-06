@@ -11,13 +11,18 @@ const instructions = Platform.select({
 
 export default class App extends Component {
 
+  chooseLang(lang) {
+    global.lang = lang;
+    AsyncStorage.setItem('lang', lang, () => this.setState({ langModal: false }))
+  }
   render() {
     return (
       <View style={styles.container}>
 
         <View style={{ height: 70, width: 375, backgroundColor: '#F8F8FF' }}>
-          <Text style={{ alignSelf: 'center', resizeMode: 'contain', margin: 19, color: 'black', fontSize: 25 }}>
-            สนามบินสุราษฎร์ธานี</Text>
+          <Text style={{ alignSelf: 'center', resizeMode: 'contain', margin: 20, color: 'black', fontSize: 25 }}>
+            {global.lang == 'th' ? <Text>สนามบินสุราษฎร์ธานี</Text> : <Text>Airport</Text>}</Text>
+
           <TouchableOpacity style={{ position: 'absolute', margin: 17 }} onPress={() => this.props.navigation.goBack()}>
             <Icon name="angle-left" color="black" size={40} />
           </TouchableOpacity>
@@ -32,7 +37,7 @@ export default class App extends Component {
           <View style={{ alignSelf: 'center', height: 170, width: 320 }}>
             <View style={{ flexDirection: "row", resizeMode: 'contain', margin: 5 }}>
               <Icon name="home" color="black" size={25} />
-              <Text style={{ color: '#000033', fontSize: 17, marginBottom: 15 }}> 73 ต.มะลวน อ.พุนพิน จ.สุราษฎร์ธานี 84130</Text>
+              <Text style={{ color: '#000033', fontSize: 17, marginBottom: 15 }}> {global.lang == 'th' ? <Text> 73 ต.มะลวน อ.พุนพิน จ.สุราษฎร์ธานี 84130</Text> : <Text> 73 Lt.Malung, Phunphin, Surat Thani 84130</Text>}</Text>
             </View>
 
             <View style={{ flexDirection: "row", resizeMode: 'contain', margin: 6 }}>
@@ -97,7 +102,7 @@ export default class App extends Component {
           }}>
 
             <TouchableOpacity style={{ margin: 15 }} onPress={() => Linking.openURL('https://www.google.com/maps/place/ท่าอากาศยานนานาชาติสุราษฎร์ธานี/@9.1343021,99.1406933,17z/data=!3m1!4b1!4m5!3m4!1s0x3056abb17b382b27:0xf0223bd0b5f3a40!8m2!3d9.1342968!4d99.142882')} >
-              <Text style={{ color: 'blue', fontSize: 17 }}>ดูบน Google Maps</Text>
+              <Text style={{ color: 'blue', fontSize: 17 }}>{global.lang == 'th' ? <Text>ดูบน Google Maps</Text> : <Text>view on Google Maps</Text>}</Text>
             </TouchableOpacity>
           </View>
 

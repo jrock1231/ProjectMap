@@ -21,10 +21,9 @@ export default class App extends Component {
   componentDidMount() {
     AsyncStorage.getItem('lang').then((lang) => {
       if (!lang) {
-        global.lang = 'en'
+        global.lang = 'th'
         this.forceUpdate()
       }
-
       else {
         global.lang = lang
         this.forceUpdate()
@@ -72,10 +71,10 @@ export default class App extends Component {
 
         <TouchableOpacity style={styles.flagBtn} onPress={() => !this.state.isChoosed ? this.setState({ langModal: true }) : null}>
           {
-            global.lang == 'en' ?
-              <Animated.Image source={require('./en.jpg')} style={[styles.flag, { opacity: this.state.itemCenterOpacity }]} />
-              :
+            global.lang == 'th' ?
               <Animated.Image source={require('./th.png')} style={[styles.flag, { opacity: this.state.itemCenterOpacity }]} />
+              :
+              <Animated.Image source={require('./en.jpg')} style={[styles.flag, { opacity: this.state.itemCenterOpacity }]} />
           }
         </TouchableOpacity>
 
@@ -88,21 +87,20 @@ export default class App extends Component {
           <TouchableHighlight onPress={() => this.setState({ langModal: false })} style={{ backgroundColor: '#000000', opacity: 0.5, flex: 1 }}><View></View></TouchableHighlight>
           <View style={{ backgroundColor: '#fff', position: 'absolute', flex: 1, alignSelf: 'center', marginTop: 200, borderRadius: 10, paddingVertical: 5 }}>
             <Text style={{ textAlign: 'center', color: 'black', fontSize: 20, margin: 13, marginBottom: -10 }}>
-              เลือกภาษา</Text>
+              {global.lang == 'th' ? <Text>เลือกภาษา</Text> : <Text>Choose Language</Text>}</Text>
             <View style={{ alignSelf: 'center', width: width - 100, flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center', padding: 30 }}>
-
-              <TouchableOpacity onPress={() => this.chooseLang('en')}>
-                <Image source={require('./en.jpg')} style={styles.flagInModal} />
-              </TouchableOpacity>
 
               <TouchableOpacity onPress={() => this.chooseLang('th')}>
                 <Image source={require('./th.png')} style={styles.flagInModal} />
               </TouchableOpacity>
 
+              <TouchableOpacity onPress={() => this.chooseLang('en')}>
+                <Image source={require('./en.jpg')} style={styles.flagInModal} />
+              </TouchableOpacity>
             </View>
           </View>
         </Modal>
-      </View>
+      </View >
 
     );
   }

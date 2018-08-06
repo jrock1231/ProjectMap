@@ -3,7 +3,8 @@ import {
   StyleSheet, Text, View, Platform, TouchableOpacity, TouchableHighlight, Image, Dimensions, ScrollView, TextInput, FlatList, Modal, Alert, Linking
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import hp from './Hospital.json'
+import hp_th from './Hospital_th.json'
+import hp_en from './Hospital_en.json'
 
 const { width, height } = Dimensions.get("window");
 const instructions = Platform.select({
@@ -15,7 +16,7 @@ export default class App extends Component {
     super();
     this.state = {
       showmodal: false, showmodal1: false,
-      text: '', name: '', name1: '', location: '', number: '', number1: '', Web: '', Web1: '', form: '', Map: '', Map1: '', Taxi: '', Bus: '', Tuk: '', Van: '', Train: '', Icon1: '', Icon2: ''
+      text: '', name: '', name1: '', location: '', number: '', Web: '', Web1: '', form: '', Map: '', Map1: '', Taxi: '', Bus: '', Tuk: '', Van: '', Train: '', Icon1: '', Icon2: ''
     };
   }
   state = {}
@@ -23,13 +24,18 @@ export default class App extends Component {
   openDialog(show) {
     this.setState({ showDialog: show })
   }
+  chooseLang(lang) {
+    global.lang = lang;
+    AsyncStorage.setItem('lang', lang, () => this.setState({ langModal: false }))
+  }
   render() {
     return (
       <View style={styles.container}>
 
         <View style={{ height: 70, width: 375, backgroundColor: '#F8F8FF' }}>
-          <Text style={{ alignSelf: 'center', resizeMode: 'contain', margin: 19, color: 'black', fontSize: 25 }}>
-            โรงพยาบาล</Text>
+          <Text style={{ alignSelf: 'center', resizeMode: 'contain', margin: 20, color: 'black', fontSize: 25 }}>
+            {global.lang == 'th' ? <Text>โรงพยาบาล</Text> : <Text>Hospital</Text>}</Text>
+
           <TouchableOpacity style={{ position: 'absolute', margin: 17 }} onPress={() => this.props.navigation.goBack()}>
             <Icon name="angle-left" color="black" size={40} />
           </TouchableOpacity>
@@ -53,12 +59,11 @@ export default class App extends Component {
         <View style={{ height: 295, width: 320, alignSelf: 'center', backgroundColor: 'ADD8E6' }}>
           <ScrollView>
             <FlatList
-              data={hp}
+              data={global.lang == 'th' ? hp_th : hp_en}
               renderItem={({ item }) =>
                 <TouchableOpacity style={styles.welcome} onPress={() => this.setState({
                   showmodal: true,
                   name: item.name,
-                  name1: item.name1,
                   location: item.location,
                   number: item.number,
                   number1: item.number1,

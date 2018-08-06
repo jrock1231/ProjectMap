@@ -3,9 +3,12 @@ import React from 'react';
 import { StyleSheet, Text, View, Platform, TouchableOpacity, TouchableHighlight, Image, Dimensions, ScrollView, TextInput, FlatList, Modal, Linking, Alert } from 'react-native';
 import { TabNavigator } from 'react-navigation';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import p1 from './Place1.json'
-import p2 from './Place2.json'
-import p3 from './Place3.json'
+import p1_th from './Place1_th.json'
+import p2_th from './Place2_th.json'
+import p3_th from './Place3_th.json'
+import p1_en from './Place1_en.json'
+import p2_en from './Place2_en.json'
+import p3_en from './Place3_en.json'
 const { width, height } = Dimensions.get("window");
 const instructions = Platform.select({
 
@@ -24,6 +27,10 @@ class Home extends React.Component {
     openDialog(show) {
         this.setState({ showDialog: show })
     }
+    chooseLang(lang) {
+        global.lang = lang;
+        AsyncStorage.setItem('lang', lang, () => this.setState({ langModal: false }))
+    }
     render() {
         return (
             <View style={styles.container}>
@@ -33,9 +40,9 @@ class Home extends React.Component {
                 }}>
                     <ScrollView>
                         <FlatList
-                            data={p1}
+                            data={global.lang == 'th' ? p1_th : p1_en}
 
-                            keyExtractor ={( item,index ) => index.toString()}
+                            keyExtractor={(item, index) => index.toString()}
                             renderItem={({ item }) =>
 
                                 <TouchableOpacity style={styles.welcome}
@@ -240,6 +247,10 @@ class SettingsScreen extends React.Component {
     openDialog(show) {
         this.setState({ showDialog: show })
     }
+    chooseLang(lang) {
+        global.lang = lang;
+        AsyncStorage.setItem('lang', lang, () => this.setState({ langModal: false }))
+    }
     render() {
         return (
             <View style={styles.container}>
@@ -249,7 +260,7 @@ class SettingsScreen extends React.Component {
                 }}>
                     <ScrollView>
                         <FlatList
-                            data={p2}
+                            data={global.lang == 'th' ? p2_th : p2_en}
                             renderItem={({ item }) =>
 
                                 <TouchableOpacity style={styles.welcome}
@@ -474,6 +485,10 @@ class SettingsScreen1 extends React.Component {
     openDialog(show) {
         this.setState({ showDialog: show })
     }
+    chooseLang(lang) {
+        global.lang = lang;
+        AsyncStorage.setItem('lang', lang, () => this.setState({ langModal: false }))
+    }
     render() {
         return (
             <View style={styles.container}>
@@ -483,7 +498,7 @@ class SettingsScreen1 extends React.Component {
                 }}>
                     <ScrollView>
                         <FlatList
-                            data={p3}
+                            data={global.lang == 'th' ? p3_th : p3_en}
                             renderItem={({ item }) =>
 
                                 <TouchableOpacity style={{
@@ -558,7 +573,7 @@ class SettingsScreen1 extends React.Component {
                                     <Icon name="home" color="black" size={23} />
                                     <Text style={{ color: '#000033', fontSize: 15, marginBottom: 15, margin: 1 }}>{this.state.text2}</Text>
                                 </View>
-                                 <View style={{ flexDirection: "row", resizeMode: 'contain', margin: 5 }}>
+                                <View style={{ flexDirection: "row", resizeMode: 'contain', margin: 5 }}>
                                     <Icon name="clock-o" color="black" size={23} />
                                     <Text style={{ color: '#000033', fontSize: 15, marginBottom: 15, margin: 1 }}>{this.state.text3}</Text>
                                 </View>

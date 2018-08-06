@@ -26,13 +26,17 @@ export default class App extends Component {
   openDialog(show) {
     this.setState({ showDialog: show })
   }
+  chooseLang(lang) {
+    global.lang = lang;
+    AsyncStorage.setItem('lang', lang, () => this.setState({ langModal: false }))
+  }
   render() {
     return (
       <View style={styles.container}>
 
         <View style={{ height: 70, width: 375, backgroundColor: '#F8F8FF' }}>
-          <Text style={{ alignSelf: 'center', resizeMode: 'contain', margin: 19, color: 'black', fontSize: 25 }}>
-            โรงแรม</Text>
+          <Text style={{ alignSelf: 'center', resizeMode: 'contain', margin: 20, color: 'black', fontSize: 25 }}>
+            {global.lang == 'th' ? <Text>โรงแรม</Text> : <Text>Hotel</Text>}</Text>
           <TouchableOpacity style={{ position: 'absolute', margin: 17 }} onPress={() => this.props.navigation.goBack()}>
             <Icon name="angle-left" color="black" size={40} />
           </TouchableOpacity>
@@ -79,7 +83,7 @@ export default class App extends Component {
           </ScrollView>
         </View>
 
-      </View>
+      </View >
     );
   }
 }

@@ -4,7 +4,8 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Dialog } from 'react-native-simple-dialogs'
-import ho1 from './Hotel1.json'
+import Hotel_th from './Hotel_th/Hotel1_th.json'
+import Hotel_en from './Hotel_en/Hotel1_en.json'
 
 const { width, height } = Dimensions.get("window");
 const instructions = Platform.select({
@@ -51,24 +52,21 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={{
-          height: 220, width: 375
-        }}>
-          <View>
-            <Image source={require('./A1.png')}
-              style={{ position: 'absolute', alignSelf: 'center', width, height: 120, resizeMode: 'contain', margin: 120 }} />
-            <Image source={require('./รร.png')}
-              style={{ alignSelf: 'center', width, height: 145, resizeMode: 'contain', margin: 20 }} />
-            <Text style={{ alignSelf: 'center', resizeMode: 'contain', margin: -22, color: 'black', fontSize: 25 }}>
-              โรงแรม</Text>
-            <TouchableOpacity style={{ position: 'absolute', margin: 10 }} onPress={() => this.props.navigation.goBack()}>
-              <Icon name="angle-left" color="black" size={40} />
-            </TouchableOpacity>
-          </View>
-        </View>
 
-        <View style={{ height: 50 }}>
-          <TextInput style={{ height: 40, width: 305, borderRadius: 15, alignSelf: 'center', borderColor: 'gray', borderWidth: 2 }} onChangeText={(text) => this.setState({ text })}
+        <View style={{ height: 70, width: 375, backgroundColor: '#F8F8FF' }}>
+          <Text style={{ alignSelf: 'center', resizeMode: 'contain', margin: 20, color: 'black', fontSize: 25 }}>
+            {global.lang == 'th' ? <Text>โรงแรม</Text> : <Text>Hotel</Text>}</Text>
+          <TouchableOpacity style={{ position: 'absolute', margin: 17 }} onPress={() => this.props.navigation.goBack()}>
+            <Icon name="angle-left" color="black" size={40} />
+          </TouchableOpacity>
+        </View>
+        <View style={{ height: 150, width: 375 }}>
+          <Image source={require('./รร.png')}
+            style={{ alignSelf: 'center', width, height: 135, resizeMode: 'contain', margin: 10 }} />
+        </View>
+        <View style={{ height: 40 }}>
+          <TextInput style={{ height: 35, width: 305, borderRadius: 15, alignSelf: 'center', borderColor: 'gray', borderWidth: 2 }}
+            onChangeText={(text) => this.setState({ text })}
             value={this.state.text}
             placeholder='ค้นหา'
           />
@@ -80,7 +78,7 @@ export default class App extends Component {
         <View style={{ height: 295, width: 360, alignSelf: 'center', backgroundColor: '#ADD8E6' }}>
           <ScrollView>
             <FlatList
-              data={ho1}
+              data={global.lang == 'th' ? Hotel_th : Hotel_en}
               renderItem={({ item }) =>
                 <TouchableOpacity style={styles.welcome}
                   onPress={() => this.setState({
@@ -114,8 +112,8 @@ export default class App extends Component {
                         name: item.name, form1: item.form1, form2: item.form2, form3: item.form3, form4: item.form4, form5: item.form5, form6: item.form6, form7: item.form7, form8: item.form8, form9: item.form9, form10: item.form10,
                       })}>
                         <Image source={item.form} style={{ alignSelf: 'center', width: 110, height: 73.5, resizeMode: 'contain', margin: 3 }} />
-                        <View style={{ flexDirection: 'column', justifyContent: 'center', height: 42, flex: 0.2 }}>
-                          <Icon name="md-photos" color="#E0FFFF" size={20} margin='20' />
+                        <View style={{ position: 'absolute', height: 50, width: 25, margin: 56, alignSelf: 'flex-end' }}>
+                          <Icon name="photo" color="#E0FFFF" size={20} />
                         </View>
                       </TouchableOpacity>
                     </View>

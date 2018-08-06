@@ -6,7 +6,6 @@ import {
 import { createStackNavigator } from 'react-navigation';
 import HospitalScreen from './Hospital'
 import AppScreen from './App'
-import App_enScreen from './App_en'
 import PlaceScreen from './Place'
 import HotelScreen from './Hotel'
 import AirportScreen from './Airport'
@@ -23,20 +22,12 @@ import Ho10Screen from './Hotel10'
 import Ho11Screen from './Hotel11'
 import Ho12Screen from './Hotel12'
 import Ho13Screen from './Hotel13'
-import jj11Screen from './JJ11'
 
 export default createStackNavigator({
     App: {
         screen: AppScreen,
         navigationOptions: {
-            
-            headerStyle: { height: 0 }
-        }
-    },
-    App_en: {
-        screen: App_enScreen,
-        navigationOptions: {
-            
+
             headerStyle: { height: 0 }
         }
     },
@@ -138,12 +129,6 @@ export default createStackNavigator({
     },
     Ho13: {
         screen: Ho13Screen,
-        navigationOptions: {
-            headerStyle: { height: 0 }
-        }
-    },
-    JJ11: {
-        screen: jj11Screen,
         navigationOptions: {
             headerStyle: { height: 0 }
         }

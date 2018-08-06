@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import {
-    StyleSheet, Text, View, Platform, TouchableOpacity, TouchableHighlight, Image, Dimensions, ScrollView, TextInput, FlatList, Modal, Linking, Alert, AsyncStorage, StatusBar
+    StyleSheet, Text, View, Platform, TouchableOpacity, TouchableHighlight, Image, Dimensions, ScrollView, TextInput, FlatList, Modal, Linking, Alert, AsyncStorage, Animated
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import Place1 from './Place1.js'
+import Place0 from './Place0.js'
 const { width, height } = Dimensions.get("window");
 const instructions = Platform.select({
 
@@ -20,43 +20,50 @@ export default class App extends Component {
         };
     }
 
-    componentDidMount() {
+    //componentDidMount() {
         // if(global.lang == 'th'){
         //     Place1 = Place1_th
         // }
         // else {
         //     Place1 = Place1_en
         // }
-    }
+    //}
 
-    lang(l) {
+    //lang(l) {
 
         // AsyncStorage.setItem('lang', l, () => alert('finish'))
-        AsyncStorage.getItem('lang').then((l) => {
-            global.lang = l
-            alert(l)
-        })
+        ///AsyncStorage.getItem('lang').then((l) => {
+           // global.lang = l
+           // alert(l)
+        //})
         // AsyncStorage.removeItem('lang', () => alert('finish delete'))
-    }
+    //}
 
     openDialog(show) {
         this.setState({ showDialog: show })
+    }
+    chooseLang(lang) {
+        global.lang = lang;
+        AsyncStorage.setItem('lang', lang, () => this.setState({ langModal: false }))
     }
     render() {
         return (
             <View style={styles.container}>
 
                 <View style={{ height: 70, width: 375, backgroundColor: '#F8F8FF' }}>
-                    <Text style={{ alignSelf: 'center', resizeMode: 'contain', margin: 19, color: 'black', fontSize: 25 }}>
-                        สถานที่ท่องเที่ยว</Text>
+                    <Text style={{ alignSelf: 'center', margin: 20, color: 'black', fontSize: 25 }}>
+                        {global.lang == 'th' ? <Text>สถานที่ท่องเที่ยว</Text> : <Text>Place</Text>}</Text>
+
                     <TouchableOpacity style={{ position: 'absolute', margin: 17 }} onPress={() => this.props.navigation.goBack()}>
                         <Icon name="angle-left" color="black" size={40} />
                     </TouchableOpacity>
+
                 </View>
                 <View style={{ height: 150, width: 375 }}>
                     <Image source={require('./ท่องเที่ยว.png')}
                         style={{ alignSelf: 'center', width, height: 135, resizeMode: 'contain', margin: 10 }} />
                 </View>
+
                 <View style={{ height: 40 }}>
                     <TextInput style={{ height: 35, width: 305, borderRadius: 15, alignSelf: 'center', borderColor: 'gray', borderWidth: 2 }}
                         onChangeText={(text) => this.setState({ text })}
@@ -69,8 +76,9 @@ export default class App extends Component {
                 </View>
 
                 <View style={{ height: 305, width: 355, alignSelf: 'center' }}>
-                    <Place1 />
+                    <Place0 />
                 </View>
+
             </View>
         );
     }
@@ -82,4 +90,14 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         backgroundColor: '#FFFF99',
     },
+    chooserBar: {
+        backgroundColor: '#dbf5ff',
+        width: width / 2,
+        height: width / 10,
+        borderRadius: 5,
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignSelf: 'center'
+    },
+
 });
