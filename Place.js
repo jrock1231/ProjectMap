@@ -21,22 +21,22 @@ export default class App extends Component {
     }
 
     //componentDidMount() {
-        // if(global.lang == 'th'){
-        //     Place1 = Place1_th
-        // }
-        // else {
-        //     Place1 = Place1_en
-        // }
+    // if(global.lang == 'th'){
+    //     Place1 = Place1_th
+    // }
+    // else {
+    //     Place1 = Place1_en
+    // }
     //}
 
     //lang(l) {
 
-        // AsyncStorage.setItem('lang', l, () => alert('finish'))
-        ///AsyncStorage.getItem('lang').then((l) => {
-           // global.lang = l
-           // alert(l)
-        //})
-        // AsyncStorage.removeItem('lang', () => alert('finish delete'))
+    // AsyncStorage.setItem('lang', l, () => alert('finish'))
+    ///AsyncStorage.getItem('lang').then((l) => {
+    // global.lang = l
+    // alert(l)
+    //})
+    // AsyncStorage.removeItem('lang', () => alert('finish delete'))
     //}
 
     openDialog(show) {
@@ -49,19 +49,26 @@ export default class App extends Component {
     render() {
         return (
             <View style={styles.container}>
-
+            
                 <View style={{ height: 70, width: 375, backgroundColor: '#F8F8FF' }}>
                     <Text style={{ alignSelf: 'center', margin: 20, color: 'black', fontSize: 25 }}>
-                        {global.lang == 'th' ? <Text>สถานที่ท่องเที่ยว</Text> : <Text>Place</Text>}</Text>
+                        {global.lang == 'th' ? <Text>ที่ท่องเที่ยว</Text> : <Text>Place</Text>}</Text>
 
                     <TouchableOpacity style={{ position: 'absolute', margin: 17 }} onPress={() => this.props.navigation.goBack()}>
                         <Icon name="angle-left" color="black" size={40} />
                     </TouchableOpacity>
-
                 </View>
+
                 <View style={{ height: 150, width: 375 }}>
-                    <Image source={require('./ท่องเที่ยว.png')}
-                        style={{ alignSelf: 'center', width, height: 135, resizeMode: 'contain', margin: 10 }} />
+                    <View style={{ position: 'absolute', backgroundColor: 'red', alignSelf: 'center', width: 90, height: 90, borderRadius: 100, margin: 22 }}>
+                    </View>
+                    <Image source={require('./AppPage/กรอบ.png')}
+                        style={{ position: 'absolute', alignSelf: 'center', width, height: 135, resizeMode: 'contain', margin: 10 }} />
+
+                    <View style={{ position: 'absolute', width: 375, height: 110, margin: 1 }}>
+                        <Image source={require('./AppPage/ท่องเที่ยว.png')}
+                            style={{ width: 80, height: 80, margin: 27, alignSelf: 'center' }} />
+                    </View>
                 </View>
 
                 <View style={{ height: 40 }}>

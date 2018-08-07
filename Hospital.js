@@ -33,16 +33,24 @@ export default class App extends Component {
       <View style={styles.container}>
 
         <View style={{ height: 70, width: 375, backgroundColor: '#F8F8FF' }}>
-          <Text style={{ alignSelf: 'center', resizeMode: 'contain', margin: 20, color: 'black', fontSize: 25 }}>
+          <Text style={{ alignSelf: 'center', margin: 20, color: 'black', fontSize: 25 }}>
             {global.lang == 'th' ? <Text>โรงพยาบาล</Text> : <Text>Hospital</Text>}</Text>
 
           <TouchableOpacity style={{ position: 'absolute', margin: 17 }} onPress={() => this.props.navigation.goBack()}>
             <Icon name="angle-left" color="black" size={40} />
           </TouchableOpacity>
         </View>
-        <View style={{ height: 160, width: 375 }}>
-          <Image source={require('./s2.png')}
-            style={{ alignSelf: 'center', width, height: 150, resizeMode: 'contain', margin: 10 }} />
+
+        <View style={{ height: 150, width: 375 }}>
+          <View style={{ position: 'absolute', backgroundColor: 'red', alignSelf: 'center', width: 90, height: 90, borderRadius: 100, margin: 22 }}>
+          </View>
+          <Image source={require('./AppPage/กรอบ.png')}
+            style={{ position: 'absolute', alignSelf: 'center', width, height: 135, resizeMode: 'contain', margin: 10 }} />
+
+          <View style={{ position: 'absolute', width: 375, height: 110, margin: 1 }}>
+            <Image source={require('./AppPage/โรงพยาบาล.png')}
+              style={{ width: 65, height: 65, margin: 34, alignSelf: 'center' }} />
+          </View>
         </View>
 
         <View style={{ height: 40 }}>
@@ -58,38 +66,68 @@ export default class App extends Component {
 
         <View style={{ height: 295, width: 320, alignSelf: 'center', backgroundColor: 'ADD8E6' }}>
           <ScrollView>
+            {/* {global.lang == 'en' || hp_th.filter(hp => { return hp.name.indexOf(this.state.text) > -1 })[0] || this.state.text == '' ?
+              null :
+              <Text>ไม่พบ '{this.state.text}'</Text>
+            }
+            {!global.lang || global.lang == 'th' || hp_en.filter(hp => { return hp.name.indexOf(this.state.text) > -1 })[0] || this.state.text == '' ?
+              null :
+              <Text>Not found '{this.state.text}'</Text>
+            } */}
+
+            {!global.lang || global.lang == 'th' ?
+              hp_th.filter(hp => { return hp.name.indexOf(this.state.text) > -1 }).length == 0 && this.state.text != '' ?
+                <Text>ไม่พบ '{this.state.text}'</Text>
+                :
+                null
+              :
+              hp_en.filter(hp => { return hp.name.indexOf(this.state.text) > -1 }).length == 0 && this.state.text != '' ?
+                <Text>Not found '{this.state.text}'</Text>
+                :
+                null
+            }
+
+            {console.log(hp_th.filter(hp => { return hp.name.indexOf(this.state.text) > -1 }))}
             <FlatList
               data={global.lang == 'th' ? hp_th : hp_en}
+              extraData={this.state.text}
               renderItem={({ item }) =>
-                <TouchableOpacity style={styles.welcome} onPress={() => this.setState({
-                  showmodal: true,
-                  name: item.name,
-                  location: item.location,
-                  number: item.number,
-                  number1: item.number1,
-                  Icon1: item.Icon1,
-                  Icon2: item.Icon2,
-                  Web: item.Web,
-                  Web1: item.Web1,
-                  form: item.form,
-                  Map: item.Map,
-                  Map1: item.Map1,
-                  Taxi: item.Taxi,
-                  Bus: item.Bus,
-                  Tuk: item.Tuk,
-                  Van: item.Van,
-                  Train: item.Train,
+                <View>
+                  {item.name.indexOf(this.state.text) > -1 ?
+                    <TouchableOpacity style={styles.welcome} onPress={() => this.setState({
+                      showmodal: true,
+                      name: item.name,
+                      location: item.location,
+                      number: item.number,
+                      number1: item.number1,
+                      Icon1: item.Icon1,
+                      Icon2: item.Icon2,
+                      Web: item.Web,
+                      Web1: item.Web1,
+                      form: item.form,
+                      Map: item.Map,
+                      Map1: item.Map1,
+                      Taxi: item.Taxi,
+                      Bus: item.Bus,
+                      Tuk: item.Tuk,
+                      Van: item.Van,
+                      Train: item.Train,
 
-                })}>
+                    })}>
 
-                  <View style={{ justifyContent: 'space-between', flexDirection: "row", margin: 7.5 }}>
-                    <Text style={{ flexDirection: "row", justifyContent: 'space-between', fontSize: 18, color: 'black' }}>
-                      {item.name}</Text>
+                      <View style={{ justifyContent: 'space-between', flexDirection: "row", margin: 7.5 }}>
+                        <Text style={{ flexDirection: "row", justifyContent: 'space-between', fontSize: 18, color: 'black' }}>
+                          {item.name}</Text>
 
-                    <Icon name="chevron-right" color="#F8F8FF" size={22} margin='25' />
-                  </View>
+                        <Icon name="chevron-right" color="#F8F8FF" size={22} margin='25' />
+                      </View>
 
-                </TouchableOpacity>
+                    </TouchableOpacity>
+                    :
+                    null
+                  }
+
+                </View>
               } />
           </ScrollView>
           <Modal

@@ -49,6 +49,10 @@ export default class App extends Component {
   openDialog(show) {
     this.setState({ showDialog: show })
   }
+  chooseLang(lang) {
+    global.lang = lang;
+    AsyncStorage.setItem('lang', lang, () => this.setState({ langModal: false }))
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -60,10 +64,19 @@ export default class App extends Component {
             <Icon name="angle-left" color="black" size={40} />
           </TouchableOpacity>
         </View>
+
         <View style={{ height: 150, width: 375 }}>
-          <Image source={require('./รร.png')}
-            style={{ alignSelf: 'center', width, height: 135, resizeMode: 'contain', margin: 10 }} />
+          <View style={{ position: 'absolute', backgroundColor: 'red', alignSelf: 'center', width: 90, height: 90, borderRadius: 100, margin: 22 }}>
+          </View>
+          <Image source={require('./AppPage/กรอบ.png')}
+            style={{ position: 'absolute', alignSelf: 'center', width, height: 135, resizeMode: 'contain', margin: 10 }} />
+
+          <View style={{ position: 'absolute', width: 375, height: 110, margin: 1 }}>
+            <Image source={require('./AppPage/โรงแรม.png')}
+              style={{ width: 65, height: 65, margin: 34, alignSelf: 'center' }} />
+          </View>
         </View>
+
         <View style={{ height: 40 }}>
           <TextInput style={{ height: 35, width: 305, borderRadius: 15, alignSelf: 'center', borderColor: 'gray', borderWidth: 2 }}
             onChangeText={(text) => this.setState({ text })}

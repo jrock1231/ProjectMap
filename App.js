@@ -44,29 +44,98 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={{ height: 200, width: 395, }}>
+        <View style={{ alignSelf: 'center', height: 165, width: 360 }}>
           <Image source={require('./Surat.png')}
-            style={{ alignSelf: 'center', width, height: 140, resizeMode: 'contain', margin: 30 }} />
+            style={{ alignSelf: 'center', width, height: 140, resizeMode: 'contain', margin: 15 }} />
         </View>
+        
+        <View style={{ alignSelf: 'center', height: 370, width: 360, }}>
+          <View style={{ position: 'absolute', alignSelf: 'center', width: 330 }}>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('Place')}>
+              <View style={{ position: 'absolute', backgroundColor: '#1c5371', height: 50, width: 230, alignSelf: 'center', margin: 17.5, borderRadius: 7, }}>
+                <View style={{ position: 'absolute', backgroundColor: '#dedfd7', height: 46, width: 226, alignSelf: 'center', margin: 2, borderRadius: 4.5, }}>
+                  <Text style={{ color: '#1c5371', fontSize: 25, alignSelf: 'center', margin: 7 }}>
+                    {global.lang == 'th' ? <Text>ที่ท่องเที่ยว</Text> : <Text>Place</Text>}</Text>
+                </View>
+              </View>
+              <View style={{ position: 'absolute', width: 84.5, height: 70, alignSelf: 'flex-end', margin: 7.5 }}>
+                <View style={{ position: 'absolute', backgroundColor: '#dedfd7', width: 70, height: 70, borderRadius: 100 }}>
+                </View>
+              </View>
+              <Image source={require('./AppPage/7.png')}
+                style={{ width: 100, height: 100, alignSelf: 'flex-end' }} />
+              <View style={{ position: 'absolute', width: 80, height: 70, alignSelf: 'flex-end', margin: 12.5 }}>
+                <Image source={require('./AppPage/8.png')}
+                  style={{ width: 60, height: 60 }} />
+              </View>
+            </TouchableOpacity>
+          </View>
 
-        <View style={styles.btn_bar}>
-          <TouchableOpacity onPress={() => this.props.navigation.navigate('Place')}>
-            <Image source={require('./Place.png')} style={{ width: 155, height: 135 }} />
-          </TouchableOpacity>
+          <View style={{ position: 'absolute', alignSelf: 'center', width: 330, margin: 85 }}>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('Hotel')}>
+              <View style={{ position: 'absolute', backgroundColor: '#185373', height: 50, width: 230, alignSelf: 'center', margin: 17.5, borderRadius: 7, }}>
+                <View style={{ position: 'absolute', backgroundColor: '#dedfd7', height: 46, width: 226, alignSelf: 'center', margin: 2, borderRadius: 4.5, }}>
+                  <Text style={{ color: '#185373', fontSize: 25, alignSelf: 'center', margin: 7 }}>
+                    {global.lang == 'th' ? <Text>โรงแรม</Text> : <Text>Hotel</Text>}</Text>
+                </View>
+              </View>
+              <View style={{ position: 'absolute', width: 86, height: 70, margin: 7.5 }}>
+                <View style={{ position: 'absolute', backgroundColor: '#dedfd7', alignSelf: 'center', width: 70, height: 70, borderRadius: 100 }}>
+                </View>
+              </View>
+              <Image source={require('./AppPage/กรอบ.png')}
+                style={{ width: 100, height: 100, }} />
 
-          <TouchableOpacity onPress={() => this.props.navigation.navigate('Hotel')}>
-            <Image source={require('./Hotel.png')} style={{ width: 155, height: 135 }} />
-          </TouchableOpacity>
-        </View>
+              <View style={{ position: 'absolute', width: 78, height: 70, margin: 12.5 }}>
+                <Image source={require('./AppPage/โรงแรม.png')}
+                  style={{ width: 45, height: 45, alignSelf: 'center', margin: 7 }} />
+              </View>
+            </TouchableOpacity>
+          </View>
 
-        <View style={styles.instructions}>
-          <TouchableOpacity onPress={() => this.props.navigation.navigate('Hospital')}>
-            <Image source={require('./Hospital.png')} style={{ width: 155, height: 135 }} />
-          </TouchableOpacity>
+          <View style={{ position: 'absolute', alignSelf: 'center', width: 330, margin: 170 }}>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('Hospital')}>
+              <View style={{ position: 'absolute', backgroundColor: '#185373', height: 50, width: 230, alignSelf: 'center', margin: 17.5, borderRadius: 7, }}>
+                <View style={{ position: 'absolute', backgroundColor: '#dedfd7', height: 46, width: 226, alignSelf: 'center', margin: 2, borderRadius: 4.5, }}>
+                  <Text style={{ color: '#185373', fontSize: 25, alignSelf: 'center', margin: 7 }}>
+                    {global.lang == 'th' ? <Text>โรงพยาบาล</Text> : <Text>Hospital</Text>}</Text>
+                </View>
+              </View>
+              <View style={{ position: 'absolute', width: 84.5, height: 70, alignSelf: 'flex-end', margin: 7.5 }}>
+                <View style={{ position: 'absolute', backgroundColor: '#dedfd7', width: 70, height: 70, borderRadius: 100 }}>
+                </View>
+              </View>
+              <Image source={require('./AppPage/กรอบ.png')}
+                style={{ width: 100, height: 100, alignSelf: 'flex-end' }} />
 
-          <TouchableOpacity onPress={() => this.props.navigation.navigate('Airport')}>
-            <Image source={require('./Airport.png')} style={{ width: 155, height: 135 }} />
-          </TouchableOpacity>
+              <View style={{ position: 'absolute', width: 74.5, height: 70, alignSelf: 'flex-end', margin: 18 }}>
+                <Image source={require('./AppPage/โรงพยาบาล.png')}
+                  style={{ width: 50, height: 50 }} />
+              </View>
+            </TouchableOpacity>
+          </View>
+
+          <View style={{ position: 'absolute', alignSelf: 'center', width: 330, margin: 255 }}>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('Airport')}>
+              <View style={{ position: 'absolute', backgroundColor: '#185373', height: 50, width: 230, alignSelf: 'center', margin: 17.5, borderRadius: 7, }}>
+                <View style={{ position: 'absolute', backgroundColor: '#dedfd7', height: 46, width: 226, alignSelf: 'center', margin: 2, borderRadius: 4.5, }}>
+                  <Text style={{ color: '#185373', fontSize: 25, alignSelf: 'center', margin: 7 }}>
+                    {global.lang == 'th' ? <Text>สนามบิน</Text> : <Text>Airport</Text>}</Text>
+                </View>
+              </View>
+              <View style={{ position: 'absolute', width: 86, height: 70, margin: 7.5 }}>
+                <View style={{ position: 'absolute', backgroundColor: '#dedfd7', alignSelf: 'center', width: 70, height: 70, borderRadius: 100 }}>
+                </View>
+              </View>
+              <Image source={require('./AppPage/กรอบ.png')}
+                style={{ width: 100, height: 100 }} />
+
+              <View style={{ position: 'absolute', width: 78, height: 70, margin: 12.5 }}>
+                <Image source={require('./AppPage/เครื่องบิน.png')}
+                  style={{ width: 50, height: 50, alignSelf: 'center', margin: 8 }} />
+              </View>
+            </TouchableOpacity>
+          </View>
         </View>
 
         <TouchableOpacity style={styles.flagBtn} onPress={() => !this.state.isChoosed ? this.setState({ langModal: true }) : null}>
@@ -107,27 +176,10 @@ export default class App extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    alignSelf: 'center',
-    backgroundColor: '#B0E0E6',
-
-  },
-  instructions: {
-    flex: 1,
-    flexDirection: "row",
-    alignSelf: 'center',
-    marginBottom: 0,
-
-  },
-  btn_bar: {
-    flex: 1,
-    flexDirection: "row",
-    alignSelf: 'center',
-    marginBottom: 0,
-  },
+  
   container: {
     flex: 1,
-    backgroundColor: 'rgba(180,216,247,1)',
+    backgroundColor: '#f8f9f4',
   },
   header: {
     flex: 1,
@@ -155,8 +207,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center'
   },
   flag: {
-    width: 40,
-    height: 25,
+    width: 60,
+    height: 40,
     borderRadius: 3
   },
   flagInModal: {
@@ -167,7 +219,7 @@ const styles = StyleSheet.create({
   flagBtn: {
     position: 'absolute',
     bottom: 10,
-    right: 10,
+    right: 20,
     zIndex: 10
   }
 });
