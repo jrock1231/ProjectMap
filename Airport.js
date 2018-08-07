@@ -27,9 +27,17 @@ export default class App extends Component {
             <Icon name="angle-left" color="black" size={40} />
           </TouchableOpacity>
         </View>
-        <View style={{ height: 160, width: 375 }}>
-          <Image source={require('./Airport1.png')}
-            style={{ alignSelf: 'center', width, height: 160, resizeMode: 'contain', margin: 0 }} />
+
+        <View style={{ height: 150, width: 375 }}>
+          <View style={{ position: 'absolute', backgroundColor: 'red', alignSelf: 'center', width: 90, height: 90, borderRadius: 100, margin: 22 }}>
+          </View>
+          <Image source={require('./AppPage/กรอบ.png')}
+            style={{ position: 'absolute', alignSelf: 'center', width, height: 135, resizeMode: 'contain', margin: 10 }} />
+
+          <View style={{ position: 'absolute', width: 375, height: 110, margin: 1 }}>
+            <Image source={require('./AppPage/เครื่องบิน.png')}
+              style={{ width: 65, height: 65, margin: 38, alignSelf: 'center' }} />
+          </View>
         </View>
 
         <ScrollView style={{ alignSelf: 'center', width: 360 }}>
