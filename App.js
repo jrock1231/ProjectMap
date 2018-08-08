@@ -45,16 +45,16 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
         <View style={{ alignSelf: 'center', height: 165, width: 360 }}>
-          <Image source={require('./Surat.png')}
+          <Image source={require('./ฟ้าขาวน้ำเงิน.png')}
             style={{ alignSelf: 'center', width, height: 140, resizeMode: 'contain', margin: 15 }} />
         </View>
-        
+
         <View style={{ alignSelf: 'center', height: 370, width: 360, }}>
           <View style={{ position: 'absolute', alignSelf: 'center', width: 330 }}>
             <TouchableOpacity onPress={() => this.props.navigation.navigate('Place')}>
-              <View style={{ position: 'absolute', backgroundColor: '#1c5371', height: 50, width: 230, alignSelf: 'center', margin: 17.5, borderRadius: 7, }}>
+              <View style={{ position: 'absolute', backgroundColor: '#185373', height: 50, width: 230, alignSelf: 'center', margin: 17.5, borderRadius: 7, }}>
                 <View style={{ position: 'absolute', backgroundColor: '#dedfd7', height: 46, width: 226, alignSelf: 'center', margin: 2, borderRadius: 4.5, }}>
-                  <Text style={{ color: '#1c5371', fontSize: 25, alignSelf: 'center', margin: 7 }}>
+                  <Text style={{ color: '#185373', fontSize: 25, alignSelf: 'center', margin: 7 }}>
                     {global.lang == 'th' ? <Text>ที่ท่องเที่ยว</Text> : <Text>Place</Text>}</Text>
                 </View>
               </View>
@@ -62,10 +62,10 @@ export default class App extends Component {
                 <View style={{ position: 'absolute', backgroundColor: '#dedfd7', width: 70, height: 70, borderRadius: 100 }}>
                 </View>
               </View>
-              <Image source={require('./AppPage/7.png')}
+              <Image source={require('./AppPage/กรอบ.png')}
                 style={{ width: 100, height: 100, alignSelf: 'flex-end' }} />
               <View style={{ position: 'absolute', width: 80, height: 70, alignSelf: 'flex-end', margin: 12.5 }}>
-                <Image source={require('./AppPage/8.png')}
+                <Image source={require('./AppPage/ท่องเที่ยว.png')}
                   style={{ width: 60, height: 60 }} />
               </View>
             </TouchableOpacity>
@@ -136,6 +136,7 @@ export default class App extends Component {
               </View>
             </TouchableOpacity>
           </View>
+
         </View>
 
         <TouchableOpacity style={styles.flagBtn} onPress={() => !this.state.isChoosed ? this.setState({ langModal: true }) : null}>
@@ -176,10 +177,10 @@ export default class App extends Component {
 }
 
 const styles = StyleSheet.create({
-  
+
   container: {
     flex: 1,
-    backgroundColor: '#f8f9f4',
+    backgroundColor: '#a4d4f2',
   },
   header: {
     flex: 1,

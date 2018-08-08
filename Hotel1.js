@@ -83,9 +83,6 @@ export default class App extends Component {
             value={this.state.text}
             placeholder='ค้นหา'
           />
-          <View style={{ position: 'absolute', margin: 8, alignSelf: 'flex-end', width: 62 }}>
-            <Icon name="search" color="black" size={20} />
-          </View>
         </View>
 
         <View style={{ height: 295, width: 360, alignSelf: 'center', backgroundColor: '#ADD8E6' }}>

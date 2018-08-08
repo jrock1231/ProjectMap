@@ -35,67 +35,92 @@ class Home extends React.Component {
         return (
             <View style={styles.container}>
                 <View style={{
-                    height: 247, width: 360, alignSelf: 'center',
+                    height: 287, width: 360, alignSelf: 'center',
                     backgroundColor: '#FFFF99'
                 }}>
+                    <View style={{ height: 40 }}>
+                        <TextInput style={{ height: 35, width: 305, borderRadius: 15, alignSelf: 'center', borderColor: 'gray', borderWidth: 2 }}
+                            onChangeText={(text) => this.setState({ text })}
+                            value={this.state.text}
+                            placeholder='ค้นหา'
+                        />
+                    </View>
                     <ScrollView>
+                        {!global.lang || global.lang == 'th' ?
+                            p1_th.filter(p1 => { return p1.name.indexOf(this.state.text) > -1 }).length == 0 && this.state.text != '' ?
+                                <Text style={{ margin: 3 }}>ไม่พบ '{this.state.text}'</Text>
+                                :
+                                null
+                            :
+                            p1_en.filter(p1 => { return p1.name.indexOf(this.state.text) > -1 }).length == 0 && this.state.text != '' ?
+                                <Text style={{ margin: 3 }}>Not found '{this.state.text}'</Text>
+                                :
+                                null
+                        }
+
+                        {console.log(p1_th.filter(p1 => { return p1.name.indexOf(this.state.text) > -1 }))}
                         <FlatList
                             data={global.lang == 'th' ? p1_th : p1_en}
-
+                            extraData={this.state.text}
                             keyExtractor={(item, index) => index.toString()}
                             renderItem={({ item }) =>
-
-                                <TouchableOpacity style={styles.welcome}
-                                    onPress={() => this.setState({
-                                        showmodal: true,
-                                        text1: item.name1,
-                                        text2: item.place,
-                                        text3: item.place1,
-                                        text4: item.number1,
-                                        text5: item.Web,
-                                        text6: item.Webmap,
-                                        text7: item.Map,
-                                        text8: item.Map1,
-                                        text9: item.Taxi,
-                                        text10: item.Bus,
-                                        text11: item.Tuk,
-                                        text12: item.Van,
-                                        text13: item.Train,
-                                        text14: item.Mapform,
-                                    })}>
-
-                                    <View style={{ flexDirection: "row", margin: 0 }}>
-
-                                        <View style={{ height: 100, width: 117, margin: 0, alignSelf: 'center' }}>
-                                            <TouchableOpacity style={{ alignSelf: 'center' }} onPress={() => this.setState({
-                                                showmodal1: true,
-                                                text1: item.name1,
-                                                text15: item.form1,
-                                                text16: item.form2,
-                                                text17: item.form3,
-                                                text18: item.form4,
-                                                text19: item.form5,
-                                                text20: item.form6,
-                                                text21: item.form7,
+                                <View>
+                                    {item.name.indexOf(this.state.text) > -1 ?
+                                        <TouchableOpacity style={styles.welcome}
+                                            onPress={() => this.setState({
+                                                showmodal: true,
+                                                text1: item.name,
+                                                text2: item.place,
+                                                text3: item.place1,
+                                                text4: item.number1,
+                                                text5: item.Web,
+                                                text6: item.Webmap,
+                                                text7: item.Map,
+                                                text8: item.Map1,
+                                                text9: item.Taxi,
+                                                text10: item.Bus,
+                                                text11: item.Tuk,
+                                                text12: item.Van,
+                                                text13: item.Train,
+                                                text14: item.Mapform,
                                             })}>
-                                                <Image source={item.form} style={{ alignSelf: 'center', width: 110, height: 95, resizeMode: 'contain', margin: 3 }} />
-                                            </TouchableOpacity>
-                                        </View>
 
-                                        <View style={{ height: 100, width: 220, alignSelf: 'center' }}>
-                                            <Text style={{ flexDirection: "row", justifyContent: 'space-between', fontSize: 13, color: 'black', margin: 2 }}>
-                                                {item.name}</Text>
-                                            <Text style={{ flexDirection: "row", justifyContent: 'space-between', fontSize: 10, alignSelf: 'center' }}>
-                                                {item.name2}</Text>
-                                        </View>
+                                            <View style={{ flexDirection: "row", margin: 0 }}>
 
-                                        <View style={{ flexDirection: 'column', justifyContent: 'center', height: 101, width: 18 }}>
-                                            <Icon name="chevron-right" color="black" size={25} />
-                                        </View>
-                                    </View>
+                                                <View style={{ height: 100, width: 117, margin: 0, alignSelf: 'center' }}>
+                                                    <TouchableOpacity style={{ alignSelf: 'center' }} onPress={() => this.setState({
+                                                        showmodal1: true,
+                                                        text1: item.name,
+                                                        text15: item.form1,
+                                                        text16: item.form2,
+                                                        text17: item.form3,
+                                                        text18: item.form4,
+                                                        text19: item.form5,
+                                                        text20: item.form6,
+                                                        text21: item.form7,
+                                                    })}>
+                                                        <Image source={item.form} style={{ alignSelf: 'center', width: 110, height: 95, resizeMode: 'contain', margin: 3 }} />
+                                                    </TouchableOpacity>
+                                                </View>
 
-                                </TouchableOpacity>
+                                                <View style={{ height: 100, width: 220, alignSelf: 'center' }}>
+                                                    <Text style={{ flexDirection: "row", justifyContent: 'space-between', fontSize: 13, color: 'black', margin: 2 }}>
+                                                        {item.name}</Text>
+                                                    <Text style={{ flexDirection: "row", justifyContent: 'space-between', fontSize: 10, alignSelf: 'center' }}>
+                                                        {item.name2}</Text>
+                                                </View>
 
+                                                <View style={{ flexDirection: 'column', justifyContent: 'center', height: 101, width: 18 }}>
+                                                    <Icon name="chevron-right" color="black" size={25} />
+                                                </View>
+                                            </View>
+
+                                        </TouchableOpacity>
+                                        :
+                                        null
+                                    }
+
+                                </View>
                             } />
                     </ScrollView>
                 </View>
@@ -255,75 +280,101 @@ class SettingsScreen extends React.Component {
         return (
             <View style={styles.container}>
                 <View style={{
-                    height: 247, width: 360, alignSelf: 'center',
+                    height: 287, width: 360, alignSelf: 'center',
                     backgroundColor: '#FFFF99'
                 }}>
+                    <View style={{ height: 40 }}>
+                        <TextInput style={{ height: 35, width: 305, borderRadius: 15, alignSelf: 'center', borderColor: 'gray', borderWidth: 2 }}
+                            onChangeText={(text) => this.setState({ text })}
+                            value={this.state.text}
+                            placeholder='ค้นหา'
+                        />
+                    </View>
                     <ScrollView>
+                        {!global.lang || global.lang == 'th' ?
+                            p2_th.filter(p2 => { return p2.name.indexOf(this.state.text) > -1 }).length == 0 && this.state.text != '' ?
+                                <Text style={{ margin: 3 }}>ไม่พบ '{this.state.text}'</Text>
+                                :
+                                null
+                            :
+                            p2_en.filter(p2 => { return p2.name.indexOf(this.state.text) > -1 }).length == 0 && this.state.text != '' ?
+                                <Text style={{ margin: 3 }}>Not found '{this.state.text}'</Text>
+                                :
+                                null
+                        }
+
+                        {console.log(p2_th.filter(p2 => { return p2.name.indexOf(this.state.text) > -1 }))}
                         <FlatList
                             data={global.lang == 'th' ? p2_th : p2_en}
+                            extraData={this.state.text}
                             renderItem={({ item }) =>
-
-                                <TouchableOpacity style={styles.welcome}
-                                    onPress={() => this.setState({
-                                        showmodal: true,
-                                        text1: item.name1,
-                                        text2: item.place,
-                                        text3: item.place1,
-                                        text4: item.number1,
-                                        text5: item.Web,
-                                        text6: item.Webmap,
-                                        text7: item.Map,
-                                        text8: item.Map1,
-                                        text9: item.Taxi,
-                                        text10: item.Bus,
-                                        text11: item.Tuk,
-                                        text12: item.Van,
-                                        text13: item.Train,
-                                        text14: item.Mapform,
-                                    })}>
-
-                                    <View style={{ flexDirection: "row", margin: 0 }}>
-
-                                        <View style={{ height: 100, width: 117, margin: 0, alignSelf: 'center' }}>
-                                            <TouchableOpacity style={{ alignSelf: 'center' }} onPress={() => this.setState({
-                                                showmodal1: true,
-                                                text1: item.name1,
-                                                text15: item.form1,
-                                                text16: item.form2,
-                                                text17: item.form3,
-                                                text18: item.form4,
-                                                text19: item.form5,
-                                                text20: item.form6,
-                                                text21: item.form7,
-                                                text22: item.form8,
-                                                text23: item.form9,
-                                                text24: item.form10,
-                                                text25: item.form11,
-                                                text26: item.form12,
-                                                text27: item.form13,
-                                                text28: item.form14,
-                                                text29: item.form15,
-                                                text30: item.form16,
-                                                text31: item.form17,
+                                <View>
+                                    {item.name.indexOf(this.state.text) > -1 ?
+                                        <TouchableOpacity style={styles.welcome}
+                                            onPress={() => this.setState({
+                                                showmodal: true,
+                                                text1: item.name,
+                                                text2: item.place,
+                                                text3: item.place1,
+                                                text4: item.number1,
+                                                text5: item.Web,
+                                                text6: item.Webmap,
+                                                text7: item.Map,
+                                                text8: item.Map1,
+                                                text9: item.Taxi,
+                                                text10: item.Bus,
+                                                text11: item.Tuk,
+                                                text12: item.Van,
+                                                text13: item.Train,
+                                                text14: item.Mapform,
                                             })}>
-                                                <Image source={item.form} style={{ alignSelf: 'center', width: 110, height: 95, resizeMode: 'contain', margin: 3 }} />
-                                            </TouchableOpacity>
-                                        </View>
 
-                                        <View style={{ height: 100, width: 220, alignSelf: 'center' }}>
-                                            <Text style={{ flexDirection: "row", justifyContent: 'space-between', fontSize: 13, color: 'black', margin: 2 }}>
-                                                {item.name}</Text>
-                                            <Text style={{ flexDirection: "row", justifyContent: 'space-between', fontSize: 10, alignSelf: 'center' }}>
-                                                {item.name2}</Text>
-                                        </View>
+                                            <View style={{ flexDirection: "row", margin: 0 }}>
 
-                                        <View style={{ flexDirection: 'column', justifyContent: 'center', height: 101, width: 18 }}>
-                                            <Icon name="chevron-right" color="black" size={25} />
-                                        </View>
-                                    </View>
+                                                <View style={{ height: 100, width: 117, margin: 0, alignSelf: 'center' }}>
+                                                    <TouchableOpacity style={{ alignSelf: 'center' }} onPress={() => this.setState({
+                                                        showmodal1: true,
+                                                        text1: item.name,
+                                                        text15: item.form1,
+                                                        text16: item.form2,
+                                                        text17: item.form3,
+                                                        text18: item.form4,
+                                                        text19: item.form5,
+                                                        text20: item.form6,
+                                                        text21: item.form7,
+                                                        text22: item.form8,
+                                                        text23: item.form9,
+                                                        text24: item.form10,
+                                                        text25: item.form11,
+                                                        text26: item.form12,
+                                                        text27: item.form13,
+                                                        text28: item.form14,
+                                                        text29: item.form15,
+                                                        text30: item.form16,
+                                                        text31: item.form17,
+                                                    })}>
+                                                        <Image source={item.form} style={{ alignSelf: 'center', width: 110, height: 95, resizeMode: 'contain', margin: 3 }} />
+                                                    </TouchableOpacity>
+                                                </View>
 
-                                </TouchableOpacity>
+                                                <View style={{ height: 100, width: 220, alignSelf: 'center' }}>
+                                                    <Text style={{ flexDirection: "row", justifyContent: 'space-between', fontSize: 13, color: 'black', margin: 2 }}>
+                                                        {item.name}</Text>
+                                                    <Text style={{ flexDirection: "row", justifyContent: 'space-between', fontSize: 10, alignSelf: 'center' }}>
+                                                        {item.name2}</Text>
+                                                </View>
 
+                                                <View style={{ flexDirection: 'column', justifyContent: 'center', height: 101, width: 18 }}>
+                                                    <Icon name="chevron-right" color="black" size={25} />
+                                                </View>
+                                            </View>
+
+                                        </TouchableOpacity>
+                                        :
+                                        null
+                                    }
+
+                                </View>
                             } />
                     </ScrollView>
                 </View>
@@ -493,55 +544,81 @@ class SettingsScreen1 extends React.Component {
         return (
             <View style={styles.container}>
                 <View style={{
-                    height: 247, width: 360, alignSelf: 'center',
+                    height: 287, width: 360, alignSelf: 'center',
                     backgroundColor: '#FFFF99'
                 }}>
+                    <View style={{ height: 40 }}>
+                        <TextInput style={{ height: 35, width: 305, borderRadius: 15, alignSelf: 'center', borderColor: 'gray', borderWidth: 2 }}
+                            onChangeText={(text) => this.setState({ text })}
+                            value={this.state.text}
+                            placeholder='ค้นหา'
+                        />
+                    </View>
                     <ScrollView>
+                        {!global.lang || global.lang == 'th' ?
+                            p3_th.filter(p3 => { return p3.name.indexOf(this.state.text) > -1 }).length == 0 && this.state.text != '' ?
+                                <Text style={{ margin: 3 }}>ไม่พบ '{this.state.text}'</Text>
+                                :
+                                null
+                            :
+                            p3_en.filter(p3 => { return p3.name.indexOf(this.state.text) > -1 }).length == 0 && this.state.text != '' ?
+                                <Text style={{ margin: 3 }}>Not found '{this.state.text}'</Text>
+                                :
+                                null
+                        }
+
+                        {console.log(p3_th.filter(p3 => { return p3.name.indexOf(this.state.text) > -1 }))}
                         <FlatList
                             data={global.lang == 'th' ? p3_th : p3_en}
+                            extraData={this.state.text}
                             renderItem={({ item }) =>
+                                <View>
+                                    {item.name.indexOf(this.state.text) > -1 ?
+                                        <TouchableOpacity style={{
+                                            height: 45, width: 355, alignSelf: 'center', margin: 4, backgroundColor: '#996600', borderRadius: 2
+                                        }}
+                                            onPress={() => this.setState({
+                                                showmodal: true,
+                                                text1: item.name,
+                                                text2: item.place,
+                                                text3: item.place1,
+                                                text4: item.number1,
+                                                text5: item.Web,
+                                                text6: item.Webmap,
+                                                text7: item.Map,
+                                                text8: item.Map1,
+                                                text9: item.Taxi,
+                                                text10: item.Bus,
+                                                text11: item.Tuk,
+                                                text12: item.Van,
+                                                text13: item.Train,
+                                                text14: item.Mapform,
+                                            })}>
 
-                                <TouchableOpacity style={{
-                                    height: 45, width: 355, alignSelf: 'center', margin: 4, backgroundColor: '#996600', borderRadius: 2
-                                }}
-                                    onPress={() => this.setState({
-                                        showmodal: true,
-                                        text1: item.name1,
-                                        text2: item.place,
-                                        text3: item.place1,
-                                        text4: item.number1,
-                                        text5: item.Web,
-                                        text6: item.Webmap,
-                                        text7: item.Map,
-                                        text8: item.Map1,
-                                        text9: item.Taxi,
-                                        text10: item.Bus,
-                                        text11: item.Tuk,
-                                        text12: item.Van,
-                                        text13: item.Train,
-                                        text14: item.Mapform,
-                                    })}>
+                                            <View style={{ flexDirection: "row" }}>
 
-                                    <View style={{ flexDirection: "row" }}>
+                                                <View style={{ height: 45, width: 93, alignSelf: 'center' }}>
+                                                    <Image source={item.form} style={{ alignSelf: 'center', width: 88, height: 45, resizeMode: 'contain' }} />
+                                                </View>
 
-                                        <View style={{ height: 45, width: 93, alignSelf: 'center' }}>
-                                            <Image source={item.form} style={{ alignSelf: 'center', width: 88, height: 45, resizeMode: 'contain' }} />
-                                        </View>
+                                                <View style={{ height: 35, width: 2, alignSelf: 'center', backgroundColor: 'black' }}></View>
 
-                                        <View style={{ height: 35, width: 2, alignSelf: 'center', backgroundColor: 'black' }}></View>
+                                                <View style={{ height: 45, width: 240, alignSelf: 'center' }}>
+                                                    <Text style={{ flexDirection: "row", fontSize: 15, color: 'black', margin: 11 }}>
+                                                        {item.name}</Text>
+                                                </View>
 
-                                        <View style={{ height: 45, width: 240, alignSelf: 'center' }}>
-                                            <Text style={{ flexDirection: "row", fontSize: 15, color: 'black', margin: 11 }}>
-                                                {item.name}</Text>
-                                        </View>
+                                                <View style={{ flexDirection: 'column', justifyContent: 'center', height: 45, width: 18 }}>
+                                                    <Icon name="chevron-right" color="black" size={25} />
+                                                </View>
+                                            </View>
 
-                                        <View style={{ flexDirection: 'column', justifyContent: 'center', height: 45, width: 18 }}>
-                                            <Icon name="chevron-right" color="black" size={25} />
-                                        </View>
-                                    </View>
+                                        </TouchableOpacity>
+                                        :
+                                        null
+                                    }
 
-                                </TouchableOpacity>
-
+                                </View>
                             } />
                     </ScrollView>
                 </View>

@@ -53,15 +53,12 @@ export default class App extends Component {
           </View>
         </View>
 
-        <View style={{ height: 40 }}>
-          <TextInput style={{ height: 35, width: 305, borderRadius: 15, alignSelf: 'center', borderColor: 'gray', borderWidth: 2 }}
+        <View style={{ height: 45 }}>
+          <TextInput style={{ height: 40, width: 305, borderRadius: 15, alignSelf: 'center', borderColor: 'gray', borderWidth: 2 }}
             onChangeText={(text) => this.setState({ text })}
             value={this.state.text}
             placeholder='ค้นหา'
           />
-          <View style={{ position: 'absolute', margin: 8, alignSelf: 'flex-end', width: 62 }}>
-            <Icon name="search" color="black" size={20} />
-          </View>
         </View>
 
         <View style={{ height: 295, width: 320, alignSelf: 'center', backgroundColor: 'ADD8E6' }}>

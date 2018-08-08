@@ -83,72 +83,89 @@ export default class App extends Component {
             value={this.state.text}
             placeholder='ค้นหา'
           />
-          <View style={{ position: 'absolute', margin: 8, alignSelf: 'flex-end', width: 62 }}>
-            <Icon name="search" color="black" size={20} />
-          </View>
         </View>
 
         <View style={{ height: 295, width: 360, alignSelf: 'center', backgroundColor: '#ADD8E6' }}>
           <ScrollView>
+            {!global.lang || global.lang == 'th' ?
+              Hotel_th.filter(Hotel => { return Hotel.name.indexOf(this.state.text) > -1 }).length == 0 && this.state.text != '' ?
+                <Text>ไม่พบ '{this.state.text}'</Text>
+                :
+                null
+              :
+              Hotel_en.filter(Hotel => { return Hotel.name.indexOf(this.state.text) > -1 }).length == 0 && this.state.text != '' ?
+                <Text>Not found '{this.state.text}'</Text>
+                :
+                null
+            }
+            {console.log(Hotel_th.filter(Hotel => { return Hotel.name.indexOf(this.state.text) > -1 }))}
             <FlatList
               data={global.lang == 'th' ? Hotel_th : Hotel_en}
+              extraData={this.state.text}
               renderItem={({ item }) =>
-                <TouchableOpacity style={styles.welcome}
-                  onPress={() => this.setState({
-                    showmodal: true,
-                    name: item.name, name1: item.name1, name2: item.name2, name3: item.name3, name4: item.name4, name5: item.name5, name6: item.name6, name7: item.name7,
-                    Icon: item.Icon, Icon1: item.Icon1, Icon2: item.Icon2, Icon3: item.Icon3, Icon4: item.Icon4, Icon5: item.Icon5, Icon6: item.Icon6,
-                    Hotel: item.Hotel, number: item.number, number1: item.number1, Web: item.Web, Web1: item.Web1, Webmap: item.Webmap, Map: item.Map, Day: item.Day, Month: item.Month, Map1: item.Map1,
-                    Taxi: item.Taxi, Bus: item.Bus, Tuk: item.Tuk, Van: item.Van, Train: item.Train,
-                    nameExpedia: item.nameExpedia, Expedia: item.Expedia, nameHotels: item.nameHotels, Hotels: item.Hotels, nameBooking: item.nameBooking, Booking: item.Booking, nameAgoda: item.nameAgoda, Agoda: item.Agoda, formExpedia: item.formExpedia, formHotels: item.formHotels, formBooking: item.formBooking, formAgoda: item.formAgoda,
-                    category: item.category,
-                    category1: item.category1, category1_1: item.category1_1, category1_1_1: item.category1_1_1, category1_2: item.category1_2, category1_2_1: item.category1_2_1, category1_3: item.category1_3, category1_3_1: item.category1_3_1, category1_4: item.category1_4, category1_4_1: item.category1_4_1,
-                    form_1: item.form_1, form1_1: item.form1_1, form2_1: item.form2_1, form3_1: item.form3_1, form4_1: item.form4_1, form5_1: item.form5_1, form6_1: item.form6_1, form7_1: item.form7_1, form7_1: item.form7_1,
-                    category2: item.category2, category2_1: item.category2_1, category2_1_1: item.category2_1_1, category2_2: item.category2_2, category2_2_1: item.category2_2_1, category2_3: item.category2_3, category2_3_1: item.category2_3_1, category2_4: item.category2_4, category2_4_1: item.category2_4_1,
-                    form_2: item.form_2, form1_2: item.form1_2, form2_2: item.form2_2, form3_2: item.form3_2, form4_2: item.form4_2, form5_2: item.form5_2, form6_2: item.form6_2, form7_2: item.form7_2, form8_2: item.form8_2,
-                    category3: item.category3, category3_1: item.category3_1, category3_1_1: item.category3_1_1, category3_2: item.category3_2, category3_2_1: item.category3_2_1, category3_3: item.category3_3, category3_3_1: item.category3_3_1, category3_4: item.category3_4, category3_4_1: item.category3_4_1,
-                    form_3: item.form_3, form1_3: item.form1_3, form2_3: item.form2_3, form3_3: item.form3_3, form4_3: item.form4_3, form5_3: item.form5_3, form6_3: item.form6_3, form7_3: item.form7_3, form8_3: item.form8_3,
-                    category4: item.category4, category4_1: item.category4_1, category4_1_1: item.category4_1_1, category4_2: item.category4_2, category4_2_1: item.category4_2_1, category4_3: item.category4_3, category4_3_1: item.category4_3_1, category4_4: item.category4_4, category4_4_1: item.category4_4_1,
-                    form_4: item.form_4, form1_4: item.form1_4, form2_4: item.form2_4, form3_4: item.form3_4, form4_4: item.form4_4, form5_4: item.form5_4, form6_4: item.form6_4, form7_4: item.form7_4, form8_4: item.form8_4,
-                    category5: item.category5, category5_1: item.category5_1, category5_1_1: item.category5_1_1, category5_2: item.category5_2, category5_2_1: item.category5_2_1, category5_3: item.category5_3, category5_3_1: item.category5_3_1, category5_4: item.category5_4, category5_4_1: item.category5_4_1,
-                    form_5: item.form_5, form1_5: item.form1_5, form2_5: item.form2_5, form3_5: item.form3_5, form4_5: item.form4_5, form5_5: item.form5_5, form6_5: item.form6_5, form7_5: item.form7_5, form8_5: item.form8_5,
-                    category6: item.category6, category6_1: item.category6_1, category6_1_1: item.category6_1_1, category6_2: item.category6_2, category6_2_1: item.category6_2_1, category6_3: item.category6_3, category6_3_1: item.category6_3_1, category6_4: item.category6_4, category6_4_1: item.category6_4_1,
-                    form_6: item.form_6, form1_6: item.form1_6, form2_6: item.form2_6, form3_6: item.form3_6, form4_6: item.form4_6, form5_6: item.form5_6, form6_6: item.form6_6, form7_6: item.form7_6, form8_6: item.form8_6,
-                    form1: item.form1, form2: item.form2, form3: item.form3, form4: item.form4, form5: item.form5, form6: item.form6, form7: item.form7, form8: item.form8, form9: item.form9, form10: item.form10,
+                <View>
+                  {item.name.indexOf(this.state.text) > -1 ?
+                    <TouchableOpacity style={styles.welcome}
+                      onPress={() => this.setState({
+                        showmodal: true,
+                        name: item.name, name1: item.name1, name2: item.name2, name3: item.name3, name4: item.name4, name5: item.name5, name6: item.name6, name7: item.name7,
+                        Icon: item.Icon, Icon1: item.Icon1, Icon2: item.Icon2, Icon3: item.Icon3, Icon4: item.Icon4, Icon5: item.Icon5, Icon6: item.Icon6,
+                        Hotel: item.Hotel, number: item.number, number1: item.number1, Web: item.Web, Web1: item.Web1, Webmap: item.Webmap, Map: item.Map, Day: item.Day, Month: item.Month, Map1: item.Map1,
+                        Taxi: item.Taxi, Bus: item.Bus, Tuk: item.Tuk, Van: item.Van, Train: item.Train,
+                        nameExpedia: item.nameExpedia, Expedia: item.Expedia, nameHotels: item.nameHotels, Hotels: item.Hotels, nameBooking: item.nameBooking, Booking: item.Booking, nameAgoda: item.nameAgoda, Agoda: item.Agoda, formExpedia: item.formExpedia, formHotels: item.formHotels, formBooking: item.formBooking, formAgoda: item.formAgoda,
+                        category: item.category,
+                        category1: item.category1, category1_1: item.category1_1, category1_1_1: item.category1_1_1, category1_2: item.category1_2, category1_2_1: item.category1_2_1, category1_3: item.category1_3, category1_3_1: item.category1_3_1, category1_4: item.category1_4, category1_4_1: item.category1_4_1,
+                        form_1: item.form_1, form1_1: item.form1_1, form2_1: item.form2_1, form3_1: item.form3_1, form4_1: item.form4_1, form5_1: item.form5_1, form6_1: item.form6_1, form7_1: item.form7_1, form7_1: item.form7_1,
+                        category2: item.category2, category2_1: item.category2_1, category2_1_1: item.category2_1_1, category2_2: item.category2_2, category2_2_1: item.category2_2_1, category2_3: item.category2_3, category2_3_1: item.category2_3_1, category2_4: item.category2_4, category2_4_1: item.category2_4_1,
+                        form_2: item.form_2, form1_2: item.form1_2, form2_2: item.form2_2, form3_2: item.form3_2, form4_2: item.form4_2, form5_2: item.form5_2, form6_2: item.form6_2, form7_2: item.form7_2, form8_2: item.form8_2,
+                        category3: item.category3, category3_1: item.category3_1, category3_1_1: item.category3_1_1, category3_2: item.category3_2, category3_2_1: item.category3_2_1, category3_3: item.category3_3, category3_3_1: item.category3_3_1, category3_4: item.category3_4, category3_4_1: item.category3_4_1,
+                        form_3: item.form_3, form1_3: item.form1_3, form2_3: item.form2_3, form3_3: item.form3_3, form4_3: item.form4_3, form5_3: item.form5_3, form6_3: item.form6_3, form7_3: item.form7_3, form8_3: item.form8_3,
+                        category4: item.category4, category4_1: item.category4_1, category4_1_1: item.category4_1_1, category4_2: item.category4_2, category4_2_1: item.category4_2_1, category4_3: item.category4_3, category4_3_1: item.category4_3_1, category4_4: item.category4_4, category4_4_1: item.category4_4_1,
+                        form_4: item.form_4, form1_4: item.form1_4, form2_4: item.form2_4, form3_4: item.form3_4, form4_4: item.form4_4, form5_4: item.form5_4, form6_4: item.form6_4, form7_4: item.form7_4, form8_4: item.form8_4,
+                        category5: item.category5, category5_1: item.category5_1, category5_1_1: item.category5_1_1, category5_2: item.category5_2, category5_2_1: item.category5_2_1, category5_3: item.category5_3, category5_3_1: item.category5_3_1, category5_4: item.category5_4, category5_4_1: item.category5_4_1,
+                        form_5: item.form_5, form1_5: item.form1_5, form2_5: item.form2_5, form3_5: item.form3_5, form4_5: item.form4_5, form5_5: item.form5_5, form6_5: item.form6_5, form7_5: item.form7_5, form8_5: item.form8_5,
+                        category6: item.category6, category6_1: item.category6_1, category6_1_1: item.category6_1_1, category6_2: item.category6_2, category6_2_1: item.category6_2_1, category6_3: item.category6_3, category6_3_1: item.category6_3_1, category6_4: item.category6_4, category6_4_1: item.category6_4_1,
+                        form_6: item.form_6, form1_6: item.form1_6, form2_6: item.form2_6, form3_6: item.form3_6, form4_6: item.form4_6, form5_6: item.form5_6, form6_6: item.form6_6, form7_6: item.form7_6, form8_6: item.form8_6,
+                        form1: item.form1, form2: item.form2, form3: item.form3, form4: item.form4, form5: item.form5, form6: item.form6, form7: item.form7, form8: item.form8, form9: item.form9, form10: item.form10,
 
-                  })}>
-
-                  <View style={{ flexDirection: "row", margin: 0 }}>
-                    <View style={{ height: 80, width: 115, margin: 0, alignSelf: 'center' }}>
-                      <TouchableOpacity onPress={() => this.setState({
-                        showmodal1: true,
-                        name: item.name, form1: item.form1, form2: item.form2, form3: item.form3, form4: item.form4, form5: item.form5, form6: item.form6, form7: item.form7, form8: item.form8, form9: item.form9, form10: item.form10,
                       })}>
-                        <Image source={item.form} style={{ alignSelf: 'center', width: 110, height: 73.5, resizeMode: 'contain', margin: 3 }} />
-                        <View style={{ position: 'absolute', height: 50, width: 25, margin: 56, alignSelf: 'flex-end' }}>
-                          <Icon name="photo" color="#E0FFFF" size={20} />
-                        </View>
-                      </TouchableOpacity>
-                    </View>
 
-                    <View style={{ height: 80, width: 225 }}>
-                      <Text style={{ flexDirection: "row", justifyContent: 'space-between', fontSize: 14, color: 'black', margin: 3 }}>
-                        {item.name}</Text>
-                      <Text style={{ flexDirection: "row", justifyContent: 'space-between', fontSize: 15, color: 'red' }}>
-                        {item.name1}</Text>
-                      <View style={{ flexDirection: "row", margin: 5 }}>
-                        <Icon name={item.Icon} color="#FFCC00" size={25} />
-                        <Icon name={item.Icon1} color="#FFCC00" size={25} />
-                        <Icon name={item.Icon2} color="#FFCC00" size={25} />
-                        <Icon name={item.Icon3} color="#FFCC00" size={25} />
-                        <Icon name={item.Icon4} color="#FFCC00" size={25} />
+                      <View style={{ flexDirection: "row", margin: 0 }}>
+                        <View style={{ height: 80, width: 115, margin: 0, alignSelf: 'center' }}>
+                          <TouchableOpacity onPress={() => this.setState({
+                            showmodal1: true,
+                            name: item.name, form1: item.form1, form2: item.form2, form3: item.form3, form4: item.form4, form5: item.form5, form6: item.form6, form7: item.form7, form8: item.form8, form9: item.form9, form10: item.form10,
+                          })}>
+                            <Image source={item.form} style={{ alignSelf: 'center', width: 110, height: 73.5, resizeMode: 'contain', margin: 3 }} />
+                            <View style={{ position: 'absolute', height: 50, width: 25, margin: 56, alignSelf: 'flex-end' }}>
+                              <Icon name="photo" color="#E0FFFF" size={20} />
+                            </View>
+                          </TouchableOpacity>
+                        </View>
+
+                        <View style={{ height: 80, width: 225 }}>
+                          <Text style={{ flexDirection: "row", justifyContent: 'space-between', fontSize: 14, color: 'black', margin: 3 }}>
+                            {item.name}</Text>
+                          <Text style={{ flexDirection: "row", justifyContent: 'space-between', fontSize: 15, color: 'red' }}>
+                            {item.name1}</Text>
+                          <View style={{ flexDirection: "row", margin: 5 }}>
+                            <Icon name={item.Icon} color="#FFCC00" size={25} />
+                            <Icon name={item.Icon1} color="#FFCC00" size={25} />
+                            <Icon name={item.Icon2} color="#FFCC00" size={25} />
+                            <Icon name={item.Icon3} color="#FFCC00" size={25} />
+                            <Icon name={item.Icon4} color="#FFCC00" size={25} />
+                          </View>
+                        </View>
+                        <View style={{ flexDirection: 'column', justifyContent: 'center', height: 80, width: 16 }}>
+                          <Icon name="chevron-right" color="#AFEEEE" size={23} />
+                        </View>
                       </View>
-                    </View>
-                    <View style={{ flexDirection: 'column', justifyContent: 'center', height: 80, width: 16 }}>
-                      <Icon name="chevron-right" color="#AFEEEE" size={23} />
-                    </View>
-                  </View>
-                </TouchableOpacity>
+                    </TouchableOpacity>
+                    :
+                    null
+                  }
+
+                </View>
               } />
           </ScrollView>
 
