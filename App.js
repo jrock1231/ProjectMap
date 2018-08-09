@@ -45,8 +45,8 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
         <View style={{ alignSelf: 'center', height: 165, width: 360 }}>
-          <Image source={require('./ฟ้าขาวน้ำเงิน.png')}
-            style={{ alignSelf: 'center', width, height: 140, resizeMode: 'contain', margin: 15 }} />
+          {/*<Image source={require('./2222.png')}
+            style={{ alignSelf: 'center', width, height: 155, resizeMode: 'contain', margin: 5 }} />*/}
         </View>
 
         <View style={{ alignSelf: 'center', height: 370, width: 360, }}>

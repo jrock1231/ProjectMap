@@ -782,7 +782,7 @@ export default TabNavigator({
             inactiveTintColor: 'blue',
             style: {
                 backgroundColor: '#FFFFFF',
-                height: 57
+                height: 0
             },
             indicatorStyle: {
                 height: 0

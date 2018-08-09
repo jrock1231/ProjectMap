@@ -44,7 +44,7 @@ export default class App extends Component {
         </View>
 
         <View style={{ height: 150, width: 375 }}>
-          <View style={{ position: 'absolute', backgroundColor: 'red', alignSelf: 'center', width: 90, height: 90, borderRadius: 100, margin: 22 }}>
+          <View style={{ position: 'absolute', backgroundColor: '#dedfd7', alignSelf: 'center', width: 90, height: 90, borderRadius: 100, margin: 22 }}>
           </View>
           <Image source={require('./AppPage/กรอบ.png')}
             style={{ position: 'absolute', alignSelf: 'center', width, height: 135, resizeMode: 'contain', margin: 10 }} />
@@ -87,17 +87,17 @@ export default class App extends Component {
               renderItem={({ item }) =>
                 <View>
                   {item.name.indexOf(this.state.text) > -1 ?
-                    <TouchableOpacity style={{ height: 42, width: 320, alignSelf: 'center', margin: 2.5, backgroundColor: '#48D1CC', borderRadius: 5 }} onPress={() => this.props.navigation.navigate(item.Hotel)} >
+                    <TouchableOpacity style={{ height: 42, width: 320, alignSelf: 'center', margin: 2.5, backgroundColor: '#dedfd7', borderRadius: 5 }} onPress={() => this.props.navigation.navigate(item.Hotel)} >
 
                       <View style={{ flexDirection: "row", margin: 0 }}>
 
                         <View style={{ height: 42, flex: 1.8, margin: 8 }}>
-                          <Text style={{ fontSize: 18, color: 'black' }}>
+                          <Text style={{ fontSize: 18, color: '#185373' }}>
                             {item.name}</Text>
                         </View>
 
                         <View style={{ flexDirection: 'column', justifyContent: 'center', height: 42, flex: 0.2 }}>
-                          <Icon name="chevron-right" color="#E0FFFF" size={22} margin='15' />
+                          <Icon name="chevron-right" color="#185373" size={30} />
                         </View>
                       </View>
 
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignSelf: 'center',
-    backgroundColor: '#ADD8E6',
+    backgroundColor: '#a4d4f2',
   },
   welcome: {
     height: 80,

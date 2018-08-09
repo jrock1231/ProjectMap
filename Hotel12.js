@@ -66,7 +66,7 @@ export default class App extends Component {
         </View>
 
         <View style={{ height: 150, width: 375 }}>
-          <View style={{ position: 'absolute', backgroundColor: 'red', alignSelf: 'center', width: 90, height: 90, borderRadius: 100, margin: 22 }}>
+          <View style={{ position: 'absolute', backgroundColor: '#dedfd7', alignSelf: 'center', width: 90, height: 90, borderRadius: 100, margin: 22 }}>
           </View>
           <Image source={require('./AppPage/กรอบ.png')}
             style={{ position: 'absolute', alignSelf: 'center', width, height: 135, resizeMode: 'contain', margin: 10 }} />
@@ -662,7 +662,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignSelf: 'center',
-    backgroundColor: '#ADD8E6',
+    backgroundColor: '#a4d4f2',
   },
   welcome: {
     height: 80,

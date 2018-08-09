@@ -29,7 +29,7 @@ export default class App extends Component {
         </View>
 
         <View style={{ height: 150, width: 375 }}>
-          <View style={{ position: 'absolute', backgroundColor: 'red', alignSelf: 'center', width: 90, height: 90, borderRadius: 100, margin: 22 }}>
+          <View style={{ position: 'absolute', backgroundColor: '#dedfd7', alignSelf: 'center', width: 90, height: 90, borderRadius: 100, margin: 22 }}>
           </View>
           <Image source={require('./AppPage/กรอบ.png')}
             style={{ position: 'absolute', alignSelf: 'center', width, height: 135, resizeMode: 'contain', margin: 10 }} />
@@ -134,7 +134,7 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     alignSelf: 'center',
-    backgroundColor: '#E0FFFF',
+    backgroundColor: '#a4d4f2',
   },
   welcome: {
     flex: 1,
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     flexWrap: "wrap",
     alignSelf: 'center',
-    backgroundColor: '#AFEEEE',
+    backgroundColor: '#dedfd7',
     borderRadius: 5
   },
 });

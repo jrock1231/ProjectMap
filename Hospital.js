@@ -42,7 +42,7 @@ export default class App extends Component {
         </View>
 
         <View style={{ height: 150, width: 375 }}>
-          <View style={{ position: 'absolute', backgroundColor: 'red', alignSelf: 'center', width: 90, height: 90, borderRadius: 100, margin: 22 }}>
+          <View style={{ position: 'absolute', backgroundColor: '#dedfd7', alignSelf: 'center', width: 90, height: 90, borderRadius: 100, margin: 22 }}>
           </View>
           <Image source={require('./AppPage/กรอบ.png')}
             style={{ position: 'absolute', alignSelf: 'center', width, height: 135, resizeMode: 'contain', margin: 10 }} />
@@ -113,10 +113,10 @@ export default class App extends Component {
                     })}>
 
                       <View style={{ justifyContent: 'space-between', flexDirection: "row", margin: 7.5 }}>
-                        <Text style={{ flexDirection: "row", justifyContent: 'space-between', fontSize: 18, color: 'black' }}>
+                        <Text style={{ flexDirection: "row", justifyContent: 'space-between', fontSize: 18, color: '#185373' }}>
                           {item.name}</Text>
 
-                        <Icon name="chevron-right" color="#F8F8FF" size={22} margin='25' />
+                        <Icon name="chevron-right" color="#185373" size={30} />
                       </View>
 
                     </TouchableOpacity>
@@ -138,7 +138,7 @@ export default class App extends Component {
               <View></View>
             </TouchableHighlight>
 
-            <View style={{ position: 'absolute', backgroundColor: '#E0FFFF', height: 570, width: 375, alignSelf: 'center' }}>
+            <View style={{ position: 'absolute', backgroundColor: '#a4d4f2', height: 570, width: 375, alignSelf: 'center' }}>
 
               <View style={{ height: 70, width: 375, backgroundColor: '#F8F8FF' }}>
                 <Text style={{ alignSelf: 'center', resizeMode: 'contain', margin: 24, color: 'black', fontSize: 21 }}>
@@ -246,14 +246,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignSelf: 'center',
-    backgroundColor: '#ADD8E6',
+    backgroundColor: '#a4d4f2',
   },
   welcome: {
     height: 42,
     width: 320,
     alignSelf: 'center',
     margin: 2.5,
-    backgroundColor: '#48D1CC',
+    backgroundColor: '#dedfd7',
     borderRadius: 5
   },
   instructions: {
@@ -264,7 +264,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     flexWrap: "wrap",
     alignSelf: 'center',
-    backgroundColor: '#AFEEEE',
+    backgroundColor: '#dedfd7',
     borderRadius: 10
 
   },
