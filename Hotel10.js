@@ -6,6 +6,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { Dialog } from 'react-native-simple-dialogs'
 import Hotel_th from './Hotel_th/Hotel10_th.json'
 import Hotel_en from './Hotel_en/Hotel10_en.json'
+import Place0 from './111.js'
 
 const { width, height } = Dimensions.get("window");
 const instructions = Platform.select({
@@ -143,7 +144,7 @@ export default class App extends Component {
                         </View>
 
                         <View style={{ height: 80, width: 225 }}>
-                          <Text style={{ flexDirection: "row", justifyContent: 'space-between', fontSize: 14, color: 'black', margin: 3 }}>
+                          <Text style={{ flexDirection: "row", justifyContent: 'space-between', fontSize: 14, color: '#185373', margin: 3 }}>
                             {item.name}</Text>
                           <Text style={{ flexDirection: "row", justifyContent: 'space-between', fontSize: 15, color: 'red' }}>
                             {item.name1}</Text>
@@ -154,9 +155,6 @@ export default class App extends Component {
                             <Icon name={item.Icon3} color="#FFCC00" size={25} />
                             <Icon name={item.Icon4} color="#FFCC00" size={25} />
                           </View>
-                        </View>
-                        <View style={{ flexDirection: 'column', justifyContent: 'center', height: 80, width: 16 }}>
-                          <Icon name="chevron-right" color="#AFEEEE" size={23} />
                         </View>
                       </View>
                     </TouchableOpacity>
@@ -174,11 +172,17 @@ export default class App extends Component {
             onRequestClose={() => this.setState({ showmodal: false })}
             animationType={'fade'}
           >
-            <View style={{ position: 'absolute', backgroundColor: '#B0E0E6', height: 570, width: 375, alignSelf: 'center' }}>
-              <View style={{ marginBottom: 10, margin: 30, alignSelf: 'center' }}>
-                <Text style={{ color: '#000033', fontSize: 20 }}>
+            <View style={{ position: 'absolute', backgroundColor: '#a4d4f2', height: 570, width: 375, alignSelf: 'center' }}>
+
+              <View style={{ height: 70, width: 375, backgroundColor: '#F8F8FF' }}>
+                <Text style={{ alignSelf: 'center', margin: 20, color: 'black', fontSize: 25 }}>
                   {this.state.name}</Text>
+
+                <TouchableOpacity style={{ position: 'absolute', margin: 17 }} onPress={() => this.setState({ showmodal: false })}>
+                  <Icon name="angle-left" color="black" size={40} />
+                </TouchableOpacity>
               </View>
+
               <View style={{ marginBottom: 10, flexDirection: "row", resizeMode: 'contain', alignSelf: 'center' }}>
                 <Icon name={this.state.Icon} color="#FFCC00" size={35} />
                 <Icon name={this.state.Icon1} color="#FFCC00" size={35} />
@@ -192,11 +196,6 @@ export default class App extends Component {
                   <Text style={{ color: 'blue', fontSize: 20 }}>
                     {this.state.category}</Text>
                 </View>
-              </TouchableOpacity>
-
-              <TouchableOpacity onPress={() => this.setState({ showmodal: false })}
-                style={{ position: 'absolute', margin: 10 }}>
-                <Icon name="angle-left" color="black" size={40} />
               </TouchableOpacity>
 
               <ScrollView style={{ alignSelf: 'center', height: 370, width: 360 }}>
@@ -275,7 +274,7 @@ export default class App extends Component {
                 </View>
               </ScrollView>
 
-              <View style={{ height: 70, width: 375, flexDirection: "row", justifyContent: "space-around", alignItems: 'flex-start', flexWrap: "wrap", alignSelf: 'center', backgroundColor: '#dddddd' }}>
+              <View style={{ height: 70, width: 375, flexDirection: "row", justifyContent: "space-around", alignItems: 'flex-start', flexWrap: "wrap", alignSelf: 'center', backgroundColor: '#FFFFFF' }}>
 
                 <View style={{ flexDirection: "row", margin: -15 }}>
                   <TouchableOpacity onPress={() => Linking.openURL(this.state.Expedia)} >
@@ -308,9 +307,9 @@ export default class App extends Component {
             onRequestClose={() => this.setState({ showmodal1: true })}
             animationType={'fade'}
           >
-            <View style={{ alignSelf: 'center', position: 'absolute', width: 337, height: 450, backgroundColor: '#f8f3ed', marginTop: height * 0.1, margin: 15, borderRadius: 5 }}>
+            <View style={{ alignSelf: 'center', position: 'absolute', width: 337, height: 450, backgroundColor: '#dedfd7', marginTop: height * 0.1, margin: 15, borderRadius: 5 }}>
               <View style={{ marginBottom: 10, margin: 30, alignSelf: 'center' }}>
-                <Text style={{ color: '#000033', fontSize: 18 }}>
+                <Text style={{ color: '#185373', fontSize: 18 }}>
                   {this.state.name}</Text>
               </View>
               <ScrollView style={{ height: 290, width: 320, alignSelf: 'center' }}>
@@ -326,8 +325,8 @@ export default class App extends Component {
                 <Image source={this.state.form10} style={{ alignSelf: 'center', margin: 15, height: 180, width: 310, borderRadius: 5 }} />
               </ScrollView>
               <TouchableOpacity onPress={() => this.setState({ showmodal1: false })}
-                style={{ height: 50, width: 60, alignSelf: 'center' }}>
-                <Text style={{ fontSize: 18, color: 'red', margin: 10 }}>OK</Text>
+                style={{ alignSelf: 'center' }}>
+                <Text style={{ fontSize: 18, color: 'blue', margin: 10 }}>OK</Text>
               </TouchableOpacity>
             </View>
           </Modal>
@@ -335,153 +334,131 @@ export default class App extends Component {
           <Dialog
             visible={this.state.showDialog}
             onTouchOutside={() => this.openDialog(true)}
-            contentStyle={{ justifyContent: 'center', alignItems: 'center', borderRadius: 5 }}
+            contentStyle={{ backgroundColor: '#dedfd7', justifyContent: 'center', alignItems: 'center' }}
             animationType="fade">
             <View style={{ marginBottom: 10, margin: 5, alignSelf: 'center' }}>
               <Text style={{ flexDirection: "row", fontSize: 20, color: 'black' }}>
                 ประเภทห้องพัก</Text>
             </View>
-            <ScrollView style={{ backgroundColor: '#CCFF99', height: 300, width: 310, alignSelf: 'center', borderRadius: 5 }}>
-              <View style={{ flexDirection: "row", margin: 1 }}>
-                <View>
-                  <TouchableOpacity style={{ margin: 2 }} onPress={() => this.setState({ showmodal2: true, })}>
-                    <Image source={this.state.form_1} style={{ width: 135, height: 100 }} />
-                  </TouchableOpacity>
-                  <Text style={{ alignSelf: 'center', fontSize: 15, color: 'black' }}>
-                    {this.state.name2}</Text>
-                </View>
-                <View>
-                  <Text style={{ fontSize: 15, color: 'black' }}>
-                    {this.state.category1}</Text>
-                  <Text style={{ fontSize: 9, color: 'black' }}>
-                    {this.state.category1_1}
-                    {this.state.category1_1_1}
-                    {this.state.category1_2}
-                    {this.state.category1_2_1}
-                    {this.state.category1_3}
-                    {this.state.category1_3_1}
-                    {this.state.category1_4}
-                    {this.state.category1_4_1}</Text>
-                </View>
+            <ScrollView style={{ backgroundColor: '#dedfd7', width: 310, height: 320, alignSelf: 'center', borderRadius: 5 }}>
+
+              <View style={{ margin: 1 }}>
+                <TouchableOpacity style={{ margin: 2 }} onPress={() => this.setState({ showmodal2: true, })}>
+                  <Image source={this.state.form_1} style={{ width: 135, height: 90, marginBottom: 5 }} />
+                  <View style={{ position: 'absolute', width: 82, margin: 68, alignSelf: 'center' }}>
+                    <Icon name="photo" color="#E0FFFF" size={20} />
+                  </View>
+                </TouchableOpacity>
+              </View>
+              <View style={{ width: 170, alignSelf: 'flex-end', position: 'absolute' }}>
+                <Text style={{ fontSize: 17, color: '#185373' }}>
+                  {this.state.category1}</Text>
+                <Text style={{ fontSize: 12, color: 'black' }}>
+                  {this.state.category1_1}</Text>
+                <Text style={{ fontSize: 10 }}>
+                  {this.state.category1_1_1}</Text>
+                <Text style={{ fontSize: 16, color: 'red' }}>
+                  {this.state.name2}</Text>
               </View>
 
-              <View style={{ flexDirection: "row", margin: 1 }}>
-                <View>
-                  <TouchableOpacity style={{ margin: 2 }} onPress={() => this.setState({ showmodal3: true, })}>
-                    <Image source={this.state.form_2} style={{ width: 135, height: 100 }} />
-                  </TouchableOpacity>
-                  <Text style={{ alignSelf: 'center', fontSize: 15, color: 'black' }}>
-                    {this.state.name3}</Text>
-                </View>
-                <View>
-                  <Text style={{ fontSize: 15, color: 'black' }}>
-                    {this.state.category2}</Text>
-                  <Text style={{ fontSize: 9, color: 'black' }}>
-                    {this.state.category2_1}
-                    {this.state.category2_1_1}
-                    {this.state.category2_2}
-                    {this.state.category2_2_1}
-                    {this.state.category2_3}
-                    {this.state.category2_3_1}
-                    {this.state.category2_4}
-                    {this.state.category2_4_1}</Text>
-                </View>
+              <View style={{ margin: 1 }}>
+                <TouchableOpacity style={{ margin: 2 }} onPress={() => this.setState({ showmodal3: true, })}>
+                  <Image source={this.state.form_2} style={{ width: 135, height: 90, marginBottom: 5 }} />
+                  <View style={{ position: 'absolute', width: 82, margin: 68, alignSelf: 'center' }}>
+                    <Icon name="photo" color="#E0FFFF" size={20} />
+                  </View>
+                </TouchableOpacity>
+              </View>
+              <View style={{ width: 170, alignSelf: 'flex-end', position: 'absolute', margin: 105 }}>
+                <Text style={{ fontSize: 17, color: '#185373' }}>
+                  {this.state.category2}</Text>
+                <Text style={{ fontSize: 12, color: 'black' }}>
+                  {this.state.category2_1}</Text>
+                <Text style={{ fontSize: 10 }}>
+                  {this.state.category2_1_1}</Text>
+                <Text style={{ fontSize: 16, color: 'red' }}>
+                  {this.state.name3}</Text>
               </View>
 
-              <View style={{ flexDirection: "row", margin: 1 }}>
-                <View>
-                  <TouchableOpacity style={{ margin: 2 }} onPress={() => this.setState({ showmodal4: true, })}>
-                    <Image source={this.state.form_3} style={{ width: 135, height: 100 }} />
-                  </TouchableOpacity>
-                  <Text style={{ alignSelf: 'center', fontSize: 15, color: 'black' }}>
-                    {this.state.name4}</Text>
-                </View>
-                <View>
-                  <Text style={{ fontSize: 15, color: 'black' }}>
-                    {this.state.category3}</Text>
-                  <Text style={{ fontSize: 9, color: 'black' }}>
-                    {this.state.category3_1}
-                    {this.state.category3_1_1}
-                    {this.state.category3_2}
-                    {this.state.category3_2_1}
-                    {this.state.category3_3}
-                    {this.state.category3_3_1}
-                    {this.state.category3_4}
-                    {this.state.category3_4_1}</Text>
-                </View>
+              <View style={{ margin: 1 }}>
+                <TouchableOpacity style={{ margin: 2 }} onPress={() => this.setState({ showmodal4: true, })}>
+                  <Image source={this.state.form_3} style={{ width: 135, height: 90, marginBottom: 5 }} />
+                  <View style={{ position: 'absolute', width: 82, margin: 68, alignSelf: 'center' }}>
+                    <Icon name="photo" color="#E0FFFF" size={20} />
+                  </View>
+                </TouchableOpacity>
+              </View>
+              <View style={{ width: 170, alignSelf: 'flex-end', position: 'absolute', margin: 207 }}>
+                <Text style={{ fontSize: 17, color: '#185373' }}>
+                  {this.state.category3}</Text>
+                <Text style={{ fontSize: 12, color: 'black' }}>
+                  {this.state.category3_1}</Text>
+                <Text style={{ fontSize: 10 }}>
+                  {this.state.category3_1_1}</Text>
+                <Text style={{ fontSize: 16, color: 'red' }}>
+                  {this.state.name4}</Text>
               </View>
 
-              <View style={{ flexDirection: "row", margin: 1 }}>
-                <View>
-                  <TouchableOpacity style={{ margin: 2 }} onPress={() => this.setState({ showmodal5: true, })}>
-                    <Image source={this.state.form_4} style={{ width: 135, height: 100 }} />
-                  </TouchableOpacity>
-                  <Text style={{ alignSelf: 'center', fontSize: 15, color: 'black' }}>
-                    {this.state.name5}</Text>
-                </View>
-                <View>
-                  <Text style={{ fontSize: 15, color: 'black' }}>
-                    {this.state.category4}</Text>
-                  <Text style={{ fontSize: 9, color: 'black' }}>
-                    {this.state.category4_1}
-                    {this.state.category4_1_1}
-                    {this.state.category4_2}
-                    {this.state.category4_2_1}
-                    {this.state.category4_3}
-                    {this.state.category4_3_1}
-                    {this.state.category4_4}
-                    {this.state.category4_4_1}</Text>
-                </View>
+              <View style={{ margin: 1 }}>
+                <TouchableOpacity style={{ margin: 2 }} onPress={() => this.setState({ showmodal5: true, })}>
+                  <Image source={this.state.form_4} style={{ width: 135, height: 90, marginBottom: 5 }} />
+                  <View style={{ position: 'absolute', width: 82, margin: 68, alignSelf: 'center' }}>
+                    <Icon name="photo" color="#E0FFFF" size={20} />
+                  </View>
+                </TouchableOpacity>
+              </View>
+              <View style={{ width: 170, alignSelf: 'flex-end', position: 'absolute', margin: 307 }}>
+                <Text style={{ fontSize: 17, color: '#185373' }}>
+                  {this.state.category4}</Text>
+                <Text style={{ fontSize: 12, color: 'black' }}>
+                  {this.state.category4_1}</Text>
+                <Text style={{ fontSize: 10 }}>
+                  {this.state.category4_1_1}</Text>
+                <Text style={{ fontSize: 16, color: 'red' }}>
+                  {this.state.name5}</Text>
               </View>
 
-              <View style={{ flexDirection: "row", margin: 1 }}>
-                <View>
-                  <TouchableOpacity style={{ margin: 2 }} onPress={() => this.setState({ showmodal6: true, })}>
-                    <Image source={this.state.form_5} style={{ width: 135, height: 100 }} />
-                  </TouchableOpacity>
-                  <Text style={{ alignSelf: 'center', fontSize: 15, color: 'black' }}>
-                    {this.state.name6}</Text>
-                </View>
-                <View>
-                  <Text style={{ fontSize: 15, color: 'black' }}>
-                    {this.state.category5}</Text>
-                  <Text style={{ fontSize: 9, color: 'black' }}>
-                    {this.state.category5_1}
-                    {this.state.category5_1_1}
-                    {this.state.category5_2}
-                    {this.state.category5_2_1}
-                    {this.state.category5_3}
-                    {this.state.category5_3_1}
-                    {this.state.category5_4}
-                    {this.state.category5_4_1}</Text>
-                </View>
+              <View style={{ margin: 1 }}>
+                <TouchableOpacity style={{ margin: 2 }} onPress={() => this.setState({ showmodal6: true, })}>
+                  <Image source={this.state.form_5} style={{ width: 135, height: 90, marginBottom: 5 }} />
+                  <View style={{ position: 'absolute', width: 82, margin: 68, alignSelf: 'center' }}>
+                    <Icon name="photo" color="#E0FFFF" size={20} />
+                  </View>
+                </TouchableOpacity>
+              </View>
+              <View style={{ width: 170, alignSelf: 'flex-end', position: 'absolute', margin: 407 }}>
+                <Text style={{ fontSize: 17, color: '#185373' }}>
+                  {this.state.category5}</Text>
+                <Text style={{ fontSize: 12, color: 'black' }}>
+                  {this.state.category5_1}</Text>
+                <Text style={{ fontSize: 10 }}>
+                  {this.state.category5_1_1}</Text>
+                <Text style={{ fontSize: 16, color: 'red' }}>
+                  {this.state.name6}</Text>
               </View>
 
-              <View style={{ flexDirection: "row", margin: 1 }}>
-                <View>
-                  <TouchableOpacity style={{ margin: 2 }} onPress={() => this.setState({ showmodal7: true, })}>
-                    <Image source={this.state.form_6} style={{ width: 135, height: 100 }} />
-                  </TouchableOpacity>
-                  <Text style={{ alignSelf: 'center', fontSize: 15, color: 'black' }}>
-                    {this.state.name7}</Text>
-                </View>
-                <View>
-                  <Text style={{ fontSize: 15, color: 'black' }}>
-                    {this.state.category6}</Text>
-                  <Text style={{ fontSize: 9, color: 'black' }}>
-                    {this.state.category6_1}
-                    {this.state.category6_1_1}
-                    {this.state.category6_2}
-                    {this.state.category6_2_1}
-                    {this.state.category6_3}
-                    {this.state.category6_3_1}
-                    {this.state.category6_4}
-                    {this.state.category6_4_1}</Text>
-                </View>
+              <View style={{ margin: 1 }}>
+                <TouchableOpacity style={{ margin: 2 }} onPress={() => this.setState({ showmodal7: true, })}>
+                  <Image source={this.state.form_6} style={{ width: 135, height: 90, marginBottom: 5 }} />
+                  <View style={{ position: 'absolute', width: 82, margin: 68, alignSelf: 'center' }}>
+                    <Icon name="photo" color="#E0FFFF" size={20} />
+                  </View>
+                </TouchableOpacity>
               </View>
+              <View style={{ width: 170, alignSelf: 'flex-end', position: 'absolute', margin: 507 }}>
+                <Text style={{ fontSize: 17, color: '#185373' }}>
+                  {this.state.category6}</Text>
+                <Text style={{ fontSize: 12, color: 'black' }}>
+                  {this.state.category6_1}</Text>
+                <Text style={{ fontSize: 10 }}>
+                  {this.state.category6_1_1}</Text>
+                <Text style={{ fontSize: 16, color: 'red' }}>
+                  {this.state.name7}</Text>
+              </View>
+
             </ScrollView>
             <TouchableOpacity onPress={() => this.openDialog(false)} style={{ marginTop: 0 }} title="CLOSE" >
-              <Text style={{ marginTop: 10, fontSize: 18, color: 'black' }}>OK</Text>
+              <Text style={{ marginTop: 10, fontSize: 18, color: 'blue' }}>OK</Text>
             </TouchableOpacity>
           </Dialog>
 
@@ -491,24 +468,44 @@ export default class App extends Component {
             onRequestClose={() => this.setState({ showmodal2: true })}
             animationType={'fade'}
           >
-            <View style={{ alignSelf: 'center', position: 'absolute', width: 315, height: 485, backgroundColor: '#f8f3ed', marginTop: height * 0.07, borderRadius: 1 }}>
+            <View style={{ alignSelf: 'center', position: 'absolute', width: 335, height: 445, backgroundColor: '#dedfd7', marginTop: height * 0.103, borderRadius: 1 }}>
               <View style={{ marginBottom: 10, margin: 30, alignSelf: 'center' }}>
-                <Text style={{ color: '#000033', fontSize: 18 }}>
+                <Text style={{ color: '#185373', fontSize: 18 }}>
                   {this.state.category1}</Text>
               </View>
-              <ScrollView style={{ height: 290, width: 290, alignSelf: 'center' }}>
-                <Image source={this.state.form1_1} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-                <Image source={this.state.form2_1} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-                <Image source={this.state.form3_1} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-                <Image source={this.state.form4_1} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-                <Image source={this.state.form5_1} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-                <Image source={this.state.form6_1} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-                <Image source={this.state.form7_1} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-                <Image source={this.state.form8_1} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-              </ScrollView>
+
+              <View style={{ alignSelf: 'center', height: 330, width: 330, flexDirection: "row" }}>
+                <ScrollView style={{ height: 325 }}>
+                  <Image source={this.state.form1_1} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                  <Image source={this.state.form2_1} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                  <Image source={this.state.form3_1} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                  <Image source={this.state.form4_1} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                  <Image source={this.state.form5_1} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                  <Image source={this.state.form6_1} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                  <Image source={this.state.form7_1} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                  <Image source={this.state.form8_1} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                </ScrollView>
+
+                <View style={{ width: 105, margin: 5 }}>
+                  <Text style={{ fontSize: 11, color: 'black' }}>
+                    {this.state.category1_2}</Text>
+                  <Text style={{ fontSize: 10 }}>
+                    {this.state.category1_2_1}</Text>
+
+                  <Text style={{ fontSize: 11, color: 'black' }}>
+                    {this.state.category1_3}</Text>
+                  <Text style={{ fontSize: 10 }}>
+                    {this.state.category1_3_1}</Text>
+
+                  <Text style={{ fontSize: 11, color: 'black' }}>
+                    {this.state.category1_4}</Text>
+                  <Text style={{ fontSize: 10 }}>
+                    {this.state.category1_4_1}</Text>
+                </View>
+              </View>
               <TouchableOpacity onPress={() => this.setState({ showmodal2: false })}
-                style={{ height: 50, width: 60, alignSelf: 'center' }}>
-                <Text style={{ fontSize: 18, color: 'red', margin: 10 }}>OK</Text>
+                style={{ alignSelf: 'center' }}>
+                <Text style={{ fontSize: 18, color: 'blue', margin: 10 }}>OK</Text>
               </TouchableOpacity>
             </View>
           </Modal>
@@ -519,24 +516,43 @@ export default class App extends Component {
             onRequestClose={() => this.setState({ showmodal3: true })}
             animationType={'fade'}
           >
-            <View style={{ alignSelf: 'center', position: 'absolute', width: 315, height: 485, backgroundColor: '#f8f3ed', marginTop: height * 0.07, borderRadius: 1 }}>
+            <View style={{ alignSelf: 'center', position: 'absolute', width: 335, height: 445, backgroundColor: '#dedfd7', marginTop: height * 0.103, borderRadius: 1 }}>
               <View style={{ marginBottom: 10, margin: 30, alignSelf: 'center' }}>
-                <Text style={{ color: '#000033', fontSize: 18 }}>
+                <Text style={{ color: '#185373', fontSize: 18 }}>
                   {this.state.category2}</Text>
               </View>
-              <ScrollView style={{ height: 290, width: 290, alignSelf: 'center' }}>
-                <Image source={this.state.form1_2} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-                <Image source={this.state.form2_2} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-                <Image source={this.state.form3_2} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-                <Image source={this.state.form4_2} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-                <Image source={this.state.form5_2} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-                <Image source={this.state.form6_2} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-                <Image source={this.state.form7_2} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-                <Image source={this.state.form8_2} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-              </ScrollView>
+              <View style={{ alignSelf: 'center', height: 330, width: 330, flexDirection: "row" }}>
+                <ScrollView style={{ height: 325 }}>
+                  <Image source={this.state.form1_2} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                  <Image source={this.state.form2_2} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                  <Image source={this.state.form3_2} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                  <Image source={this.state.form4_2} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                  <Image source={this.state.form5_2} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                  <Image source={this.state.form6_2} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                  <Image source={this.state.form7_2} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                  <Image source={this.state.form8_2} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                </ScrollView>
+
+                <View style={{ width: 105, margin: 5 }}>
+                  <Text style={{ fontSize: 11, color: 'black' }}>
+                    {this.state.category2_2}</Text>
+                  <Text style={{ fontSize: 10 }}>
+                    {this.state.category2_2_1}</Text>
+
+                  <Text style={{ fontSize: 11, color: 'black' }}>
+                    {this.state.category2_3}</Text>
+                  <Text style={{ fontSize: 10 }}>
+                    {this.state.category2_3_1}</Text>
+
+                  <Text style={{ fontSize: 11, color: 'black' }}>
+                    {this.state.category2_4}</Text>
+                  <Text style={{ fontSize: 10 }}>
+                    {this.state.category2_4_1}</Text>
+                </View>
+              </View>
               <TouchableOpacity onPress={() => this.setState({ showmodal3: false })}
-                style={{ height: 50, width: 60, alignSelf: 'center' }}>
-                <Text style={{ fontSize: 18, color: 'red', margin: 10 }}>OK</Text>
+                style={{ alignSelf: 'center' }}>
+                <Text style={{ fontSize: 18, color: 'blue', margin: 10 }}>OK</Text>
               </TouchableOpacity>
             </View>
           </Modal>
@@ -547,24 +563,43 @@ export default class App extends Component {
             onRequestClose={() => this.setState({ showmodal4: true })}
             animationType={'fade'}
           >
-            <View style={{ alignSelf: 'center', position: 'absolute', width: 315, height: 485, backgroundColor: '#f8f3ed', marginTop: height * 0.07, borderRadius: 1 }}>
+            <View style={{ alignSelf: 'center', position: 'absolute', width: 335, height: 445, backgroundColor: '#dedfd7', marginTop: height * 0.103, borderRadius: 1 }}>
               <View style={{ marginBottom: 10, margin: 30, alignSelf: 'center' }}>
-                <Text style={{ color: '#000033', fontSize: 18 }}>
+                <Text style={{ color: '#185373', fontSize: 18 }}>
                   {this.state.category3}</Text>
               </View>
-              <ScrollView style={{ height: 290, width: 290, alignSelf: 'center' }}>
-                <Image source={this.state.form1_3} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-                <Image source={this.state.form2_3} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-                <Image source={this.state.form3_3} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-                <Image source={this.state.form4_3} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-                <Image source={this.state.form5_3} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-                <Image source={this.state.form6_3} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-                <Image source={this.state.form7_3} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-                <Image source={this.state.form8_3} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-              </ScrollView>
+              <View style={{ alignSelf: 'center', height: 330, width: 330, flexDirection: "row" }}>
+                <ScrollView style={{ height: 325 }}>
+                  <Image source={this.state.form1_3} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                  <Image source={this.state.form2_3} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                  <Image source={this.state.form3_3} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                  <Image source={this.state.form4_3} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                  <Image source={this.state.form5_3} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                  <Image source={this.state.form6_3} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                  <Image source={this.state.form7_3} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                  <Image source={this.state.form8_3} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                </ScrollView>
+
+                <View style={{ width: 105, margin: 5 }}>
+                  <Text style={{ fontSize: 11, color: 'black' }}>
+                    {this.state.category3_2}</Text>
+                  <Text style={{ fontSize: 10 }}>
+                    {this.state.category3_2_1}</Text>
+
+                  <Text style={{ fontSize: 11, color: 'black' }}>
+                    {this.state.category3_3}</Text>
+                  <Text style={{ fontSize: 10 }}>
+                    {this.state.category3_3_1}</Text>
+
+                  <Text style={{ fontSize: 11, color: 'black' }}>
+                    {this.state.category3_4}</Text>
+                  <Text style={{ fontSize: 10 }}>
+                    {this.state.category3_4_1}</Text>
+                </View>
+              </View>
               <TouchableOpacity onPress={() => this.setState({ showmodal4: false })}
-                style={{ height: 50, width: 60, alignSelf: 'center' }}>
-                <Text style={{ fontSize: 18, color: 'red', margin: 10 }}>OK</Text>
+                style={{ alignSelf: 'center' }}>
+                <Text style={{ fontSize: 18, color: 'blue', margin: 10 }}>OK</Text>
               </TouchableOpacity>
             </View>
           </Modal>
@@ -575,24 +610,43 @@ export default class App extends Component {
             onRequestClose={() => this.setState({ showmodal5: true })}
             animationType={'fade'}
           >
-            <View style={{ alignSelf: 'center', position: 'absolute', width: 315, height: 485, backgroundColor: '#f8f3ed', marginTop: height * 0.07, borderRadius: 1 }}>
+            <View style={{ alignSelf: 'center', position: 'absolute', width: 335, height: 445, backgroundColor: '#dedfd7', marginTop: height * 0.103, borderRadius: 1 }}>
               <View style={{ marginBottom: 10, margin: 30, alignSelf: 'center' }}>
-                <Text style={{ color: '#000033', fontSize: 18 }}>
+                <Text style={{ color: '#185373', fontSize: 18 }}>
                   {this.state.category4}</Text>
               </View>
-              <ScrollView style={{ height: 290, width: 290, alignSelf: 'center' }}>
-                <Image source={this.state.form1_4} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-                <Image source={this.state.form2_4} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-                <Image source={this.state.form3_4} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-                <Image source={this.state.form4_4} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-                <Image source={this.state.form5_4} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-                <Image source={this.state.form6_4} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-                <Image source={this.state.form7_4} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-                <Image source={this.state.form8_4} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-              </ScrollView>
+              <View style={{ alignSelf: 'center', height: 330, width: 330, flexDirection: "row" }}>
+                <ScrollView style={{ height: 325 }}>
+                  <Image source={this.state.form1_4} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                  <Image source={this.state.form2_4} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                  <Image source={this.state.form3_4} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                  <Image source={this.state.form4_4} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                  <Image source={this.state.form5_4} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                  <Image source={this.state.form6_4} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                  <Image source={this.state.form7_4} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                  <Image source={this.state.form8_4} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                </ScrollView>
+
+                <View style={{ width: 105, margin: 5 }}>
+                  <Text style={{ fontSize: 11, color: 'black' }}>
+                    {this.state.category4_2}</Text>
+                  <Text style={{ fontSize: 10 }}>
+                    {this.state.category4_2_1}</Text>
+
+                  <Text style={{ fontSize: 11, color: 'black' }}>
+                    {this.state.category4_3}</Text>
+                  <Text style={{ fontSize: 10 }}>
+                    {this.state.category4_3_1}</Text>
+
+                  <Text style={{ fontSize: 11, color: 'black' }}>
+                    {this.state.category4_4}</Text>
+                  <Text style={{ fontSize: 10 }}>
+                    {this.state.category4_4_1}</Text>
+                </View>
+              </View>
               <TouchableOpacity onPress={() => this.setState({ showmodal5: false })}
-                style={{ height: 50, width: 60, alignSelf: 'center' }}>
-                <Text style={{ fontSize: 18, color: 'red', margin: 10 }}>OK</Text>
+                style={{ alignSelf: 'center' }}>
+                <Text style={{ fontSize: 18, color: 'blue', margin: 10 }}>OK</Text>
               </TouchableOpacity>
             </View>
           </Modal>
@@ -603,24 +657,43 @@ export default class App extends Component {
             onRequestClose={() => this.setState({ showmodal6: true })}
             animationType={'fade'}
           >
-            <View style={{ alignSelf: 'center', position: 'absolute', width: 315, height: 485, backgroundColor: '#f8f3ed', marginTop: height * 0.07, borderRadius: 1 }}>
+            <View style={{ alignSelf: 'center', position: 'absolute', width: 335, height: 445, backgroundColor: '#dedfd7', marginTop: height * 0.103, borderRadius: 1 }}>
               <View style={{ marginBottom: 10, margin: 30, alignSelf: 'center' }}>
-                <Text style={{ color: '#000033', fontSize: 18 }}>
+                <Text style={{ color: '#185373', fontSize: 18 }}>
                   {this.state.category5}</Text>
               </View>
-              <ScrollView style={{ height: 290, width: 290, alignSelf: 'center' }}>
-                <Image source={this.state.form1_5} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-                <Image source={this.state.form2_5} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-                <Image source={this.state.form3_5} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-                <Image source={this.state.form4_5} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-                <Image source={this.state.form5_5} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-                <Image source={this.state.form6_5} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-                <Image source={this.state.form7_5} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-                <Image source={this.state.form8_5} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-              </ScrollView>
+              <View style={{ alignSelf: 'center', height: 330, width: 330, flexDirection: "row" }}>
+                <ScrollView style={{ height: 325 }}>
+                  <Image source={this.state.form1_5} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                  <Image source={this.state.form2_5} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                  <Image source={this.state.form3_5} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                  <Image source={this.state.form4_5} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                  <Image source={this.state.form5_5} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                  <Image source={this.state.form6_5} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                  <Image source={this.state.form7_5} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                  <Image source={this.state.form8_5} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                </ScrollView>
+
+                <View style={{ width: 105, margin: 5 }}>
+                  <Text style={{ fontSize: 11, color: 'black' }}>
+                    {this.state.category5_2}</Text>
+                  <Text style={{ fontSize: 10 }}>
+                    {this.state.category5_2_1}</Text>
+
+                  <Text style={{ fontSize: 11, color: 'black' }}>
+                    {this.state.category5_3}</Text>
+                  <Text style={{ fontSize: 10 }}>
+                    {this.state.category5_3_1}</Text>
+
+                  <Text style={{ fontSize: 11, color: 'black' }}>
+                    {this.state.category5_4}</Text>
+                  <Text style={{ fontSize: 10 }}>
+                    {this.state.category5_4_1}</Text>
+                </View>
+              </View>
               <TouchableOpacity onPress={() => this.setState({ showmodal6: false })}
-                style={{ height: 50, width: 60, alignSelf: 'center' }}>
-                <Text style={{ fontSize: 18, color: 'red', margin: 10 }}>OK</Text>
+                style={{ alignSelf: 'center' }}>
+                <Text style={{ fontSize: 18, color: 'blue', margin: 10 }}>OK</Text>
               </TouchableOpacity>
             </View>
           </Modal>
@@ -631,24 +704,43 @@ export default class App extends Component {
             onRequestClose={() => this.setState({ showmodal7: true })}
             animationType={'fade'}
           >
-            <View style={{ alignSelf: 'center', position: 'absolute', width: 315, height: 485, backgroundColor: '#f8f3ed', marginTop: height * 0.07, borderRadius: 1 }}>
+            <View style={{ alignSelf: 'center', position: 'absolute', width: 335, height: 445, backgroundColor: '#dedfd7', marginTop: height * 0.103, borderRadius: 1 }}>
               <View style={{ marginBottom: 10, margin: 30, alignSelf: 'center' }}>
-                <Text style={{ color: '#000033', fontSize: 18 }}>
+                <Text style={{ color: '#185373', fontSize: 18 }}>
                   {this.state.category6}</Text>
               </View>
-              <ScrollView style={{ height: 290, width: 290, alignSelf: 'center' }}>
-                <Image source={this.state.form1_6} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-                <Image source={this.state.form2_6} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-                <Image source={this.state.form3_6} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-                <Image source={this.state.form4_6} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-                <Image source={this.state.form5_6} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-                <Image source={this.state.form6_6} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-                <Image source={this.state.form7_6} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-                <Image source={this.state.form8_6} style={{ alignSelf: 'center', margin: 15, height: 170, width: 280, borderRadius: 5 }} />
-              </ScrollView>
+              <View style={{ alignSelf: 'center', height: 330, width: 330, flexDirection: "row" }}>
+                <ScrollView style={{ height: 325 }}>
+                  <Image source={this.state.form1_6} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                  <Image source={this.state.form2_6} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                  <Image source={this.state.form3_6} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                  <Image source={this.state.form4_6} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                  <Image source={this.state.form5_6} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                  <Image source={this.state.form6_6} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                  <Image source={this.state.form7_6} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                  <Image source={this.state.form8_6} style={{ alignSelf: 'center', margin: 5, height: 140, width: 210, borderRadius: 3 }} />
+                </ScrollView>
+
+                <View style={{ width: 105, margin: 5 }}>
+                  <Text style={{ fontSize: 11, color: 'black' }}>
+                    {this.state.category6_2}</Text>
+                  <Text style={{ fontSize: 10 }}>
+                    {this.state.category6_2_1}</Text>
+
+                  <Text style={{ fontSize: 11, color: 'black' }}>
+                    {this.state.category6_3}</Text>
+                  <Text style={{ fontSize: 10 }}>
+                    {this.state.category6_3_1}</Text>
+
+                  <Text style={{ fontSize: 11, color: 'black' }}>
+                    {this.state.category6_4}</Text>
+                  <Text style={{ fontSize: 10 }}>
+                    {this.state.category6_4_1}</Text>
+                </View>
+              </View>
               <TouchableOpacity onPress={() => this.setState({ showmodal7: false })}
-                style={{ height: 50, width: 60, alignSelf: 'center' }}>
-                <Text style={{ fontSize: 18, color: 'red', margin: 10 }}>OK</Text>
+                style={{ alignSelf: 'center' }}>
+                <Text style={{ fontSize: 18, color: 'blue', margin: 10 }}>OK</Text>
               </TouchableOpacity>
             </View>
           </Modal>
@@ -669,7 +761,7 @@ const styles = StyleSheet.create({
     width: 356,
     alignSelf: 'center',
     margin: 2.5,
-    backgroundColor: '#AFEEEE',
+    backgroundColor: '#dedfd7',
     borderRadius: 1
   },
   instructions: {
@@ -680,7 +772,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     flexWrap: "wrap",
     alignSelf: 'center',
-    backgroundColor: '#E0FFFF',
+    backgroundColor: '#dedfd7',
     borderRadius: 5
 
   },
