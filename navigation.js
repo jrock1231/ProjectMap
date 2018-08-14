@@ -22,6 +22,7 @@ import Ho10Screen from './Hotel10'
 import Ho11Screen from './Hotel11'
 import Ho12Screen from './Hotel12'
 import Ho13Screen from './Hotel13'
+import Register from './Test/Register'
 
 export default createStackNavigator({
     App: {
@@ -129,6 +130,12 @@ export default createStackNavigator({
     },
     Ho13: {
         screen: Ho13Screen,
+        navigationOptions: {
+            headerStyle: { height: 0 }
+        }
+    },
+    Register: {
+        screen: Register,
         navigationOptions: {
             headerStyle: { height: 0 }
         }

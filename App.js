@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Platform, TouchableOpacity, Image, Dimensions, Animated, Modal, TouchableHighlight, Text, AsyncStorage, BackHandler } from 'react-native';
+/*import { StyleSheet, View, Platform, TouchableOpacity, Image, Dimensions, Animated, Modal, TouchableHighlight, Text, AsyncStorage, BackHandler } from 'react-native';*/
+import { StyleSheet, View, Platform, TouchableOpacity, Image, Dimensions, Animated, Modal, TouchableHighlight, Text, AsyncStorage, BackHandler, TextInput } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const { width, height } = Dimensions.get("window");
 const instructions = Platform.select({
@@ -7,7 +9,14 @@ const instructions = Platform.select({
 });
 
 export default class App extends Component {
+
   constructor() {
+    super();
+    this.state = {
+      User: '', Password: ''
+    };
+  }
+  /*constructor() {
 
     super();
 
@@ -39,14 +48,72 @@ export default class App extends Component {
   chooseLang(lang) {
     global.lang = lang;
     AsyncStorage.setItem('lang', lang, () => this.setState({ langModal: false }))
-  }
+  }*/
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.background}>
+        <View style={{ alignSelf: 'center', margin: 0 }}>
+
+          <View style={{ width: 365, height: 260, borderWidth: 1.5, borderRadius: 1.5, borderColor: '#CD5C5C', margin: 150 }}>
+            <View style={{ width: 350, alignSelf: 'center', borderRadius: 5, margin: 40, backgroundColor: '#FFFFFF' }}>
+              <View style={{ width: 280, height: 40, borderWidth: 1.5, borderRadius: 1.5, alignSelf: 'center', borderColor: 'pink', margin: 17, marginBottom: 10 }}>
+                <View style={{ width: 280, alignSelf: 'center', flexDirection: "row" }}>
+                  <View style={{ height: 37, width: 40, alignSelf: 'center', backgroundColor: 'pink' }}>
+                    <View style={{ alignSelf: 'center', margin: 3 }}>
+                      <Icon name="user" color="#FFFFFF" size={30} />
+                    </View>
+                  </View>
+                  <TextInput style={{ height: 37, width: 238, backgroundColor: '#FFFFFF' }}
+                    onChangeText={(User) => this.setState({ User })}
+                    value={this.state.User}
+                    placeholder='Username'
+                  />
+                </View>
+              </View>
+
+              <View style={{ width: 280, height: 40, borderWidth: 1.5, borderRadius: 1.5, alignSelf: 'center', borderColor: 'pink' }}>
+                <View style={{ width: 280, alignSelf: 'center', flexDirection: "row" }}>
+                  <View style={{ width: 37, width: 40, alignSelf: 'center', backgroundColor: 'pink' }}>
+                    <View style={{ alignSelf: 'center', margin: 3.3 }}>
+                      <Icon name="lock" color="#FFFFFF" size={30} />
+                    </View>
+                  </View>
+                  <TextInput style={{ height: 37, width: 238, backgroundColor: '#FFFFFF' }}
+                    onChangeText={(Password) => this.setState({ Password })}
+                    value={this.state.Password}
+                    placeholder='Password'
+                  />
+                </View>
+              </View>
+              <View style={{ width: 310, alignSelf: 'center', flexDirection: "row" }}>
+                <View style={{ margin: 15, marginBottom: 5 }}>
+                  <View style={{ height: 50, width: 150, alignSelf: 'center' }}>
+                    <TouchableOpacity style={{ backgroundColor: '#FF6347', borderRadius: 5 }} onPress={() => this.props.navigation.navigate('Hospital')}>
+                      <Text style={{ color: '#FFFFFF', fontSize: 17, alignSelf: 'center', margin: 7 }}>
+                        เข้าสู่ระบบ</Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+                <View style={{ alignSelf: 'center' }}>
+                  <TouchableOpacity onPress={() => this.props.navigation.navigate('Register')}>
+                    <Text style={{ color: '#FF6347', fontSize: 15, alignSelf: 'center', margin: 7 }}>
+                      สมัครสมาชิก</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View style={{ position: 'absolute', width: 200, alignSelf: 'center', borderRadius: 7, margin: 125, backgroundColor: '#CD5C5C' }}>
+            <Text style={{ fontSize: 37, color: '#FFFFFF', alignSelf: 'center' }}>LOGIN</Text>
+          </View>
+        </View>
+      </View >
+
+      /*<View style={styles.container}>
         <View style={{ alignSelf: 'center', height: 165, width: 360 }}>
-          {/*<Image source={require('./2222.png')}
-            style={{ alignSelf: 'center', width, height: 155, resizeMode: 'contain', margin: 5 }} />*/}
+          <Image source={require('./2222.png')}
+            style={{ alignSelf: 'center', width, height: 155, resizeMode: 'contain', margin: 5 }} />
         </View>
 
         <View style={{ alignSelf: 'center', height: 370, width: 360, }}>
@@ -170,15 +237,19 @@ export default class App extends Component {
             </View>
           </View>
         </Modal>
-      </View >
-
+        </View >*/
     );
   }
 }
 
 const styles = StyleSheet.create({
 
-  container: {
+  background: {
+    flex: 1,
+    backgroundColor: '#FFF8DC',
+  },
+
+  /*container: {
     flex: 1,
     backgroundColor: '#a4d4f2',
   },
@@ -222,5 +293,5 @@ const styles = StyleSheet.create({
     bottom: 10,
     right: 20,
     zIndex: 10
-  }
+  }*/
 });
