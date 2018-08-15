@@ -149,7 +149,7 @@ export default createStackNavigator({
         }
     },
 }, {
-        initialRouteName: 'Login',
+        initialRouteName: 'App',
     }
 );
 

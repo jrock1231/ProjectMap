@@ -52,7 +52,7 @@ export default class App extends Component {
             
                 <View style={{ height: 70, width: 375, backgroundColor: '#F8F8FF' }}>
                     <Text style={{ alignSelf: 'center', margin: 20, color: 'black', fontSize: 25 }}>
-                        {global.lang == 'th' ? <Text>ที่ท่องเที่ยว</Text> : <Text>Place</Text>}</Text>
+                        {global.lang == 'th' ? <Text>แหล่งท่องเที่ยว</Text> : <Text>Place</Text>}</Text>
 
                     <TouchableOpacity style={{ position: 'absolute', margin: 17 }} onPress={() => this.props.navigation.goBack()}>
                         <Icon name="angle-left" color="black" size={40} />

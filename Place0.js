@@ -104,7 +104,7 @@ class Home extends React.Component {
                                                 </View>
 
                                                 <View style={{ height: 100, width: 220, alignSelf: 'center' }}>
-                                                    <Text style={{ flexDirection: "row", justifyContent: 'space-between', fontSize: 13, color: '#185373', margin: 2 }}>
+                                                    <Text style={{ flexDirection: "row", justifyContent: 'space-between', fontSize: 13, color: 'back', margin: 2 }}>
                                                         {item.name}</Text>
                                                     <Text style={{ flexDirection: "row", justifyContent: 'space-between', fontSize: 10, alignSelf: 'center' }}>
                                                         {item.name2}</Text>
