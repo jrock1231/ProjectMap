@@ -5,6 +5,7 @@ import {
 
 import { createStackNavigator } from 'react-navigation';
 import HospitalScreen from './Hospital'
+import Login from './Test/Login'
 import AppScreen from './App'
 import PlaceScreen from './Place'
 import HotelScreen from './Hotel'
@@ -25,6 +26,13 @@ import Ho13Screen from './Hotel13'
 import Register from './Test/Register'
 
 export default createStackNavigator({
+    Login: {
+        screen: Login,
+        navigationOptions: {
+
+            headerStyle: { height: 0 }
+        }
+    },
     App: {
         screen: AppScreen,
         navigationOptions: {
@@ -141,7 +149,7 @@ export default createStackNavigator({
         }
     },
 }, {
-        initialRouteName: 'App',
+        initialRouteName: 'Login',
     }
 );
 

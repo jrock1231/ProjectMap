@@ -6,7 +6,6 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { Dialog } from 'react-native-simple-dialogs'
 import Hotel_th from './Hotel_th/Hotel10_th.json'
 import Hotel_en from './Hotel_en/Hotel10_en.json'
-import Place0 from './111.js'
 
 const { width, height } = Dimensions.get("window");
 const instructions = Platform.select({
