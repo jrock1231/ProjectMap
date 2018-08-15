@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Platform, TouchableOpacity, Image, Dimensions, Animated, Modal, TouchableHighlight, Text, AsyncStorage, BackHandler, TextInput, KeyboardAvoidingView } from 'react-native';
+import { StyleSheet, View, Platform, TouchableOpacity, Image, Dimensions, Animated, Modal, TouchableHighlight, Text, AsyncStorage, BackHandler, TextInput, KeyboardAvoidingView, firebase } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const { width, height } = Dimensions.get("window");
@@ -12,8 +12,93 @@ export default class App extends Component {
     constructor() {
         super();
         this.state = {
-            User: '', Password: ''
+            email: '', Password: '', isChoosed: false,
+            langModal: false
         };
+    }
+    componentDidMount() {
+
+        let _this = this
+        firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+            .then(user => {
+                // db.ref('users/' + user.uid).on('value', function (data) {
+                data = data.val()
+                AsyncStorage.setItem('userName', user.displayName)
+                AsyncStorage.setItem('userId', user.uid)
+                AsyncStorage.setItem('isLogin', 'true')
+                global.userName = user.displayName;
+                global.userId = user.uid;
+                // global.userCount = data.count;
+                global.isLogin = true;
+                _this.setState({
+                    userName: user.displayName,
+                    userId: user.uid,
+                    isLogin: true
+                })
+                // _this.setState({ loadingLogin: false })
+                // if (_this.state.isPlay) {
+                //     _this.props.navigation.navigate('Main')
+                // }
+                // })
+            })
+            .catch((e) => {
+                if (e.code == 'auth/invalid-email') {
+                    this.setState({ loadingLogin: false })
+                    if (this.state.lang == 'TH') {
+                        Alert.alert('เข้าสู่ระบบไม่สำเร็จ', 'กรุณากรอกข้อมูลให้ครบถ้วน', [{ text: 'ตกลง' }])
+                    }
+                    else {
+                        Alert.alert('Login Failed', 'Please complete all fields', [{ text: 'OK' }])
+                    }
+                }
+                else if (e.code == 'auth/user-not-found') {
+                    this.setState({ loadingLogin: false })
+                    if (this.state.lang == 'TH') {
+                        Alert.alert('เข้าสู่ระบบไม่สำเร็จ', 'ไม่พบชื่อผู้ใช้งาน \n(' + this.state.email + ')', [{ text: 'ตกลง' }])
+                    }
+                    else {
+                        Alert.alert('Login Failed', 'user not found', [{ text: 'OK' }])
+                    }
+                }
+                else if (e.code == 'auth/wrong-password') {
+                    this.setState({ loadingLogin: false })
+                    if (this.state.lang == 'TH') {
+                        Alert.alert('เข้าสู่ระบบไม่สำเร็จ', 'รหัสผ่านไม่ถูกต้อง', [{ text: 'ตกลง' }])
+                    }
+                    else {
+                        Alert.alert('Login Failed', 'wrong password', [{ text: 'OK' }])
+                    }
+                }
+                else {
+                    this.setState({ loadingLogin: false })
+                    if (this.state.lang == 'TH') {
+                        Alert.alert('เข้าสู่ระบบไม่สำเร็จ', e.message, [{ text: 'ตกลง' }])
+                    }
+                    else {
+                        Alert.alert('Login Failed', e.message, [{ text: 'OK' }])
+                    }
+                }
+            })
+        AsyncStorage.getItem('lang').then((lang) => {
+            if (!lang) {
+                global.lang = 'th'
+                this.forceUpdate()
+            }
+            else {
+                global.lang = lang
+                this.forceUpdate()
+            }
+        })
+
+        BackHandler.addEventListener('hardwareBackPress', () => {
+            this.back()
+            return true
+        })
+    }
+
+    chooseLang(lang) {
+        global.lang = lang;
+        AsyncStorage.setItem('lang', lang, () => this.setState({ langModal: false }))
     }
     render() {
         return (
@@ -30,9 +115,9 @@ export default class App extends Component {
                                         </View>
                                     </View>
                                     <TextInput style={{ height: 37, width: 238, backgroundColor: '#FFFFFF' }}
-                                        onChangeText={(User) => this.setState({ User })}
-                                        value={this.state.User}
-                                        placeholder='Username'
+                                        onChangeText={(email) => this.setState({ email })}
+                                        value={this.state.email}
+                                        placeholder='email'
                                     />
                                 </View>
                             </View>
@@ -55,7 +140,7 @@ export default class App extends Component {
                             <View style={{ width: 310, alignSelf: 'center', flexDirection: "row" }}>
                                 <View style={{ margin: 15, marginBottom: 5 }}>
                                     <View style={{ height: 50, width: 150, alignSelf: 'center' }}>
-                                        <TouchableOpacity style={{ backgroundColor: '#FF6347', borderRadius: 5 }} onPress={() => this.props.navigation.navigate('Hospital')}>
+                                        <TouchableOpacity style={{ backgroundColor: '#FF6347', borderRadius: 5 }} onPress={() => this.props.navigation.navigate('HospitalSurat')}>
                                             <Text style={{ color: '#FFFFFF', fontSize: 17, alignSelf: 'center', margin: 7 }}>
                                                 เข้าสู่ระบบ</Text>
                                         </TouchableOpacity>
@@ -74,6 +159,53 @@ export default class App extends Component {
                         <Text style={{ fontSize: 37, color: '#FFFFFF', alignSelf: 'center', fontStyle: 'italic', fontWeight: 'bold' }}> LOGIN </Text>
                     </View>
                 </KeyboardAvoidingView>
+                <TouchableOpacity style={styles.flagBtn} onPress={() => !this.state.isChoosed ? this.setState({ langModal: true }) : null}>
+                    {
+                        global.lang == 'th' ?
+                            <Animated.Image source={require('../th.png')} style={[styles.flag, { opacity: this.state.itemCenterOpacity }]} />
+                            :
+                            <Animated.Image source={require('../en.jpg')} style={[styles.flag, { opacity: this.state.itemCenterOpacity }]} />
+                    }
+                </TouchableOpacity>
+
+                <Modal
+                    animationType={"fade"}
+                    transparent={true}
+                    visible={this.state.langModal}
+                    onRequestClose={() => { this.setState({ langModal: false }) }}
+                >
+                    <TouchableHighlight onPress={() => this.setState({ langModal: false })} style={{ backgroundColor: '#000000', opacity: 0.5, flex: 1 }}><View></View></TouchableHighlight>
+                    <View style={{ backgroundColor: '#fff', position: 'absolute', flex: 1, alignSelf: 'center', marginTop: 200, borderRadius: 10, paddingVertical: 5 }}>
+                        <Text style={{ textAlign: 'center', color: 'black', fontSize: 20, margin: 13, marginBottom: -10 }}>
+                            {global.lang == 'th' ? <Text>เลือกภาษา</Text> : <Text>Choose Language</Text>}</Text>
+                        <View style={{ alignSelf: 'center', width: width - 100, flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center', padding: 30 }}>
+
+                            <TouchableOpacity onPress={() => this.chooseLang('th')}>
+                                <Image source={require('../th.png')} style={styles.flagInModal} />
+                            </TouchableOpacity>
+
+                            <TouchableOpacity onPress={() => this.chooseLang('en')}>
+                                <Image source={require('../en.jpg')} style={styles.flagInModal} />
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </Modal>
+                <View style={{ margin: 15, marginBottom: 5 }}>
+                    <View style={{ height: 50, width: 150, alignSelf: 'center' }}>
+                        <TouchableOpacity style={{ backgroundColor: '#FF6347', borderRadius: 5 }} onPress={() => this.props.navigation.navigate('login_example')}>
+                            <Text style={{ color: '#FFFFFF', fontSize: 17, alignSelf: 'center', margin: 7 }}>
+                                เข้าสู่ระบบ</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+                <View style={{ margin: 15, marginBottom: 5 }}>
+                    <View style={{ height: 50, width: 150, alignSelf: 'center' }}>
+                        <TouchableOpacity style={{ backgroundColor: '#FF6347', borderRadius: 5 }} onPress={() => this.props.navigation.navigate('register_example')}>
+                            <Text style={{ color: '#FFFFFF', fontSize: 17, alignSelf: 'center', margin: 7 }}>
+                                เข้าสู่ระบบ</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
             </View >
         );
     }
@@ -85,4 +217,20 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#FFF8DC',
     },
+    flag: {
+        width: 60,
+        height: 40,
+        borderRadius: 3
+    },
+    flagInModal: {
+        width: 90,
+        height: 55,
+        borderRadius: 3
+    },
+    flagBtn: {
+        position: 'absolute',
+        bottom: 10,
+        right: 20,
+        zIndex: 10
+    }
 });
