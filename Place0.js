@@ -39,7 +39,7 @@ class Home extends React.Component {
                     backgroundColor: '#a4d4f2'
                 }}>
                     <View style={{ height: 40 }}>
-                        <TextInput style={{ height: 35, width: 305, borderRadius: 15, alignSelf: 'center', borderColor: 'gray', borderWidth: 2 }}
+                        <TextInput style={{ height: 35, width: 305, borderRadius: 15, alignSelf: 'center', borderColor: '#ffffff', borderWidth: 2 }}
                             onChangeText={(text) => this.setState({ text })}
                             value={this.state.text}
                             placeholder='ค้นหา'
@@ -111,7 +111,7 @@ class Home extends React.Component {
                                                 </View>
 
                                                 <View style={{ flexDirection: 'column', justifyContent: 'center', height: 101, width: 18 }}>
-                                                    <Icon name="chevron-right" color="#185373" size={25} />
+                                                    <Icon name="chevron-right" color="#00EEEE'" size={20} />
                                                 </View>
                                             </View>
 
@@ -365,7 +365,7 @@ class SettingsScreen extends React.Component {
                                                 </View>
 
                                                 <View style={{ flexDirection: 'column', justifyContent: 'center', height: 101, width: 18 }}>
-                                                    <Icon name="chevron-right" color="#185373" size={25} />
+                                                    <Icon name="chevron-right" color="#00EEEE'" size={20} />
                                                 </View>
                                             </View>
 
@@ -575,7 +575,7 @@ class SettingsScreen1 extends React.Component {
                                 <View>
                                     {item.name.indexOf(this.state.text) > -1 ?
                                         <TouchableOpacity style={{
-                                            height: 45, width: 355, alignSelf: 'center', margin: 4, backgroundColor: '#dedfd7', borderRadius: 2
+                                            height: 45, width: 355, alignSelf: 'center', margin: 4, backgroundColor: '#ffffff', borderRadius: 2, borderColor: '#00EEEE', borderWidth: 2
                                         }}
                                             onPress={() => this.setState({
                                                 showmodal: true,
@@ -609,7 +609,7 @@ class SettingsScreen1 extends React.Component {
                                                 </View>
 
                                                 <View style={{ flexDirection: 'column', justifyContent: 'center', height: 45, width: 18 }}>
-                                                    <Icon name="chevron-right" color="#185373" size={25} />
+                                                    <Icon name="chevron-right" color="#00EEEE" size={15} />
                                                 </View>
                                             </View>
 
@@ -736,8 +736,10 @@ const styles = StyleSheet.create({
         width: 355,
         alignSelf: 'center',
         margin: 2.5,
-        backgroundColor: '#dedfd7',
-        borderRadius: 2
+        backgroundColor: '#ffffff',
+        borderRadius: 2,
+        borderColor: '#00EEEE',
+        borderWidth: 2
     },
     instructions: {
         height: 65,

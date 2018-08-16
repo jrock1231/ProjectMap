@@ -46,6 +46,13 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
+
+      <View style={{ position: 'absolute',alignSelf: 'center',}}>
+        <Image source={require('./999.jpg')}
+          style={{ alignSelf: 'center', width : 510, height: 570, resizeMode: 'contain', margin: 2 }} />
+      </View>
+
+      <View style={styles.container}>
         <View style={{ alignSelf: 'center', height: 165, width: 360 }}>
           <Image source={require('./234.png')}
             style={{ alignSelf: 'center', width, height: 155, resizeMode: 'contain', margin: 5 }} />
@@ -57,7 +64,7 @@ export default class App extends Component {
               <View style={{ position: 'absolute', backgroundColor: '#FFFFFF', height: 50, width: 230, alignSelf: 'center', margin: 17.5, borderRadius: 7, }}>
                 <View style={{ position: 'absolute', backgroundColor: '#a4d4f2', height: 46, width: 226, alignSelf: 'center', margin: 2, borderRadius: 4.5, }}>
                   <Text style={{ color: '#185373', fontSize: 25, alignSelf: 'center', margin: 7 }}>
-                    {global.lang == 'th' ? <Text>แหล่งท่องเที่ยว</Text> : <Text>Place</Text>}</Text>
+                    {global.lang == 'th' ? <Text>ท่องเที่ยว</Text> : <Text>Place</Text>}</Text>
                 </View>
               </View>
               <View style={{ position: 'absolute', width: 84.5, height: 70, alignSelf: 'flex-end', margin: 7.5 }}>
@@ -173,6 +180,8 @@ export default class App extends Component {
           </View>
         </Modal>
         </View >
+        </View>
+       
     );
   }
 }
@@ -181,7 +190,6 @@ const styles = StyleSheet.create({
 
   container: {
     flex: 1,
-    backgroundColor: '#79CDCD',
   },
   header: {
     flex: 1,

@@ -35,7 +35,7 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
 
-        <View style={{ height: 70, width: 375, backgroundColor: '#F8F8FF' }}>
+        <View style={{ height: 70, width: 375, backgroundColor: '#6CA6CD' }}>
           <Text style={{ alignSelf: 'center', resizeMode: 'contain', margin: 20, color: 'black', fontSize: 25 }}>
             {global.lang == 'th' ? <Text>โรงแรม</Text> : <Text>Hotel</Text>}</Text>
           <TouchableOpacity style={{ position: 'absolute', margin: 17 }} onPress={() => this.props.navigation.goBack()}>
@@ -43,20 +43,16 @@ export default class App extends Component {
           </TouchableOpacity>
         </View>
 
-        <View style={{ height: 150, width: 375 }}>
-          <View style={{ position: 'absolute', backgroundColor: '#dedfd7', alignSelf: 'center', width: 90, height: 90, borderRadius: 100, margin: 22 }}>
-          </View>
-          <Image source={require('./AppPage/กรอบ.png')}
-            style={{ position: 'absolute', alignSelf: 'center', width, height: 135, resizeMode: 'contain', margin: 10 }} />
-
-          <View style={{ position: 'absolute', width: 375, height: 110, margin: 1 }}>
-            <Image source={require('./AppPage/โรงแรม.png')}
-              style={{ width: 65, height: 65, margin: 34, alignSelf: 'center' }} />
+        <View style={{ height: 180, width: 375 }}>
+          
+          <View style={{ position: 'absolute', margin: -15, alignSelf: 'center'  }}>
+            <Image source={require('./AppPage/โรงแรม2.png')}
+              style={{ width: 200, height: 200, margin: 1, alignSelf: 'center' }} />
           </View>
         </View>
 
         <View style={{ height: 40 }}>
-          <TextInput style={{ height: 35, width: 305, borderRadius: 15, alignSelf: 'center', borderColor: 'gray', borderWidth: 2 }}
+          <TextInput style={{ height: 35, width: 305, borderRadius: 15, alignSelf: 'center', borderColor: '#ffffff', borderWidth: 2 }}
             onChangeText={(text) => this.setState({ text })}
             value={this.state.text}
             placeholder='ค้นหา'
@@ -87,7 +83,7 @@ export default class App extends Component {
               renderItem={({ item }) =>
                 <View>
                   {item.name.indexOf(this.state.text) > -1 ?
-                    <TouchableOpacity style={{ height: 42, width: 320, alignSelf: 'center', margin: 2.5, backgroundColor: '#dedfd7', borderRadius: 5 }} onPress={() => this.props.navigation.navigate(item.Hotel)} >
+                    <TouchableOpacity style={{ height: 42, width: 320, alignSelf: 'center', margin: 2.5, backgroundColor: '#ffffff', borderRadius: 5 , borderColor: '#00EEEE', borderWidth: 2 }} onPress={() => this.props.navigation.navigate(item.Hotel)} >
 
                       <View style={{ flexDirection: "row", margin: 0 }}>
 
@@ -97,7 +93,7 @@ export default class App extends Component {
                         </View>
 
                         <View style={{ flexDirection: 'column', justifyContent: 'center', height: 42, flex: 0.2 }}>
-                          <Icon name="chevron-right" color="#185373" size={30} />
+                          <Icon name="chevron-right" color="#00EEEE" size={25} />
                         </View>
                       </View>
 
@@ -125,7 +121,7 @@ const styles = StyleSheet.create({
   },
   welcome: {
     height: 80,
-    width: 290,
+    width: 320,
     alignSelf: 'center',
     margin: 2.5,
     backgroundColor: '#996600',

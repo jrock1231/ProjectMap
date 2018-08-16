@@ -50,8 +50,8 @@ export default class App extends Component {
         return (
             <View style={styles.container}>
             
-                <View style={{ height: 70, width: 375, backgroundColor: '#F8F8FF' }}>
-                    <Text style={{ alignSelf: 'center', margin: 20, color: 'black', fontSize: 25 }}>
+                <View style={{ height: 70, width: 375, backgroundColor: '#6CA6CD' }}>
+                    <Text style={{ alignSelf: 'center', margin: 20, color: '#back', fontSize: 25 }}>
                         {global.lang == 'th' ? <Text>แหล่งท่องเที่ยว</Text> : <Text>Place</Text>}</Text>
 
                     <TouchableOpacity style={{ position: 'absolute', margin: 17 }} onPress={() => this.props.navigation.goBack()}>
@@ -59,17 +59,13 @@ export default class App extends Component {
                     </TouchableOpacity>
                 </View>
 
-                <View style={{ height: 150, width: 375 }}>
-                    <View style={{ position: 'absolute', backgroundColor: '#dedfd7', alignSelf: 'center', width: 90, height: 90, borderRadius: 100, margin: 22 }}>
-                    </View>
-                    <Image source={require('./AppPage/กรอบ.png')}
-                        style={{ position: 'absolute', alignSelf: 'center', width, height: 135, resizeMode: 'contain', margin: 10 }} />
-
-                    <View style={{ position: 'absolute', width: 375, height: 110, margin: 1 }}>
-                        <Image source={require('./AppPage/ท่องเที่ยว.png')}
-                            style={{ width: 80, height: 80, margin: 27, alignSelf: 'center' }} />
-                    </View>
-                </View>
+                 <View style={{ height: 180, width: 375 }}>
+          
+          <View style={{ position: 'absolute', margin: 4, alignSelf: 'center'  }}>
+            <Image source={require('./AppPage/เที่ยว3.png')}
+              style={{ width: 170, height: 170, margin: 1, alignSelf: 'center' }} />
+          </View>
+        </View>
 
                 <View style={{ height: 345, width: 355, alignSelf: 'center' }}>
                     <Place0 />

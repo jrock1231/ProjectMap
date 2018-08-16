@@ -5,7 +5,6 @@ import {
 
 import { createStackNavigator } from 'react-navigation';
 import HospitalScreen from './Hospital'
-
 import AppScreen from './App'
 import PlaceScreen from './Place'
 import HotelScreen from './Hotel'
@@ -157,7 +156,7 @@ export default createStackNavigator({
         }
     },
 }, {
-        initialRouteName: 'Login',
+        initialRouteName: 'App',
     }
 );
 
