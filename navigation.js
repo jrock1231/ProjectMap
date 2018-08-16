@@ -5,7 +5,7 @@ import {
 
 import { createStackNavigator } from 'react-navigation';
 import HospitalScreen from './Hospital'
-import Login from './Test/Login'
+
 import AppScreen from './App'
 import PlaceScreen from './Place'
 import HotelScreen from './Hotel'
@@ -23,13 +23,27 @@ import Ho10Screen from './Hotel10'
 import Ho11Screen from './Hotel11'
 import Ho12Screen from './Hotel12'
 import Ho13Screen from './Hotel13'
+import Login from './Test/Login'
 import Register from './Test/Register'
-
+import HospitalSurat from './Test/HospitalSurat'
 export default createStackNavigator({
     Login: {
         screen: Login,
         navigationOptions: {
 
+            headerStyle: { height: 0 }
+        }
+    },
+    HospitalSurat: {
+        screen: HospitalSurat,
+        navigationOptions: {
+
+            headerStyle: { height: 0 }
+        }
+    },
+    Register: {
+        screen: Register,
+        navigationOptions: {
             headerStyle: { height: 0 }
         }
     },
@@ -142,14 +156,8 @@ export default createStackNavigator({
             headerStyle: { height: 0 }
         }
     },
-    Register: {
-        screen: Register,
-        navigationOptions: {
-            headerStyle: { height: 0 }
-        }
-    },
 }, {
-        initialRouteName: 'App',
+        initialRouteName: 'Login',
     }
 );
 

@@ -48,10 +48,11 @@ export default class App extends Component {
                         placeholder='ค้นหา'
                     />
                 </View>
-
-                <View style={{ height: 390, width: 320, alignSelf: 'center', backgroundColor: 'ADD8E6' }}>
-                    <ScrollView>
-                        {/* {global.lang == 'en' || HospitalSurat_th.filter(HospitalSurat => { return HospitalSurat.name.indexOf(this.state.text) > -1 })[0] || this.state.text == '' ?
+                <View style={{ height: 400, width: 350, alignSelf: 'center', borderRadius: 5, backgroundColor: 'red' }}>
+                    <View style={{ height: 380, width: 330, alignSelf: 'center', borderRadius: 5, backgroundColor: '#FFFFFF',margin: 10 }}>
+                        <View style={{ height: 350, width: 300, alignSelf: 'center', backgroundColor: 'red', margin: 20 }}>
+                            <ScrollView>
+                                {/* {global.lang == 'en' || HospitalSurat_th.filter(HospitalSurat => { return HospitalSurat.name.indexOf(this.state.text) > -1 })[0] || this.state.text == '' ?
               null :
               <Text>ไม่พบ '{this.state.text}'</Text>
             }
@@ -60,170 +61,172 @@ export default class App extends Component {
               <Text>Not found '{this.state.text}'</Text>
             } */}
 
-                        {!global.lang || global.lang == 'th' ?
-                            HospitalSurat_th.filter(HospitalSurat => { return HospitalSurat.name.indexOf(this.state.text) > -1 }).length == 0 && this.state.text != '' ?
-                                <Text>ไม่พบ '{this.state.text}'</Text>
-                                :
-                                null
-                            :
-                            HospitalSurat_en.filter(HospitalSurat => { return HospitalSurat.name.indexOf(this.state.text) > -1 }).length == 0 && this.state.text != '' ?
-                                <Text>Not found '{this.state.text}'</Text>
-                                :
-                                null
-                        }
-
-                        {console.log(HospitalSurat_th.filter(HospitalSurat => { return HospitalSurat.name.indexOf(this.state.text) > -1 }))}
-                        <FlatList
-                            data={global.lang == 'th' ? HospitalSurat_th : HospitalSurat_en}
-                            extraData={this.state.text}
-                            renderItem={({ item }) =>
-                                <View>
-                                    {item.name.indexOf(this.state.text) > -1 ?
-                                        <TouchableOpacity style={styles.welcome} onPress={() => this.setState({
-                                            showmodal: true,
-                                            name: item.name,
-                                            location: item.location,
-                                            number: item.number,
-                                            number1: item.number1,
-                                            Icon1: item.Icon1,
-                                            Icon2: item.Icon2,
-                                            Web: item.Web,
-                                            Web1: item.Web1,
-                                            form: item.form,
-                                            Map: item.Map,
-                                            Map1: item.Map1,
-                                            Taxi: item.Taxi,
-                                            Bus: item.Bus,
-                                            Tuk: item.Tuk,
-                                            Van: item.Van,
-                                            Train: item.Train,
-
-                                        })}>
-
-                                            <View style={{ justifyContent: 'space-between', flexDirection: "row", margin: 7.5 }}>
-                                                <Text style={{ flexDirection: "row", justifyContent: 'space-between', fontSize: 18, color: '#185373' }}>
-                                                    {item.name}</Text>
-
-                                                <Icon name="chevron-right" color="#185373" size={30} />
-                                            </View>
-
-                                        </TouchableOpacity>
+                                {!global.lang || global.lang == 'th' ?
+                                    HospitalSurat_th.filter(HospitalSurat => { return HospitalSurat.name.indexOf(this.state.text) > -1 }).length == 0 && this.state.text != '' ?
+                                        <Text>ไม่พบ '{this.state.text}'</Text>
                                         :
                                         null
-                                    }
+                                    :
+                                    HospitalSurat_en.filter(HospitalSurat => { return HospitalSurat.name.indexOf(this.state.text) > -1 }).length == 0 && this.state.text != '' ?
+                                        <Text>Not found '{this.state.text}'</Text>
+                                        :
+                                        null
+                                }
 
-                                </View>
-                            } />
-                    </ScrollView>
-                    <Modal
-                        visible={this.state.showmodal}
-                        transparent={true}
-                        onRequestClose={() => this.setState({ showmodal: false })}
-                        animationType={'fade'}
-                    >
-                        <TouchableHighlight onPress={() => this.setState({ showmodal: false })}
-                            style={{ backgroundColor: '#000000', opacity: 0.5, flex: 1 }}>
-                            <View></View>
-                        </TouchableHighlight>
+                                {console.log(HospitalSurat_th.filter(HospitalSurat => { return HospitalSurat.name.indexOf(this.state.text) > -1 }))}
+                                <FlatList
+                                    data={global.lang == 'th' ? HospitalSurat_th : HospitalSurat_en}
+                                    extraData={this.state.text}
+                                    renderItem={({ item }) =>
+                                        <View>
+                                            {item.name.indexOf(this.state.text) > -1 ?
+                                                <TouchableOpacity style={styles.welcome} onPress={() => this.setState({
+                                                    showmodal: true,
+                                                    name: item.name,
+                                                    location: item.location,
+                                                    number: item.number,
+                                                    number1: item.number1,
+                                                    Icon1: item.Icon1,
+                                                    Icon2: item.Icon2,
+                                                    Web: item.Web,
+                                                    Web1: item.Web1,
+                                                    form: item.form,
+                                                    Map: item.Map,
+                                                    Map1: item.Map1,
+                                                    Taxi: item.Taxi,
+                                                    Bus: item.Bus,
+                                                    Tuk: item.Tuk,
+                                                    Van: item.Van,
+                                                    Train: item.Train,
 
-                        <View style={{ position: 'absolute', backgroundColor: '#a4d4f2', height: 570, width: 375, alignSelf: 'center' }}>
+                                                })}>
 
-                            <View style={{ height: 70, width: 375, backgroundColor: '#F8F8FF' }}>
-                                <Text style={{ alignSelf: 'center', resizeMode: 'contain', margin: 24, color: 'black', fontSize: 21 }}>
-                                    {this.state.name}</Text>
-                                <TouchableOpacity style={{ position: 'absolute', margin: 17 }} onPress={() => this.setState({ showmodal: false })}>
-                                    <Icon name="angle-left" color="black" size={40} />
-                                </TouchableOpacity>
-                            </View>
-                            <View style={{ height: 150, width: 375 }}>
-                                <Image source={this.state.form}
-                                    style={{ alignSelf: 'center', width, height: 135, resizeMode: 'contain', margin: 10 }} />
-                            </View>
+                                                    <View style={{ justifyContent: 'space-between', flexDirection: "row", margin: 7.5 }}>
+                                                        <Text style={{ flexDirection: "row", justifyContent: 'space-between', fontSize: 18, color: '#185373' }}>
+                                                            {item.name}</Text>
 
-                            <ScrollView style={{ alignSelf: 'center', width: 360 }}>
-                                <View style={{ alignSelf: 'center', height: 170, width: 350 }}>
-                                    <View style={{ flexDirection: "row", resizeMode: 'contain', margin: 5 }}>
-                                        <Icon name="home" color="black" size={25} />
-                                        <Text style={{ color: '#000033', fontSize: 17, marginBottom: 15 }}>{this.state.location}</Text>
-                                    </View>
+                                                        <Icon name="chevron-right" color="#185373" size={30} />
+                                                    </View>
 
-                                    <View style={{ flexDirection: "row", resizeMode: 'contain', margin: 5 }}>
-                                        <Icon name="phone" color="black" size={25} />
-                                        <TouchableOpacity style={{}} onPress={() => Linking.openURL(this.state.number)} >
-                                            <Text style={{ color: this.state.Icon1, fontSize: 17, marginBottom: 15 }}> {this.state.number1}</Text>
-                                        </TouchableOpacity>
-                                    </View>
+                                                </TouchableOpacity>
+                                                :
+                                                null
+                                            }
 
-                                    <View style={{ flexDirection: "row", resizeMode: 'contain', margin: 5 }}>
-                                        <Icon name="globe" color="black" size={25} />
-                                        <TouchableOpacity style={{}} onPress={() => Linking.openURL(this.state.Web)} >
-                                            <Text style={{ color: this.state.Icon2, fontSize: 17, marginBottom: 15 }}>{this.state.Web1}</Text>
-                                        </TouchableOpacity>
-                                    </View>
-                                </View>
-
-                                <View style={styles.instructions}>
-                                    <TouchableOpacity onPress={() => this.setState(
-                                        Alert.alert(
-                                            'รายละเอียด',
-                                            this.state.Taxi
-                                        ))}>
-                                        <Image source={require('../Taxi.png')} style={{ margin: 3, width: 70, height: 65 }} />
-                                    </TouchableOpacity>
-
-                                    <TouchableOpacity onPress={() => this.setState(
-                                        Alert.alert(
-                                            'รายละเอียด',
-                                            this.state.Bus
-                                        ))}>
-                                        <Image source={require('../Bus.png')} style={{ margin: 3, width: 65, height: 65 }} />
-                                    </TouchableOpacity>
-
-                                    <TouchableOpacity onPress={() => this.setState(
-                                        Alert.alert(
-                                            'รายละเอียด',
-                                            this.state.Tuk
-                                        ))}>
-                                        <Image source={require('../Tuk.png')} style={{ margin: 3, width: 65, height: 65 }} />
-                                    </TouchableOpacity>
-
-                                    <TouchableOpacity onPress={() => this.setState(
-                                        Alert.alert(
-                                            'รายละเอียด',
-                                            this.state.Van
-                                        ))}>
-                                        <Image source={require('../Van.png')} style={{ margin: 3, width: 65, height: 65 }} />
-                                    </TouchableOpacity>
-
-                                    <TouchableOpacity onPress={() => this.setState(
-                                        Alert.alert(
-                                            'รายละเอียด',
-                                            this.state.Train
-                                        ))}>
-                                        <Image source={require('../Train.png')} style={{ margin: 3, width: 51, height: 65 }} />
-                                    </TouchableOpacity>
-                                </View>
-
-                                <View style={{
-                                    height: 40, alignSelf: 'center'
-                                }}>
-                                    <TouchableOpacity style={{ margin: 15 }} onPress={() => Linking.openURL(this.state.Map)} >
-                                        <Text style={{ color: 'blue', fontSize: 17 }}>ดูบน Google Maps</Text>
-                                    </TouchableOpacity>
-                                </View>
-
-                                <View style={{
-                                    height: 220, width: 335, alignSelf: 'center',
-                                    marginBottom: 25
-                                }}>
-                                    <TouchableOpacity style={{}} onPress={() => Linking.openURL(this.state.Map)} >
-                                        <Image source={this.state.Map1} style={{ alignSelf: 'center', margin: 15, height: 200, width: 335, borderRadius: 5 }} />
-                                    </TouchableOpacity>
-                                </View>
-
+                                        </View>
+                                    } />
                             </ScrollView>
+                            <Modal
+                                visible={this.state.showmodal}
+                                transparent={true}
+                                onRequestClose={() => this.setState({ showmodal: false })}
+                                animationType={'fade'}
+                            >
+                                <TouchableHighlight onPress={() => this.setState({ showmodal: false })}
+                                    style={{ backgroundColor: '#000000', opacity: 0.5, flex: 1 }}>
+                                    <View></View>
+                                </TouchableHighlight>
+
+                                <View style={{ position: 'absolute', backgroundColor: '#a4d4f2', height: 570, width: 375, alignSelf: 'center' }}>
+
+                                    <View style={{ height: 70, width: 375, backgroundColor: '#F8F8FF' }}>
+                                        <Text style={{ alignSelf: 'center', resizeMode: 'contain', margin: 24, color: 'black', fontSize: 21 }}>
+                                            {this.state.name}</Text>
+                                        <TouchableOpacity style={{ position: 'absolute', margin: 17 }} onPress={() => this.setState({ showmodal: false })}>
+                                            <Icon name="angle-left" color="black" size={40} />
+                                        </TouchableOpacity>
+                                    </View>
+                                    <View style={{ height: 150, width: 375 }}>
+                                        <Image source={this.state.form}
+                                            style={{ alignSelf: 'center', width, height: 135, resizeMode: 'contain', margin: 10 }} />
+                                    </View>
+
+                                    <ScrollView style={{ alignSelf: 'center', width: 360 }}>
+                                        <View style={{ alignSelf: 'center', height: 170, width: 350 }}>
+                                            <View style={{ flexDirection: "row", resizeMode: 'contain', margin: 5 }}>
+                                                <Icon name="home" color="black" size={25} />
+                                                <Text style={{ color: '#000033', fontSize: 17, marginBottom: 15 }}>{this.state.location}</Text>
+                                            </View>
+
+                                            <View style={{ flexDirection: "row", resizeMode: 'contain', margin: 5 }}>
+                                                <Icon name="phone" color="black" size={25} />
+                                                <TouchableOpacity style={{}} onPress={() => Linking.openURL(this.state.number)} >
+                                                    <Text style={{ color: this.state.Icon1, fontSize: 17, marginBottom: 15 }}> {this.state.number1}</Text>
+                                                </TouchableOpacity>
+                                            </View>
+
+                                            <View style={{ flexDirection: "row", resizeMode: 'contain', margin: 5 }}>
+                                                <Icon name="globe" color="black" size={25} />
+                                                <TouchableOpacity style={{}} onPress={() => Linking.openURL(this.state.Web)} >
+                                                    <Text style={{ color: this.state.Icon2, fontSize: 17, marginBottom: 15 }}>{this.state.Web1}</Text>
+                                                </TouchableOpacity>
+                                            </View>
+                                        </View>
+
+                                        <View style={styles.instructions}>
+                                            <TouchableOpacity onPress={() => this.setState(
+                                                Alert.alert(
+                                                    'รายละเอียด',
+                                                    this.state.Taxi
+                                                ))}>
+                                                <Image source={require('../Taxi.png')} style={{ margin: 3, width: 70, height: 65 }} />
+                                            </TouchableOpacity>
+
+                                            <TouchableOpacity onPress={() => this.setState(
+                                                Alert.alert(
+                                                    'รายละเอียด',
+                                                    this.state.Bus
+                                                ))}>
+                                                <Image source={require('../Bus.png')} style={{ margin: 3, width: 65, height: 65 }} />
+                                            </TouchableOpacity>
+
+                                            <TouchableOpacity onPress={() => this.setState(
+                                                Alert.alert(
+                                                    'รายละเอียด',
+                                                    this.state.Tuk
+                                                ))}>
+                                                <Image source={require('../Tuk.png')} style={{ margin: 3, width: 65, height: 65 }} />
+                                            </TouchableOpacity>
+
+                                            <TouchableOpacity onPress={() => this.setState(
+                                                Alert.alert(
+                                                    'รายละเอียด',
+                                                    this.state.Van
+                                                ))}>
+                                                <Image source={require('../Van.png')} style={{ margin: 3, width: 65, height: 65 }} />
+                                            </TouchableOpacity>
+
+                                            <TouchableOpacity onPress={() => this.setState(
+                                                Alert.alert(
+                                                    'รายละเอียด',
+                                                    this.state.Train
+                                                ))}>
+                                                <Image source={require('../Train.png')} style={{ margin: 3, width: 51, height: 65 }} />
+                                            </TouchableOpacity>
+                                        </View>
+
+                                        <View style={{
+                                            height: 40, alignSelf: 'center'
+                                        }}>
+                                            <TouchableOpacity style={{ margin: 15 }} onPress={() => Linking.openURL(this.state.Map)} >
+                                                <Text style={{ color: 'blue', fontSize: 17 }}>ดูบน Google Maps</Text>
+                                            </TouchableOpacity>
+                                        </View>
+
+                                        <View style={{
+                                            height: 220, width: 335, alignSelf: 'center',
+                                            marginBottom: 25
+                                        }}>
+                                            <TouchableOpacity style={{}} onPress={() => Linking.openURL(this.state.Map)} >
+                                                <Image source={this.state.Map1} style={{ alignSelf: 'center', margin: 15, height: 200, width: 335, borderRadius: 5 }} />
+                                            </TouchableOpacity>
+                                        </View>
+
+                                    </ScrollView>
+                                </View>
+                            </Modal>
                         </View>
-                    </Modal>
+                    </View>
                 </View>
             </View >
         );
