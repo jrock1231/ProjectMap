@@ -41,7 +41,7 @@ export default class App extends Component {
     render() {
         return (
             <View style={styles.background}>
-                <KeyboardAvoidingView behavior='padding' style={{ alignSelf: 'center', margin: 0 }}>
+                <View behavior='padding' style={{ alignSelf: 'center', margin: 0 }}>
 
                     <View style={{ width: 350, height: 260, borderWidth: 1.5, borderRadius: 3, borderColor: '#CD5C5C', margin: 150 }}>
                         <View style={{ width: 335, alignSelf: 'center', borderRadius: 5, margin: 40, backgroundColor: '#FFFFFF' }}>
@@ -60,7 +60,7 @@ export default class App extends Component {
                                 </View>
                             </View>
 
-                            <View style={{ width: 280, height: 40, borderWidth: 1.5, borderRadius: 1.5, alignSelf: 'center', borderColor: 'pink' }}>
+                            <View style={{ width: 280, height: 40, borderWidth: 1.5, borderRadius: 1.5, marginBottom: 25, alignSelf: 'center', borderColor: 'pink' }}>
                                 <View style={{ width: 280, alignSelf: 'center', flexDirection: "row" }}>
                                     <View style={{ width: 37, width: 40, alignSelf: 'center', backgroundColor: 'pink' }}>
                                         <View style={{ alignSelf: 'center', margin: 3.3 }}>
@@ -75,20 +75,23 @@ export default class App extends Component {
                                     />
                                 </View>
                             </View>
-                            <View style={{ width: 310, alignSelf: 'center', flexDirection: "row" }}>
-                                <View style={{ margin: 15, marginBottom: 5 }}>
-                                    <View style={{ height: 50, width: 150, alignSelf: 'center' }}>
+
+                            <View style={{ alignSelf: 'center', flexDirection: "row" }}>
+                                <View style={{ marginBottom: 5 }}>
+                                    <View style={{ height: 50, width: 145, alignSelf: 'center' }}>
                                         <TouchableOpacity style={{ backgroundColor: '#FF6347', borderRadius: 5 }} onPress={() => this.props.navigation.navigate('HospitalSurat')}>
                                             <Text style={{ color: '#FFFFFF', fontSize: 17, alignSelf: 'center', margin: 7 }}>
-                                                เข้าสู่ระบบ</Text>
+                                                {global.lang == 'th' ? <Text>เข้าสู่ระบบ</Text> : <Text>Log in</Text>}</Text>
                                         </TouchableOpacity>
                                     </View>
                                 </View>
-                                <View style={{ alignSelf: 'center' }}>
-                                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Register')}>
-                                        <Text style={{ color: '#FF6347', fontSize: 15, alignSelf: 'center', margin: 7 }}>
-                                            สมัครสมาชิก</Text>
-                                    </TouchableOpacity>
+                                <View style={{ marginBottom: 5 }}>
+                                    <View style={{ height: 50, width: 120, alignSelf: 'center' }}>
+                                        <TouchableOpacity onPress={() => this.props.navigation.navigate('Register')}>
+                                            <Text style={{ color: '#FF6347', fontSize: 15, alignSelf: 'center', margin: 7 }}>
+                                                {global.lang == 'th' ? <Text>สมัครสมาชิก</Text> : <Text>Register</Text>}</Text>
+                                        </TouchableOpacity>
+                                    </View>
                                 </View>
                             </View>
                         </View>
@@ -96,7 +99,7 @@ export default class App extends Component {
                     <View style={{ position: 'absolute', width: 200, alignSelf: 'center', borderRadius: 7, margin: 125, backgroundColor: '#CD5C5C' }}>
                         <Text style={{ fontSize: 37, color: '#FFFFFF', alignSelf: 'center', fontStyle: 'italic', fontWeight: 'bold' }}> LOGIN </Text>
                     </View>
-                </KeyboardAvoidingView>
+                </View>
                 <TouchableOpacity style={styles.flagBtn} onPress={() => !this.state.isChoosed ? this.setState({ langModal: true }) : null}>
                     {
                         global.lang == 'th' ?
@@ -156,9 +159,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFF8DC',
     },
     flag: {
-        width: 60,
-        height: 40,
-        borderRadius: 3
+        width: 50,
+        height: 50,
+        borderRadius: 75
     },
     flagInModal: {
         width: 90,
@@ -167,7 +170,7 @@ const styles = StyleSheet.create({
     },
     flagBtn: {
         position: 'absolute',
-        bottom: 10,
+        bottom: 20,
         right: 20,
         zIndex: 10
     }

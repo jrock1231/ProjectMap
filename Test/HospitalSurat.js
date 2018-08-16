@@ -32,25 +32,19 @@ export default class App extends Component {
         return (
             <View style={styles.container}>
 
-                <View style={{ height: 70, width: 375, backgroundColor: '#F8F8FF' }}>
-                    <Text style={{ alignSelf: 'center', margin: 20, color: 'black', fontSize: 25 }}>
+                <View style={{ height: 70, width: 375, alignSelf: 'center', backgroundColor: '#CD5C5C' }}>
+                    <Text style={{ alignSelf: 'center', margin: 10, color: '#FFFFFF', fontWeight: 'bold', fontSize: 40 }}>
                         {global.lang == 'th' ? <Text>โรงพยาบาล</Text> : <Text>Hospital</Text>}</Text>
-
-                    <TouchableOpacity style={{ position: 'absolute', margin: 17 }} onPress={() => this.props.navigation.goBack()}>
-                        <Icon name="angle-left" color="black" size={40} />
-                    </TouchableOpacity>
+                    <View style={{ position: 'absolute', height: 70, width: 35 }}>
+                        <TouchableOpacity style={{ margin: 9, alignSelf: 'flex-end' }} onPress={() => this.props.navigation.goBack()}>
+                            <Icon name="angle-left" color="#FFFFFF" size={50} />
+                        </TouchableOpacity>
+                    </View>
                 </View>
 
-                <View style={{ height: 95 }}>
-                    <TextInput style={{ height: 40, width: 305, borderRadius: 5, alignSelf: 'center', borderColor: 'black', borderWidth: 2, margin: 10 }}
-                        onChangeText={(text) => this.setState({ text })}
-                        value={this.state.text}
-                        placeholder='ค้นหา'
-                    />
-                </View>
-                <View style={{ height: 400, width: 350, alignSelf: 'center', borderRadius: 5, backgroundColor: 'red' }}>
-                    <View style={{ height: 380, width: 330, alignSelf: 'center', borderRadius: 5, backgroundColor: '#FFFFFF',margin: 10 }}>
-                        <View style={{ height: 350, width: 300, alignSelf: 'center', backgroundColor: 'red', margin: 20 }}>
+                <View style={{ height: 430, width: 350, alignSelf: 'center', borderColor: '#CD5C5C', borderRadius: 5, borderWidth: 1.5, margin: 39 }}>
+                    <View style={{ height: 380, width: 335, alignSelf: 'center', borderRadius: 5, backgroundColor: '#FFFFFF', margin: 30 }}>
+                        <View style={{ height: 346, width: 320, alignSelf: 'center', margin: 17 }}>
                             <ScrollView>
                                 {/* {global.lang == 'en' || HospitalSurat_th.filter(HospitalSurat => { return HospitalSurat.name.indexOf(this.state.text) > -1 })[0] || this.state.text == '' ?
               null :
@@ -63,12 +57,12 @@ export default class App extends Component {
 
                                 {!global.lang || global.lang == 'th' ?
                                     HospitalSurat_th.filter(HospitalSurat => { return HospitalSurat.name.indexOf(this.state.text) > -1 }).length == 0 && this.state.text != '' ?
-                                        <Text>ไม่พบ '{this.state.text}'</Text>
+                                        <Text style={{ fontSize: 18, color: 'red' }}>   ไม่พบ '{this.state.text}'</Text>
                                         :
                                         null
                                     :
                                     HospitalSurat_en.filter(HospitalSurat => { return HospitalSurat.name.indexOf(this.state.text) > -1 }).length == 0 && this.state.text != '' ?
-                                        <Text>Not found '{this.state.text}'</Text>
+                                        <Text style={{ fontSize: 18, color: 'red' }}>   Not found '{this.state.text}'</Text>
                                         :
                                         null
                                 }
@@ -101,11 +95,16 @@ export default class App extends Component {
 
                                                 })}>
 
-                                                    <View style={{ justifyContent: 'space-between', flexDirection: "row", margin: 7.5 }}>
-                                                        <Text style={{ flexDirection: "row", justifyContent: 'space-between', fontSize: 18, color: '#185373' }}>
-                                                            {item.name}</Text>
-
-                                                        <Icon name="chevron-right" color="#185373" size={30} />
+                                                    <View style={{ justifyContent: 'space-between', flexDirection: "row" }}>
+                                                        <View style={{ alignSelf: 'center', margin: 5 }}>
+                                                            <Text style={{ flexDirection: "row", justifyContent: 'space-between', fontSize: 18, color: '#663300' }}>
+                                                                {item.name}</Text>
+                                                        </View>
+                                                        <View style={{ width: 40, backgroundColor: 'pink', alignSelf: 'center' }}>
+                                                            <View style={{ alignSelf: 'flex-end', margin: 4 }}>
+                                                                <Icon name="chevron-right" color="#FFFFFF" size={35} />
+                                                            </View>
+                                                        </View>
                                                     </View>
 
                                                 </TouchableOpacity>
@@ -127,106 +126,93 @@ export default class App extends Component {
                                     <View></View>
                                 </TouchableHighlight>
 
-                                <View style={{ position: 'absolute', backgroundColor: '#a4d4f2', height: 570, width: 375, alignSelf: 'center' }}>
+                                <View style={{ position: 'absolute', backgroundColor: '#FFF8DC', height: 570, width: 375, alignSelf: 'center' }}>
 
-                                    <View style={{ height: 70, width: 375, backgroundColor: '#F8F8FF' }}>
-                                        <Text style={{ alignSelf: 'center', resizeMode: 'contain', margin: 24, color: 'black', fontSize: 21 }}>
+                                    <View style={{ height: 70, width: 375, alignSelf: 'center', backgroundColor: '#CD5C5C' }}>
+                                        <Text style={{ alignSelf: 'center', margin: 22, color: '#FFFFFF', fontWeight: 'bold', fontSize: 23.5 }}>
                                             {this.state.name}</Text>
-                                        <TouchableOpacity style={{ position: 'absolute', margin: 17 }} onPress={() => this.setState({ showmodal: false })}>
-                                            <Icon name="angle-left" color="black" size={40} />
-                                        </TouchableOpacity>
-                                    </View>
-                                    <View style={{ height: 150, width: 375 }}>
-                                        <Image source={this.state.form}
-                                            style={{ alignSelf: 'center', width, height: 135, resizeMode: 'contain', margin: 10 }} />
+                                        <View style={{ position: 'absolute', height: 70, width: 35 }}>
+                                            <TouchableOpacity style={{ margin: 9, alignSelf: 'flex-end' }} onPress={() => this.setState({ showmodal: false })}>
+                                                <Icon name="angle-left" color="#FFFFFF" size={50} />
+                                            </TouchableOpacity>
+                                        </View>
                                     </View>
 
-                                    <ScrollView style={{ alignSelf: 'center', width: 360 }}>
-                                        <View style={{ alignSelf: 'center', height: 170, width: 350 }}>
-                                            <View style={{ flexDirection: "row", resizeMode: 'contain', margin: 5 }}>
-                                                <Icon name="home" color="black" size={25} />
-                                                <Text style={{ color: '#000033', fontSize: 17, marginBottom: 15 }}>{this.state.location}</Text>
+                                    <View style={{ alignSelf: 'center', width: 355, height: 385, alignSelf: 'center', borderWidth: 1.5, borderRadius: 5, borderColor: '#CD5C5C', margin: 88 }}>
+                                        <View style={{ alignSelf: 'center', width: 335, height: 278, alignSelf: 'center', borderRadius: 5, backgroundColor: '#FFFFFF', margin: 95 }}>
+                                            <View style={{ width: 320, height: 262, alignSelf: 'center', margin: 8 }}>
+                                                <ScrollView style={{ alignSelf: 'center', width: 325 }}>
+                                                    <View style={{ alignSelf: 'center', height: 145, width: 320 }}>
+
+                                                        <View style={{ flexDirection: "row", margin: 3 }}>
+                                                            <View style={{ width: 37, backgroundColor: 'pink', alignSelf: 'center' }}>
+                                                                <View style={{ alignSelf: 'center', margin: 4 }}>
+                                                                    <Icon name="home" color="#FFFFFF" size={29} />
+                                                                </View>
+                                                            </View>
+                                                            <View style={{ alignSelf: 'center' }}>
+                                                                <Text style={{ color: '#663300', fontSize: 15 }}>{this.state.location}</Text>
+                                                            </View>
+                                                        </View>
+
+                                                        <View style={{ flexDirection: "row", margin: 3 }}>
+                                                            <View style={{ width: 37, backgroundColor: 'pink', alignSelf: 'center' }}>
+                                                                <View style={{ alignSelf: 'center', margin: 3 }}>
+                                                                    <Icon name="phone" color="#FFFFFF" size={29} />
+                                                                </View>
+                                                            </View>
+                                                            <TouchableOpacity style={{ alignSelf: 'center' }} onPress={() => Linking.openURL(this.state.number)} >
+                                                                <Text style={{ color: this.state.Icon1, fontSize: 15 }}> {this.state.number1}</Text>
+                                                            </TouchableOpacity>
+                                                        </View>
+
+                                                        <View style={{ flexDirection: "row", margin: 3 }}>
+                                                            <View style={{ width: 37, backgroundColor: 'pink', alignSelf: 'center' }}>
+                                                                <View style={{ alignSelf: 'center', margin: 4 }}>
+                                                                    <Icon name="globe" color="#FFFFFF" size={29} />
+                                                                </View>
+                                                            </View>
+                                                            <TouchableOpacity style={{ alignSelf: 'center' }} onPress={() => Linking.openURL(this.state.Web)} >
+                                                                <Text style={{ color: this.state.Icon2, fontSize: 15 }}>{this.state.Web1}</Text>
+                                                            </TouchableOpacity>
+                                                        </View>
+                                                    </View>
+
+                                                    <View style={{ height: 50, alignSelf: 'center' }}>
+                                                        <TouchableOpacity style={{ height: 40, width: 170, backgroundColor: '#FF6347', borderRadius: 5, margin: 5 }} onPress={() => Linking.openURL(this.state.Map)} >
+                                                            <Text style={{ color: '#FFFFFF', fontSize: 17, alignSelf: 'center', margin: 7 }}>ดูบน Google Maps</Text>
+                                                        </TouchableOpacity>
+                                                    </View>
+
+                                                    <View style={{ height: 200, width: 335, alignSelf: 'center', marginBottom: 25 }}>
+                                                        <TouchableOpacity onPress={() => Linking.openURL(this.state.Map)} >
+                                                            <Image source={this.state.Map1} style={{ alignSelf: 'center', margin: 5, height: 195, width: 310, borderRadius: 5 }} />
+                                                        </TouchableOpacity>
+                                                    </View>
+
+                                                </ScrollView>
                                             </View>
-
-                                            <View style={{ flexDirection: "row", resizeMode: 'contain', margin: 5 }}>
-                                                <Icon name="phone" color="black" size={25} />
-                                                <TouchableOpacity style={{}} onPress={() => Linking.openURL(this.state.number)} >
-                                                    <Text style={{ color: this.state.Icon1, fontSize: 17, marginBottom: 15 }}> {this.state.number1}</Text>
-                                                </TouchableOpacity>
-                                            </View>
-
-                                            <View style={{ flexDirection: "row", resizeMode: 'contain', margin: 5 }}>
-                                                <Icon name="globe" color="black" size={25} />
-                                                <TouchableOpacity style={{}} onPress={() => Linking.openURL(this.state.Web)} >
-                                                    <Text style={{ color: this.state.Icon2, fontSize: 17, marginBottom: 15 }}>{this.state.Web1}</Text>
-                                                </TouchableOpacity>
-                                            </View>
                                         </View>
-
-                                        <View style={styles.instructions}>
-                                            <TouchableOpacity onPress={() => this.setState(
-                                                Alert.alert(
-                                                    'รายละเอียด',
-                                                    this.state.Taxi
-                                                ))}>
-                                                <Image source={require('../Taxi.png')} style={{ margin: 3, width: 70, height: 65 }} />
-                                            </TouchableOpacity>
-
-                                            <TouchableOpacity onPress={() => this.setState(
-                                                Alert.alert(
-                                                    'รายละเอียด',
-                                                    this.state.Bus
-                                                ))}>
-                                                <Image source={require('../Bus.png')} style={{ margin: 3, width: 65, height: 65 }} />
-                                            </TouchableOpacity>
-
-                                            <TouchableOpacity onPress={() => this.setState(
-                                                Alert.alert(
-                                                    'รายละเอียด',
-                                                    this.state.Tuk
-                                                ))}>
-                                                <Image source={require('../Tuk.png')} style={{ margin: 3, width: 65, height: 65 }} />
-                                            </TouchableOpacity>
-
-                                            <TouchableOpacity onPress={() => this.setState(
-                                                Alert.alert(
-                                                    'รายละเอียด',
-                                                    this.state.Van
-                                                ))}>
-                                                <Image source={require('../Van.png')} style={{ margin: 3, width: 65, height: 65 }} />
-                                            </TouchableOpacity>
-
-                                            <TouchableOpacity onPress={() => this.setState(
-                                                Alert.alert(
-                                                    'รายละเอียด',
-                                                    this.state.Train
-                                                ))}>
-                                                <Image source={require('../Train.png')} style={{ margin: 3, width: 51, height: 65 }} />
-                                            </TouchableOpacity>
+                                    </View>
+                                </View>
+                                <View style={{ position: 'absolute', alignSelf: 'center', margin: 10 }}>
+                                    <View style={{ alignSelf: 'center', width: 150, height: 150, borderRadius: 75, resizeMode: 'contain', backgroundColor: '#CD5C5C', margin: 75 }}>
+                                        <View style={{ alignSelf: 'center', width: 115, height: 115, borderRadius: 75, resizeMode: 'contain', backgroundColor: '#FFF8DC', margin: 18 }}>
+                                            <Image source={this.state.form}
+                                                style={{ alignSelf: 'center', width: 95, height: 95, resizeMode: 'contain', margin: 10.5 }} />
                                         </View>
-
-                                        <View style={{
-                                            height: 40, alignSelf: 'center'
-                                        }}>
-                                            <TouchableOpacity style={{ margin: 15 }} onPress={() => Linking.openURL(this.state.Map)} >
-                                                <Text style={{ color: 'blue', fontSize: 17 }}>ดูบน Google Maps</Text>
-                                            </TouchableOpacity>
-                                        </View>
-
-                                        <View style={{
-                                            height: 220, width: 335, alignSelf: 'center',
-                                            marginBottom: 25
-                                        }}>
-                                            <TouchableOpacity style={{}} onPress={() => Linking.openURL(this.state.Map)} >
-                                                <Image source={this.state.Map1} style={{ alignSelf: 'center', margin: 15, height: 200, width: 335, borderRadius: 5 }} />
-                                            </TouchableOpacity>
-                                        </View>
-
-                                    </ScrollView>
+                                    </View>
                                 </View>
                             </Modal>
                         </View>
                     </View>
+                </View>
+                <View style={{ position: 'absolute', height: 43, width: 320, alignSelf: 'center', borderColor: '#CD5C5C', borderRadius: 5, borderWidth: 2, backgroundColor: '#FFFFFF', margin: 88 }}>
+                    <TextInput style={{ height: 40, width: 300, alignSelf: 'center' }}
+                        onChangeText={(text) => this.setState({ text })}
+                        value={this.state.text}
+                        placeholder='ค้นหา'
+                    />
                 </View>
             </View >
         );
@@ -236,27 +222,16 @@ export default class App extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignSelf: 'center',
-        backgroundColor: '#a4d4f2',
+        backgroundColor: '#FFF8DC',
     },
     welcome: {
-        height: 42,
-        width: 320,
+        width: 310,
+        height: 46,
+        borderWidth: 3,
+        borderRadius: 3,
         alignSelf: 'center',
-        margin: 2.5,
-        backgroundColor: '#dedfd7',
-        borderRadius: 5
-    },
-    instructions: {
-        flex: 1,
-        width: 350,
-        flexDirection: "row",
-        justifyContent: "space-around",
-        alignItems: 'flex-start',
-        flexWrap: "wrap",
-        alignSelf: 'center',
-        backgroundColor: '#dedfd7',
-        borderRadius: 10
-
+        borderColor: 'pink',
+        backgroundColor: '#FFFFFF',
+        margin: 3
     },
 });
