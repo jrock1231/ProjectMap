@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Platform, TouchableOpacity, Image, Dimensions, Animated, Modal, TouchableHighlight, Text, AsyncStorage, BackHandler, TextInput, KeyboardAvoidingView, firebase } from 'react-native';
+import { StyleSheet, View, Platform, TouchableOpacity, Image, Dimensions, Animated, Modal, TouchableHighlight, Text, AsyncStorage, BackHandler, TextInput, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import firebase from 'react-native-firebase'
 
 const { width, height } = Dimensions.get("window");
 const instructions = Platform.select({
@@ -16,6 +17,7 @@ export default class App extends Component {
             langModal: false
         };
     }
+
     componentDidMount() {
         AsyncStorage.getItem('lang').then((lang) => {
             if (!lang) {
@@ -37,7 +39,59 @@ export default class App extends Component {
     chooseLang(lang) {
         global.lang = lang;
         AsyncStorage.setItem('lang', lang, () => this.setState({ langModal: false }))
+
     }
+
+    Login() {
+        let _this = this
+        firebase.auth().signInWithEmailAndPassword(this.state.user, this.state.Password)
+            .then(user => {
+
+                alert('เข้าสู่ระบบ สำเร็จ')
+                this.props.navigation.navigate('HospitalSurat')
+
+                console.log('ข้อมูลผู้ใช้: ', user)
+            })
+            .catch((e) => {
+                if (e.code == 'auth/invalid-email') {
+                    this.setState({ loadingLogin: false })
+                    if ( global.lang == 'th') {
+                        Alert.alert('เข้าสู่ระบบไม่สำเร็จ', 'กรุณากรอกข้อมูลให้ครบถ้วน', [{ text: 'ตกลง' }])
+                    }
+                    else {
+                        Alert.alert('Login Failed', 'Please complete all fields', [{ text: 'OK' }])
+                    }
+                }
+                else if (e.code == 'auth/user-not-found') {
+                    this.setState({ loadingLogin: false })
+                    if ( global.lang == 'th') {
+                        Alert.alert('เข้าสู่ระบบไม่สำเร็จ', 'ไม่พบชื่อผู้ใช้งาน \n(' +  global.email + ')', [{ text: 'ตกลง' }])
+                    }
+                    else {
+                        Alert.alert('Login Failed', 'user not found', [{ text: 'OK' }])
+                    }
+                }
+                else if (e.code == 'auth/wrong-password') {
+                    this.setState({ loadingLogin: false })
+                    if ( global.lang == 'th') {
+                        Alert.alert('เข้าสู่ระบบไม่สำเร็จ', 'รหัสผ่านไม่ถูกต้อง', [{ text: 'ตกลง' }])
+                    }
+                    else {
+                        Alert.alert('Login Failed', 'wrong password', [{ text: 'OK' }])
+                    }
+                }
+                else {
+                    this.setState({ loadingLogin: false })
+                    if ( global.lang == 'th') {
+                        Alert.alert('เข้าสู่ระบบไม่สำเร็จ', e.message, [{ text: 'ตกลง' }])
+                    }
+                    else {
+                        Alert.alert('Login Failed', e.message, [{ text: 'OK' }])
+                    }
+                }
+            })
+    }
+
     render() {
         return (
             <View style={styles.background}>
@@ -55,7 +109,7 @@ export default class App extends Component {
                                     <TextInput style={{ height: 37, width: 238, backgroundColor: '#FFFFFF' }}
                                         onChangeText={(user) => this.setState({ user })}
                                         value={this.state.user}
-                                        placeholder='Username'
+                                        placeholder={global.lang == 'th' ? 'ชื่อผู้ใช้' : 'Username'}
                                     />
                                 </View>
                             </View>
@@ -70,7 +124,7 @@ export default class App extends Component {
                                     <TextInput style={{ height: 37, width: 238, backgroundColor: '#FFFFFF' }}
                                         onChangeText={(Password) => this.setState({ Password })}
                                         value={this.state.Password}
-                                        placeholder='Password'
+                                        placeholder={global.lang == 'th' ? 'รหัสผ่าน' : 'Password'}
                                         secureTextEntry
                                     />
                                 </View>
@@ -78,9 +132,11 @@ export default class App extends Component {
 
                             <View style={{ alignSelf: 'center', flexDirection: "row" }}>
                                 <View style={{ marginBottom: 5 }}>
+
                                     <View style={{ height: 50, width: 145, alignSelf: 'center' }}>
-                                        <TouchableOpacity style={{ backgroundColor: '#FF6347', borderRadius: 5 }} onPress={() => this.props.navigation.navigate('HospitalSurat')}>
-                                            <Text style={{ color: '#FFFFFF', fontSize: 17, alignSelf: 'center', margin: 7 }}>
+
+                                        <TouchableOpacity style={{ backgroundColor: '#FF6347', borderRadius: 5 }} onPress={() => this.Login()}>
+                                            <Text style={{ color: '#FFFFFF', fontSize: 17, alignSelf: 'center',fontWeight:'bold', margin: 7 }}>
                                                 {global.lang == 'th' ? <Text>เข้าสู่ระบบ</Text> : <Text>Log in</Text>}</Text>
                                         </TouchableOpacity>
                                     </View>
@@ -88,7 +144,7 @@ export default class App extends Component {
                                 <View style={{ marginBottom: 5 }}>
                                     <View style={{ height: 50, width: 120, alignSelf: 'center' }}>
                                         <TouchableOpacity onPress={() => this.props.navigation.navigate('Register')}>
-                                            <Text style={{ color: '#FF6347', fontSize: 15, alignSelf: 'center', margin: 7 }}>
+                                            <Text style={{ color: '#FF6347', fontSize: 17, alignSelf: 'center',fontWeight:'bold', margin: 7 }}>
                                                 {global.lang == 'th' ? <Text>สมัครสมาชิก</Text> : <Text>Register</Text>}</Text>
                                         </TouchableOpacity>
                                     </View>
@@ -131,22 +187,6 @@ export default class App extends Component {
                         </View>
                     </View>
                 </Modal>
-                <View style={{ margin: 15, marginBottom: 5 }}>
-                    <View style={{ height: 50, width: 150, alignSelf: 'center' }}>
-                        <TouchableOpacity style={{ backgroundColor: '#FF6347', borderRadius: 5 }} onPress={() => this.props.navigation.navigate('login_example')}>
-                            <Text style={{ color: '#FFFFFF', fontSize: 17, alignSelf: 'center', margin: 7 }}>
-                                เข้าสู่ระบบ</Text>
-                        </TouchableOpacity>
-                    </View>
-                </View>
-                <View style={{ margin: 15, marginBottom: 5 }}>
-                    <View style={{ height: 50, width: 150, alignSelf: 'center' }}>
-                        <TouchableOpacity style={{ backgroundColor: '#FF6347', borderRadius: 5 }} onPress={() => this.props.navigation.navigate('register_example')}>
-                            <Text style={{ color: '#FFFFFF', fontSize: 17, alignSelf: 'center', margin: 7 }}>
-                                เข้าสู่ระบบ</Text>
-                        </TouchableOpacity>
-                    </View>
-                </View>
             </View >
         );
     }

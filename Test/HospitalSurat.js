@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-    StyleSheet, Text, View, Platform, TouchableOpacity, TouchableHighlight, Image, Dimensions, ScrollView, TextInput, FlatList, Modal, Alert, Linking
+    StyleSheet, Text, View, Platform, TouchableOpacity, TouchableHighlight, Image, Dimensions, ScrollView, TextInput, FlatList, Modal, Linking
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import HospitalSurat_th from '../Test/HospitalSurat_th.json'
@@ -139,10 +139,10 @@ export default class App extends Component {
                                     </View>
 
                                     <View style={{ alignSelf: 'center', width: 355, height: 385, alignSelf: 'center', borderWidth: 1.5, borderRadius: 5, borderColor: '#CD5C5C', margin: 88 }}>
-                                        <View style={{ alignSelf: 'center', width: 335, height: 278, alignSelf: 'center', borderRadius: 5, backgroundColor: '#FFFFFF', margin: 95 }}>
-                                            <View style={{ width: 320, height: 262, alignSelf: 'center', margin: 8 }}>
-                                                <ScrollView style={{ alignSelf: 'center', width: 325 }}>
-                                                    <View style={{ alignSelf: 'center', height: 145, width: 320 }}>
+                                        <View style={{ alignSelf: 'center', width: 340, height: 278, alignSelf: 'center', borderRadius: 5, backgroundColor: '#FFFFFF', margin: 95 }}>
+                                            <View style={{ width: 335, height: 262, alignSelf: 'center', margin: 10 }}>
+                                                <ScrollView style={{ alignSelf: 'center', width: 335 }}>
+                                                    <View style={{ alignSelf: 'center', height: 145, width: 335 }}>
 
                                                         <View style={{ flexDirection: "row", margin: 3 }}>
                                                             <View style={{ width: 37, backgroundColor: 'pink', alignSelf: 'center' }}>
@@ -179,8 +179,8 @@ export default class App extends Component {
                                                     </View>
 
                                                     <View style={{ height: 50, alignSelf: 'center' }}>
-                                                        <TouchableOpacity style={{ height: 40, width: 170, backgroundColor: '#FF6347', borderRadius: 5, margin: 5 }} onPress={() => Linking.openURL(this.state.Map)} >
-                                                            <Text style={{ color: '#FFFFFF', fontSize: 17, alignSelf: 'center', margin: 7 }}>ดูบน Google Maps</Text>
+                                                        <TouchableOpacity style={{ height: 40, width: 200, backgroundColor: '#FF6347', borderRadius: 5, margin: 5 }} onPress={() => Linking.openURL(this.state.Map)} >
+                                                            <Text style={{ color: '#FFFFFF', fontSize: 17, alignSelf: 'center', margin: 7 }}>{global.lang == 'th' ? <Text>ดูบน Google Maps</Text> : <Text>view on Google Maps</Text>}</Text>
                                                         </TouchableOpacity>
                                                     </View>
 
@@ -199,7 +199,7 @@ export default class App extends Component {
                                     <View style={{ alignSelf: 'center', width: 150, height: 150, borderRadius: 75, resizeMode: 'contain', backgroundColor: '#CD5C5C', margin: 75 }}>
                                         <View style={{ alignSelf: 'center', width: 115, height: 115, borderRadius: 75, resizeMode: 'contain', backgroundColor: '#FFF8DC', margin: 18 }}>
                                             <Image source={this.state.form}
-                                                style={{ alignSelf: 'center', width: 95, height: 95, resizeMode: 'contain', margin: 10.5 }} />
+                                                style={{ alignSelf: 'center', width: 110, height: 110, resizeMode: 'contain', margin: 2 }} />
                                         </View>
                                     </View>
                                 </View>
@@ -211,7 +211,7 @@ export default class App extends Component {
                     <TextInput style={{ height: 40, width: 300, alignSelf: 'center' }}
                         onChangeText={(text) => this.setState({ text })}
                         value={this.state.text}
-                        placeholder='ค้นหา'
+                        placeholder={global.lang == 'th' ? 'ค้นหา' : 'Search'}
                     />
                 </View>
             </View >
