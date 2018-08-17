@@ -87,32 +87,28 @@ class Home extends React.Component {
 
                                             <View style={{ flexDirection: "row", margin: 0 }}>
 
-                                                <View style={{ height: 100, width: 117, margin: 0, alignSelf: 'center' }}>
+                                                <View style={{ height: 100, width: 117, margin: 1, alignSelf: 'center' }}>
                                                     <TouchableOpacity style={{ alignSelf: 'center' }} onPress={() => this.setState({
                                                         showmodal1: true,
-                                                        text1: item.name,
-                                                        text15: item.form1,
-                                                        text16: item.form2,
-                                                        text17: item.form3,
-                                                        text18: item.form4,
-                                                        text19: item.form5,
-                                                        text20: item.form6,
-                                                        text21: item.form7,
+                                                        text15: item.name2,
+                                                        text16: item.form1,
+                                                        text17: item.form2,
+                                                        text18: item.form3,
+                                                        text19: item.form4,
+                                                        text20: item.form5,
+                                                        text21: item.form6,
+                                                        text22: item.form7,
                                                     })}>
-                                                        <Image source={item.form} style={{ alignSelf: 'center', width: 110, height: 95, resizeMode: 'contain', margin: 3 }} />
+                                                        <Image source={item.form} style={{ alignSelf: 'center', width: 400, height: 135, resizeMode: 'contain', margin: -1 }} />
+                                                        
+                                                        <Text style={{ color: '#000033', fontSize: 17, marginBottom: 15 }}>{this.state.name2}</Text>
+                                                        
                                                     </TouchableOpacity>
                                                 </View>
 
-                                                <View style={{ height: 100, width: 220, alignSelf: 'center' }}>
-                                                    <Text style={{ flexDirection: "row", justifyContent: 'space-between', fontSize: 13, color: 'back', margin: 2 }}>
-                                                        {item.name}</Text>
-                                                    <Text style={{ flexDirection: "row", justifyContent: 'space-between', fontSize: 10, alignSelf: 'center' }}>
-                                                        {item.name2}</Text>
-                                                </View>
+                                
 
-                                                <View style={{ flexDirection: 'column', justifyContent: 'center', height: 101, width: 18 }}>
-                                                    <Icon name="chevron-right" color="#00EEEE'" size={20} />
-                                                </View>
+                                               
                                             </View>
 
                                         </TouchableOpacity>
@@ -259,6 +255,12 @@ class Home extends React.Component {
     }
 }
 
+
+
+
+
+
+
 class SettingsScreen extends React.Component {
     constructor() {
         super();
@@ -284,7 +286,7 @@ class SettingsScreen extends React.Component {
                     backgroundColor: '#a4d4f2'
                 }}>
                     <View style={{ height: 40 }}>
-                        <TextInput style={{ height: 35, width: 305, borderRadius: 15, alignSelf: 'center', borderColor: 'gray', borderWidth: 2 }}
+                        <TextInput style={{ height: 35, width: 305, borderRadius: 15, alignSelf: 'center', borderColor: '#ffffff', borderWidth: 2 }}
                             onChangeText={(text) => this.setState({ text })}
                             value={this.state.text}
                             placeholder='ค้นหา'
@@ -353,7 +355,7 @@ class SettingsScreen extends React.Component {
                                                         text30: item.form16,
                                                         text31: item.form17,
                                                     })}>
-                                                        <Image source={item.form} style={{ alignSelf: 'center', width: 110, height: 95, resizeMode: 'contain', margin: 3 }} />
+                                                        <Image source={item.form} style={{ alignSelf: 'center', width: 110, height: 95, resizeMode: 'contain', margin: -1 }} />
                                                     </TouchableOpacity>
                                                 </View>
 
@@ -365,7 +367,7 @@ class SettingsScreen extends React.Component {
                                                 </View>
 
                                                 <View style={{ flexDirection: 'column', justifyContent: 'center', height: 101, width: 18 }}>
-                                                    <Icon name="chevron-right" color="#00EEEE'" size={20} />
+                                                    <Icon name="chevron-right" color="#66CCCC" size={20} />
                                                 </View>
                                             </View>
 
@@ -523,6 +525,12 @@ class SettingsScreen extends React.Component {
     }
 }
 
+
+
+
+
+
+
 class SettingsScreen1 extends React.Component {
     constructor() {
         super();
@@ -548,7 +556,7 @@ class SettingsScreen1 extends React.Component {
                     backgroundColor: '#a4d4f2'
                 }}>
                     <View style={{ height: 40 }}>
-                        <TextInput style={{ height: 35, width: 305, borderRadius: 15, alignSelf: 'center', borderColor: 'gray', borderWidth: 2 }}
+                        <TextInput style={{ height: 35, width: 305, borderRadius: 15, alignSelf: 'center', borderColor: '#ffffff', borderWidth: 2 }}
                             onChangeText={(text) => this.setState({ text })}
                             value={this.state.text}
                             placeholder='ค้นหา'
@@ -575,7 +583,7 @@ class SettingsScreen1 extends React.Component {
                                 <View>
                                     {item.name.indexOf(this.state.text) > -1 ?
                                         <TouchableOpacity style={{
-                                            height: 45, width: 355, alignSelf: 'center', margin: 4, backgroundColor: '#ffffff', borderRadius: 2, borderColor: '#00EEEE', borderWidth: 2
+                                            height: 45, width: 355, alignSelf: 'center', margin: 4, backgroundColor: '#ffffff', borderRadius: 2, borderColor: '#66CCCC', borderWidth: 3
                                         }}
                                             onPress={() => this.setState({
                                                 showmodal: true,
@@ -608,8 +616,8 @@ class SettingsScreen1 extends React.Component {
                                                         {item.name}</Text>
                                                 </View>
 
-                                                <View style={{ flexDirection: 'column', justifyContent: 'center', height: 45, width: 18 }}>
-                                                    <Icon name="chevron-right" color="#00EEEE" size={15} />
+                                                <View style={{ flexDirection: 'column', justifyContent: 'center', height: 45, width: 18}}>
+                                                    <Icon name="chevron-right" color="#66CCCC" size={20} />
                                                 </View>
                                             </View>
 
@@ -732,14 +740,14 @@ const styles = StyleSheet.create({
         backgroundColor: '#dedfd7',
     },
     welcome: {
-        height: 101,
-        width: 355,
+        height: 140,
+        width: 350,
         alignSelf: 'center',
         margin: 2.5,
         backgroundColor: '#ffffff',
         borderRadius: 2,
-        borderColor: '#00EEEE',
-        borderWidth: 2
+        borderColor: '#66CCCC',
+        borderWidth: 3
     },
     instructions: {
         height: 65,
@@ -783,11 +791,11 @@ export default TabNavigator({
             activeTintColor: 'black',
             inactiveTintColor: 'blue',
             style: {
-                backgroundColor: '#FFFFFF',
+                backgroundColor: '#66CDAA',
                 height: 57
             },
             indicatorStyle: {
-                height: 0
+                height: 1
             },
             showIcon: true
         }

@@ -32,8 +32,8 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
 
-        <View style={{ height: 70, width: 375, backgroundColor: '#F8F8FF' }}>
-          <Text style={{ alignSelf: 'center', margin: 20, color: 'black', fontSize: 25 }}>
+        <View style={{ height: 70, width: 375, backgroundColor: '#66CDAA' }}>
+          <Text style={{ alignSelf: 'center', margin: 20, color: '#ffffff', fontSize: 35 }}>
             {global.lang == 'th' ? <Text>โรงพยาบาล</Text> : <Text>Hospital</Text>}</Text>
 
           <TouchableOpacity style={{ position: 'absolute', margin: 17 }} onPress={() => this.props.navigation.goBack()}>
@@ -41,20 +41,16 @@ export default class App extends Component {
           </TouchableOpacity>
         </View>
 
-        <View style={{ height: 150, width: 375 }}>
-          <View style={{ position: 'absolute', backgroundColor: '#dedfd7', alignSelf: 'center', width: 90, height: 90, borderRadius: 100, margin: 22 }}>
-          </View>
-          <Image source={require('./AppPage/กรอบ.png')}
-            style={{ position: 'absolute', alignSelf: 'center', width, height: 135, resizeMode: 'contain', margin: 10 }} />
-
-          <View style={{ position: 'absolute', width: 375, height: 110, margin: 1 }}>
-            <Image source={require('./AppPage/โรงพยาบาล.png')}
-              style={{ width: 65, height: 65, margin: 34, alignSelf: 'center' }} />
+        <View style={{ height: 180, width: 375 }}>
+          
+          <View style={{ position: 'absolute', margin: 2, alignSelf: 'center'  }}>
+            <Image source={require('./AppPage/รพ1.png')}
+              style={{ width: 170, height: 170, margin: 1, alignSelf: 'center' }} />
           </View>
         </View>
 
         <View style={{ height: 45 }}>
-          <TextInput style={{ height: 40, width: 305, borderRadius: 15, alignSelf: 'center', borderColor: 'gray', borderWidth: 2 }}
+          <TextInput style={{ height: 40, width: 305, borderRadius: 15, alignSelf: 'center', borderColor: '#ffffff', borderWidth: 2 }}
             onChangeText={(text) => this.setState({ text })}
             value={this.state.text}
             placeholder='ค้นหา'
@@ -116,7 +112,7 @@ export default class App extends Component {
                         <Text style={{ flexDirection: "row", justifyContent: 'space-between', fontSize: 18, color: '#185373' }}>
                           {item.name}</Text>
 
-                        <Icon name="chevron-right" color="#185373" size={30} />
+                        <Icon name="chevron-right" color="#66CCCC" size={20} />
                       </View>
 
                     </TouchableOpacity>
@@ -140,8 +136,8 @@ export default class App extends Component {
 
             <View style={{ position: 'absolute', backgroundColor: '#a4d4f2', height: 570, width: 375, alignSelf: 'center' }}>
 
-              <View style={{ height: 70, width: 375, backgroundColor: '#F8F8FF' }}>
-                <Text style={{ alignSelf: 'center', resizeMode: 'contain', margin: 24, color: 'black', fontSize: 21 }}>
+              <View style={{ height: 70, width: 375, backgroundColor: '#66CDAA' }}>
+                <Text style={{ alignSelf: 'center', resizeMode: 'contain', margin: 24, color: '#ffffff', fontSize: 25 }}>
                   {this.state.name}</Text>
                 <TouchableOpacity style={{ position: 'absolute', margin: 17 }} onPress={() => this.setState({ showmodal: false })}>
                   <Icon name="angle-left" color="black" size={40} />
@@ -253,8 +249,10 @@ const styles = StyleSheet.create({
     width: 320,
     alignSelf: 'center',
     margin: 2.5,
-    backgroundColor: '#dedfd7',
-    borderRadius: 5
+    backgroundColor: '#ffffff',
+    borderRadius: 5,
+    borderColor: '#66CCCC',
+    borderWidth: 3
   },
   instructions: {
     flex: 1,
