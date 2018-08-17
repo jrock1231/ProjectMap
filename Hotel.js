@@ -35,8 +35,8 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
 
-        <View style={{ height: 70, width: 375, backgroundColor: '#6CA6CD' }}>
-          <Text style={{ alignSelf: 'center', resizeMode: 'contain', margin: 20, color: 'black', fontSize: 25 }}>
+        <View style={{ height: 70, width: 375, backgroundColor: '#66CDAA' }}>
+          <Text style={{ alignSelf: 'center', resizeMode: 'contain', margin: 15, color: '#ffffff', fontSize: 38 }}>
             {global.lang == 'th' ? <Text>โรงแรม</Text> : <Text>Hotel</Text>}</Text>
           <TouchableOpacity style={{ position: 'absolute', margin: 17 }} onPress={() => this.props.navigation.goBack()}>
             <Icon name="angle-left" color="black" size={40} />
@@ -83,7 +83,7 @@ export default class App extends Component {
               renderItem={({ item }) =>
                 <View>
                   {item.name.indexOf(this.state.text) > -1 ?
-                    <TouchableOpacity style={{ height: 42, width: 320, alignSelf: 'center', margin: 2.5, backgroundColor: '#ffffff', borderRadius: 5 , borderColor: '#00EEEE', borderWidth: 2 }} onPress={() => this.props.navigation.navigate(item.Hotel)} >
+                    <TouchableOpacity style={{ height: 42, width: 320, alignSelf: 'center', margin: 2.5, backgroundColor: '#ffffff', borderRadius: 5 , borderColor: '#66CCCC', borderWidth: 3 }} onPress={() => this.props.navigation.navigate(item.Hotel)} >
 
                       <View style={{ flexDirection: "row", margin: 0 }}>
 
@@ -93,7 +93,7 @@ export default class App extends Component {
                         </View>
 
                         <View style={{ flexDirection: 'column', justifyContent: 'center', height: 42, flex: 0.2 }}>
-                          <Icon name="chevron-right" color="#00EEEE" size={25} />
+                          <Icon name="chevron-right" color="#66CCCC" size={21} />
                         </View>
                       </View>
 

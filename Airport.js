@@ -19,8 +19,8 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
 
-        <View style={{ height: 70, width: 375, backgroundColor: '#F8F8FF' }}>
-          <Text style={{ alignSelf: 'center', resizeMode: 'contain', margin: 20, color: 'black', fontSize: 25 }}>
+        <View style={{ height: 70, width: 375, backgroundColor: '#66CDAA' }}>
+          <Text style={{ alignSelf: 'center', resizeMode: 'contain', margin: 20, color: '#ffffff', fontSize: 30 }}>
             {global.lang == 'th' ? <Text>สนามบินสุราษฎร์ธานี</Text> : <Text>Airport</Text>}</Text>
 
           <TouchableOpacity style={{ position: 'absolute', margin: 17 }} onPress={() => this.props.navigation.goBack()}>
@@ -28,15 +28,11 @@ export default class App extends Component {
           </TouchableOpacity>
         </View>
 
-        <View style={{ height: 150, width: 375 }}>
-          <View style={{ position: 'absolute', backgroundColor: '#dedfd7', alignSelf: 'center', width: 90, height: 90, borderRadius: 100, margin: 22 }}>
-          </View>
-          <Image source={require('./AppPage/กรอบ.png')}
-            style={{ position: 'absolute', alignSelf: 'center', width, height: 135, resizeMode: 'contain', margin: 10 }} />
-
-          <View style={{ position: 'absolute', width: 375, height: 110, margin: 1 }}>
-            <Image source={require('./AppPage/เครื่องบิน.png')}
-              style={{ width: 65, height: 65, margin: 38, alignSelf: 'center' }} />
+         <View style={{ height: 180, width: 375 }}>
+          
+          <View style={{ position: 'absolute', margin: 2, alignSelf: 'center'  }}>
+            <Image source={require('./AppPage/สนามบิน1.png')}
+              style={{ width: 180, height: 180, margin: 1, alignSelf: 'center' }} />
           </View>
         </View>
 

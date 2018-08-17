@@ -50,8 +50,8 @@ export default class App extends Component {
         return (
             <View style={styles.container}>
             
-                <View style={{ height: 70, width: 375, backgroundColor: '#6CA6CD' }}>
-                    <Text style={{ alignSelf: 'center', margin: 20, color: '#back', fontSize: 25 }}>
+                <View style={{ height: 70, width: 390, backgroundColor: '#66CDAA' }}>
+                    <Text style={{ alignSelf: 'center', margin: 18, color: '#ffffff', fontSize: 35 }}>
                         {global.lang == 'th' ? <Text>แหล่งท่องเที่ยว</Text> : <Text>Place</Text>}</Text>
 
                     <TouchableOpacity style={{ position: 'absolute', margin: 17 }} onPress={() => this.props.navigation.goBack()}>
@@ -62,12 +62,12 @@ export default class App extends Component {
                  <View style={{ height: 180, width: 375 }}>
           
           <View style={{ position: 'absolute', margin: 4, alignSelf: 'center'  }}>
-            <Image source={require('./AppPage/เที่ยว3.png')}
-              style={{ width: 170, height: 170, margin: 1, alignSelf: 'center' }} />
+            <Image source={require('./AppPage/เที่ยว4.png')}
+              style={{ width: 160, height: 160, margin: 1, alignSelf: 'center' }} />
           </View>
         </View>
 
-                <View style={{ height: 345, width: 355, alignSelf: 'center' }}>
+                <View style={{ height: 300, width: 385, alignSelf: 'center' }}>
                     <Place0 />
                 </View>
 
