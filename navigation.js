@@ -156,7 +156,7 @@ export default createStackNavigator({
         }
     },
 }, {
-        initialRouteName: 'App',
+        initialRouteName: 'Login',
     }
 );
 
