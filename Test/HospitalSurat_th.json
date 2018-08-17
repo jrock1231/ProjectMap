@@ -71,7 +71,7 @@
         "Tuk": "Tuk",
         "Van": "Van",
         "Train": "Train",
-        "form": require('../Hospital/วิภาวดี.png'),
+        "form": require('../s2.png'),
         "Map": "https://www.google.com/maps/place/โรงพยาบาลค่ายวิภาวดีรังสิต/@9.1312452,99.3597744,17z/data=!3m1!4b1!4m5!3m4!1s0x305406215b01871f:0xb9152d7acd5b5469!8m2!3d9.1312452!4d99.3619684",
         "Map1": require('../Hospital/H4.jpg'),
     },
